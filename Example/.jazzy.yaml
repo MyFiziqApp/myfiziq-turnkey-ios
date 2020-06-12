@@ -1,0 +1,13 @@
+objc: true
+module: MyFiziqTurnkey
+module_version: 19.1.9
+author: MyFiziq
+author_url: https://myfiziq.com
+sdk: iphonesimulator
+readme: ../README.md
+documentation: ../*.md
+skip_undocumented: true
+umbrella_header: "Pods/Target Support Files/MyFiziqTurnkey/MyFiziqTurnkey-umbrella.h"
+framework_root: ../MyFiziqTurnkey/Classes/Public/
+exclude: "Pods/Target Support Files/MyFiziqTurnkey/MyFiziqTurnkey-umbrella.h"
+theme: "../myfiziq-docs-theme/"
