@@ -1,5 +1,3 @@
-[![Build status](https://build.appcenter.ms/v0.1/apps/b5f9d618-aeef-40d5-b37b-25836b9d903f/branches/19.1.9_trunk/badge)](https://appcenter.ms/orgs/MyFiziqApp/apps/myfiziq-ios-sdk-turnkey/build/branches/19.1.5_trunk)
-
 # MyFiziq Turnkey : iOS
 
 ![MyFiziq Turnkey Solution](turn-key.png)
