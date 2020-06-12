@@ -1,0 +1,24 @@
+source 'https://cdn.cocoapods.org/'
+source 'https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myfiziq-sdk-podrepo'
+
+# The following source is for MyFiziq Beta versions. Please remove if you do not have beta access.
+source 'https://github.com/MyFiziqApp/myfiziq-sdk-podrepo.git'
+
+use_frameworks!
+inhibit_all_warnings!
+
+target 'MyFiziqTurnkey_Example' do
+  platform :ios, '12.1'
+  pod 'MyFiziqTurnkey', :path => '../'
+end
+
+post_install do |installer|
+  # Disable code coverage for all Pods and Pods Project
+  installer.pods_project.targets.each do |target|
+    if target.name != 'MyFiziqTurnkey'
+      target.build_configurations.each do |config|
+          config.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
+      end
+    end
+  end
+end

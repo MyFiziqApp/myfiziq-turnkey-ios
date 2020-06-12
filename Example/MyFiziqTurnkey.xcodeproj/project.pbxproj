@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		289CDD4D24517CDF00A85391 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289CDD4C24517CDF00A85391 /* SettingsViewController.m */; };
+		289CDD512451879A00A85391 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289CDD4F2451879A00A85391 /* SettingsTableViewCell.m */; };
+		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
+		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
+		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
+		AA9711B553BDF00C7F9F9035 /* Pods_MyFiziqTurnkey_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A616720A2C393DE881F8E2 /* Pods_MyFiziqTurnkey_Example.framework */; };
+		D9A6AC8423E819660053806B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9A6AC7F23E819660053806B /* Main.storyboard */; };
+		D9A6AC8523E819660053806B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A6AC8223E819660053806B /* AppDelegate.m */; };
+		D9A6AC8623E819660053806B /* IdentityProviderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A6AC8323E819660053806B /* IdentityProviderHelper.m */; };
+		D9A6AC8823E8196C0053806B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9A6AC8723E8196C0053806B /* LaunchScreen.storyboard */; };
+		D9A6AC8A23E8198F0053806B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A6AC8923E8198F0053806B /* main.m */; };
+		D9C2141823E81C6A00AA2A72 /* UserPasswordSendResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2140923E81C6A00AA2A72 /* UserPasswordSendResetViewController.m */; };
+		D9C2141923E81C6A00AA2A72 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2140A23E81C6A00AA2A72 /* UserRegisterViewController.m */; };
+		D9C2141A23E81C6A00AA2A72 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2140C23E81C6A00AA2A72 /* HomeViewController.m */; };
+		D9C2141C23E81C6A00AA2A72 /* InitializingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2141123E81C6A00AA2A72 /* InitializingViewController.m */; };
+		D9C2141D23E81C6A00AA2A72 /* UserPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2141223E81C6A00AA2A72 /* UserPasswordResetViewController.m */; };
+		D9C2141E23E81C6A00AA2A72 /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2141423E81C6A00AA2A72 /* UserLoginViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A4642DF2209842A0EB24C9B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		1F03DC8A1D8FE925368F6F8E /* Pods-MyFiziqTurnkey_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Tests.debug.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Tests/Pods-MyFiziqTurnkey_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		27921164AA07F1D5ABB1A81E /* Pods_MyFiziqTurnkey_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFiziqTurnkey_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		289CDD4B24517CDF00A85391 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		289CDD4C24517CDF00A85391 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		289CDD4E2451879A00A85391 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
+		289CDD4F2451879A00A85391 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
+		4BA7204CA56E31151BBB2CF4 /* MyFiziqTurnkey.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MyFiziqTurnkey.podspec; path = ../MyFiziqTurnkey.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		50A616720A2C393DE881F8E2 /* Pods_MyFiziqTurnkey_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFiziqTurnkey_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* Turnkey Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Turnkey Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6003F595195388D20070C39A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6813616BA5624C7DE587B593 /* Pods-MyFiziqTurnkey_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Example.release.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example.release.xcconfig"; sourceTree = "<group>"; };
+		76934C1EE1706C06DB1B08FB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		84BCC15364A8B0C9198AF433 /* Pods-MyFiziqTurnkey_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Example.debug.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C0010CFD0361296D8AECFE0A /* Pods-MyFiziqTurnkey_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Tests.release.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Tests/Pods-MyFiziqTurnkey_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D9A6AC7D23E819520053806B /* View Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "View Controllers"; sourceTree = "<group>"; };
+		D9A6AC7F23E819660053806B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D9A6AC8023E819660053806B /* IdentityProviderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityProviderHelper.h; sourceTree = "<group>"; };
+		D9A6AC8123E819660053806B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D9A6AC8223E819660053806B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D9A6AC8323E819660053806B /* IdentityProviderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityProviderHelper.m; sourceTree = "<group>"; };
+		D9A6AC8723E8196C0053806B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9A6AC8923E8198F0053806B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D9C2140923E81C6A00AA2A72 /* UserPasswordSendResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPasswordSendResetViewController.m; sourceTree = "<group>"; };
+		D9C2140A23E81C6A00AA2A72 /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterViewController.m; sourceTree = "<group>"; };
+		D9C2140B23E81C6A00AA2A72 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
+		D9C2140C23E81C6A00AA2A72 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		D9C2140D23E81C6A00AA2A72 /* UserPasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPasswordResetViewController.h; sourceTree = "<group>"; };
+		D9C2140E23E81C6A00AA2A72 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		D9C2141023E81C6A00AA2A72 /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
+		D9C2141123E81C6A00AA2A72 /* InitializingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitializingViewController.m; sourceTree = "<group>"; };
+		D9C2141223E81C6A00AA2A72 /* UserPasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPasswordResetViewController.m; sourceTree = "<group>"; };
+		D9C2141323E81C6A00AA2A72 /* UserPasswordSendResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPasswordSendResetViewController.h; sourceTree = "<group>"; };
+		D9C2141423E81C6A00AA2A72 /* UserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginViewController.m; sourceTree = "<group>"; };
+		D9C2141623E81C6A00AA2A72 /* InitializingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitializingViewController.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6003F587195388D20070C39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
+				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
+				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
+				AA9711B553BDF00C7F9F9035 /* Pods_MyFiziqTurnkey_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6003F581195388D10070C39A = {
+			isa = PBXGroup;
+			children = (
+				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
+				6003F593195388D20070C39A /* Example for MyFiziqTurnkey */,
+				6003F5B5195388D20070C39A /* Tests */,
+				6003F58C195388D20070C39A /* Frameworks */,
+				6003F58B195388D20070C39A /* Products */,
+				898D04C7030AC939718237F7 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		6003F58B195388D20070C39A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6003F58A195388D20070C39A /* Turnkey Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6003F58C195388D20070C39A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6003F58D195388D20070C39A /* Foundation.framework */,
+				6003F58F195388D20070C39A /* CoreGraphics.framework */,
+				6003F591195388D20070C39A /* UIKit.framework */,
+				6003F5AF195388D20070C39A /* XCTest.framework */,
+				50A616720A2C393DE881F8E2 /* Pods_MyFiziqTurnkey_Example.framework */,
+				27921164AA07F1D5ABB1A81E /* Pods_MyFiziqTurnkey_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6003F593195388D20070C39A /* Example for MyFiziqTurnkey */ = {
+			isa = PBXGroup;
+			children = (
+				D9C2140E23E81C6A00AA2A72 /* HomeViewController.h */,
+				D9C2140C23E81C6A00AA2A72 /* HomeViewController.m */,
+				D9C2141623E81C6A00AA2A72 /* InitializingViewController.h */,
+				D9C2141123E81C6A00AA2A72 /* InitializingViewController.m */,
+				289CDD4B24517CDF00A85391 /* SettingsViewController.h */,
+				289CDD4C24517CDF00A85391 /* SettingsViewController.m */,
+				289CDD4E2451879A00A85391 /* SettingsTableViewCell.h */,
+				289CDD4F2451879A00A85391 /* SettingsTableViewCell.m */,
+				D9C2141023E81C6A00AA2A72 /* UserLoginViewController.h */,
+				D9C2141423E81C6A00AA2A72 /* UserLoginViewController.m */,
+				D9C2140D23E81C6A00AA2A72 /* UserPasswordResetViewController.h */,
+				D9C2141223E81C6A00AA2A72 /* UserPasswordResetViewController.m */,
+				D9C2141323E81C6A00AA2A72 /* UserPasswordSendResetViewController.h */,
+				D9C2140923E81C6A00AA2A72 /* UserPasswordSendResetViewController.m */,
+				D9C2140B23E81C6A00AA2A72 /* UserRegisterViewController.h */,
+				D9C2140A23E81C6A00AA2A72 /* UserRegisterViewController.m */,
+				D9A6AC8123E819660053806B /* AppDelegate.h */,
+				D9A6AC8223E819660053806B /* AppDelegate.m */,
+				D9A6AC8023E819660053806B /* IdentityProviderHelper.h */,
+				D9A6AC8323E819660053806B /* IdentityProviderHelper.m */,
+				D9A6AC7F23E819660053806B /* Main.storyboard */,
+				D9A6AC8723E8196C0053806B /* LaunchScreen.storyboard */,
+				D9A6AC8923E8198F0053806B /* main.m */,
+				6003F595195388D20070C39A /* Info.plist */,
+				D9A6AC7D23E819520053806B /* View Controllers */,
+				6003F5A8195388D20070C39A /* Images.xcassets */,
+			);
+			name = "Example for MyFiziqTurnkey";
+			path = MyFiziqTurnkey;
+			sourceTree = "<group>";
+		};
+		6003F5B5195388D20070C39A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5BB195388D20070C39A /* Tests.m */,
+				6003F5B6195388D20070C39A /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		6003F5B6195388D20070C39A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5B7195388D20070C39A /* Tests-Info.plist */,
+				6003F5B8195388D20070C39A /* InfoPlist.strings */,
+				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				4BA7204CA56E31151BBB2CF4 /* MyFiziqTurnkey.podspec */,
+				76934C1EE1706C06DB1B08FB /* README.md */,
+				1A4642DF2209842A0EB24C9B /* LICENSE */,
+			);
+			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		898D04C7030AC939718237F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84BCC15364A8B0C9198AF433 /* Pods-MyFiziqTurnkey_Example.debug.xcconfig */,
+				6813616BA5624C7DE587B593 /* Pods-MyFiziqTurnkey_Example.release.xcconfig */,
+				1F03DC8A1D8FE925368F6F8E /* Pods-MyFiziqTurnkey_Tests.debug.xcconfig */,
+				C0010CFD0361296D8AECFE0A /* Pods-MyFiziqTurnkey_Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6003F589195388D20070C39A /* MyFiziqTurnkey_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "MyFiziqTurnkey_Example" */;
+			buildPhases = (
+				7131FB1F57F80509DE222BEA /* [CP] Check Pods Manifest.lock */,
+				6003F586195388D20070C39A /* Sources */,
+				6003F587195388D20070C39A /* Frameworks */,
+				6003F588195388D20070C39A /* Resources */,
+				CC423312267C39957ED62097 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyFiziqTurnkey_Example;
+			productName = MyFiziqTurnkey;
+			productReference = 6003F58A195388D20070C39A /* Turnkey Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6003F582195388D10070C39A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MYQ;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "phillipc-myfiziq";
+				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = R8N9468BQ5;
+					};
+				};
+			};
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "MyFiziqTurnkey" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = 6003F581195388D10070C39A;
+			productRefGroup = 6003F58B195388D20070C39A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6003F589195388D20070C39A /* MyFiziqTurnkey_Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6003F588195388D20070C39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				D9A6AC8823E8196C0053806B /* LaunchScreen.storyboard in Resources */,
+				D9A6AC8423E819660053806B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7131FB1F57F80509DE222BEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyFiziqTurnkey_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC423312267C39957ED62097 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSKinesis/AWSKinesis.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSLambda/AWSLambda.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
+				"${BUILT_PRODUCTS_DIR}/GBDeviceInfo/GBDeviceInfo.framework",
+				"${BUILT_PRODUCTS_DIR}/JBChartView/JBChartView.framework",
+				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFaCSS/MyFaCSS.framework",
+				"${PODS_ROOT}/MyFiziqSDK/MyFiziqSDK/MyFiziqSDK.framework",
+				"${PODS_ROOT}/MyFiziqSDKBilling/MyFiziqSDKBilling/MyFiziqSDKBilling.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKCommon/MyFiziqSDKCommon.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKInputView/MyFiziqSDKInputView.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKLoginView/MyFiziqSDKLoginView.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKOnboardingView/MyFiziqSDKOnboardingView.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKProfileView/MyFiziqSDKProfileView.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKSupport/MyFiziqSDKSupport.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqSDKTrackingView/MyFiziqSDKTrackingView.framework",
+				"${BUILT_PRODUCTS_DIR}/MyFiziqTurnkey/MyFiziqTurnkey.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SpotHeroEmailValidator/SpotHeroEmailValidator.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSKinesis.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSLambda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GBDeviceInfo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JBChartView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFaCSS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKBilling.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKInputView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKLoginView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKOnboardingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKProfileView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKSupport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqSDKTrackingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MyFiziqTurnkey.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpotHeroEmailValidator.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6003F586195388D20070C39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9C2141E23E81C6A00AA2A72 /* UserLoginViewController.m in Sources */,
+				289CDD512451879A00A85391 /* SettingsTableViewCell.m in Sources */,
+				D9A6AC8523E819660053806B /* AppDelegate.m in Sources */,
+				D9C2141923E81C6A00AA2A72 /* UserRegisterViewController.m in Sources */,
+				D9C2141823E81C6A00AA2A72 /* UserPasswordSendResetViewController.m in Sources */,
+				D9A6AC8A23E8198F0053806B /* main.m in Sources */,
+				D9C2141A23E81C6A00AA2A72 /* HomeViewController.m in Sources */,
+				D9C2141D23E81C6A00AA2A72 /* UserPasswordResetViewController.m in Sources */,
+				289CDD4D24517CDF00A85391 /* SettingsViewController.m in Sources */,
+				D9A6AC8623E819660053806B /* IdentityProviderHelper.m in Sources */,
+				D9C2141C23E81C6A00AA2A72 /* InitializingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6003F5B8195388D20070C39A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6003F5B9195388D20070C39A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6003F5BD195388D20070C39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6003F5BE195388D20070C39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6003F5C0195388D20070C39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84BCC15364A8B0C9198AF433 /* Pods-MyFiziqTurnkey_Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8N9468BQ5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = MyFiziqTurnkey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 19.1;
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myfiziq.demo.MyFiziqTurnkeyExample;
+				PRODUCT_NAME = "Turnkey Example";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6003F5C1195388D20070C39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6813616BA5624C7DE587B593 /* Pods-MyFiziqTurnkey_Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8N9468BQ5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				INFOPLIST_FILE = MyFiziqTurnkey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 19.1;
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myfiziq.demo.MyFiziqTurnkeyExample;
+				PRODUCT_NAME = "Turnkey Example";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "MyFiziqTurnkey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6003F5BD195388D20070C39A /* Debug */,
+				6003F5BE195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "MyFiziqTurnkey_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6003F5C0195388D20070C39A /* Debug */,
+				6003F5C1195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6003F582195388D10070C39A /* Project object */;
+}

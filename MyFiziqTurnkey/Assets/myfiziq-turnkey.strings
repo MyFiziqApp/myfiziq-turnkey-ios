@@ -1,0 +1,50 @@
+
+// Turnkey specific text
+"MYQTK_CLOSE"                               = "Close";
+"MYQTK_NO_AVATARS_VIEW_GALLERY_TITLE_TEXT"  = "You have no measurement results";
+"MYQTK_NO_AVATARS_VIEW_GALLERY_DETAIL_TEXT" = "At least one body scan is\nneeded to be displayed.";
+"MYQTK_NO_AVATARS_VIEW_ACTION_BUTTON_TITLE" = "Start";
+"MYQTK_NO_AVATARS_VIEW_TRACK_TITLE_TEXT"    = "You need at least two\nmeasurements\nto use the Track feature";
+"MYQTK_NO_AVATARS_VIEW_TRACK_DETAIL_TEXT"   = "";
+"MYQTK_DELETE_AVATAR_ALERT_TITLE"           = "Delete Measurement";
+"MYQTK_DELETE_AVATAR_ALERT_MESSAGE"         = "Do you wish to delete this measurement?\n\nThis cannot be undone.";
+"MYQTK_ALERT_CONTINUE"                      = "Continue";
+"MYQTK_ALERT_CANCEL"                        = "Cancel";
+"MYQTK_ALERT_OK"                            = "OK";
+"MYQTK_ALERT_ERROR_TITLE"                   = "Error";
+"MYQTK_ALERT_DELETE_AVATARS_ERROR"          = "Could not delete measurement:\n\n";
+"MYQTK_ALERT_INPUT_ERROR"                   = "Unable to apply height and weight. Please try again later or contact support.";
+
+// Card View
+"MYQTK_CARD_NONE_TITLE"                     = "3D BODY SCAN";
+"MYQTK_CARD_NONE_BODY"                      = "Get your body\nmeasurements using your\nsmart phone.";
+"MYQTK_CARD_NONE_NEW_BUTTON"                = "NEW SCAN";
+"MYQTK_CARD_RESULT_TITLE"                   = "3D BODY SCAN";
+"MYQTK_CARD_BUTTON_MYSCANS"                 = "MY SCANS";
+"MYQTK_CARD_BUTTON_TRACK"                   = "TRACK";
+"MYQTK_CARD_BUTTON_NEW"                     = "NEW";
+"MYQTK_CARD_KG"                             = "kg";
+"MYQTK_CARD_CM"                             = "cm";
+"MYQTK_CARD_IN"                             = "\"";
+"MYQTK_CARD_FT"                             = "'";
+"MYQTK_CARD_ATTR_chestCM"                   = "Chest";
+"MYQTK_CARD_ATTR_waistCM"                   = "Waist";
+"MYQTK_CARD_ATTR_hipsCM"                    = "Hips";
+"MYQTK_CARD_ATTR_thighCM"                   = "Thighs";
+"MYQTK_CARD_ATTR_weightKG"                  = "Weight";
+"MYQTK_CARD_ATTR_heightCM"                  = "Height";
+"MYQTK_CARD_ATTR_tbf"                       = "TBF";
+
+// My Scans
+"MYQTK_TITLE_MY_SCANS"                      = "My Scans";
+"MYQTK_TITLE_NEW_MEASUREMENT"               = "New Measurement";
+
+// Track
+"MYQTK_TITLE_TRACK"                         = "Track";
+
+// SDK Common
+"MFZ_COMMON_PICKERVIEW_DISMISS"             = "Done";
+// SDK Input
+"MFZ_INPUT_DISMISS"                         = "Done";
+// SDK Core
+"MFZ_SDK_STR_HELP_ALIGN_ACK"                = "Continue";
