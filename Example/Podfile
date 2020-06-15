@@ -1,5 +1,5 @@
 source 'https://cdn.cocoapods.org/'
-# source 'https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myfiziq-sdk-podrepo'
+source 'https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/myfiziq-sdk-podrepo'
 
 # The following source is for MyFiziq Beta versions. Please remove if you do not have beta access.
 source 'https://github.com/MyFiziqApp/myfiziq-sdk-podrepo.git'
