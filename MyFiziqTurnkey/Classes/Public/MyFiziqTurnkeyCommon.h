@@ -18,6 +18,7 @@
 #import <MyFiziqSDKCommon/MyFiziqCommon.h>
 #import <MyFiziqSDKCommon/MyFiziqCommonButton.h>
 
+/** Turnkey common implementation, for handling styles and resources. */
 @interface MyFiziqTurnkeyCommon : MyFiziqCommon <MyFiziqCommonProtocol>
 /** Singleton interface.
     @return Singleton instance value of the class object.
