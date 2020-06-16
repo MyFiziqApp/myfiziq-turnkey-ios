@@ -23,7 +23,7 @@
 
 /** Handles 'boilerplate' MyFiziq initialization tasks for turnkey solution. */
 @interface MyFiziqTurnkey : NSObject
-/** Set JSON compliant additonal data to this property and it will be appended to the next scan. */
+/** Optional setting of JSON compliant additonal data to be appended to the next scan. Useful for cross-reference tracking of the result if needed. */
 @property (strong, nonatomic) NSDictionary *miscData;
 /** This property will list all MyFiziq Turnkey Card Views. Usually there will be just one card view for the app.
     The card view will automatically register itself to this set, so app code to do this will not be needed. The use of this set
@@ -53,7 +53,9 @@
 /** Custom user authentication is for integration to environments that don't provide an AWS Cognito compatible idP such
     as Open ID Connect, SAML, or OAuth. This basically authorises a user using a set of user claims, by either logging
     in the user (if already exists), or registering the user first and then logging the user in. A user logout call will be
-    done first, so that the intended user will be logged in when this method completes, regardless of current state.
+    done first if the current user logged in doesn't match the intended user, so that the intended user will be logged in 
+    when this method completes, regardless of current state. Effectively, this method is re-enterant and can be called
+    multiple times without issue, provided that the parameters are correct and this method is called after successful setup.
     @note This is NOT a reccommended solution, but provides an alternative where an integration has some non-standards
     based user auth implementation.
     @param partnerUserId The partner user id (not the same as MyFiziq user id).
