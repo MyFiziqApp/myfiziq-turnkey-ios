@@ -65,7 +65,7 @@
 - (UIButton *)optionsButton {
     if(!_optionsButton) {
        _optionsButton = [[UIButton alloc]init];
-       [_optionsButton setImage:MFZImage(MyFiziqCommon, @"mfz-icon-switch") forState: UIControlStateNormal];
+       [_optionsButton setImage:MFZImage(MyFiziqTurnkeyCommon, @"mfz-icon-switch") forState: UIControlStateNormal];
        [_optionsButton addTarget:self action:@selector(didTapOptionsButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _optionsButton;

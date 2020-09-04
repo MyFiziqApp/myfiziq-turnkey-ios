@@ -16,7 +16,7 @@
 @myqtkNavigationBarLargeTitleFont: systemBold 28;
 @myqtkNavigationBarTitleFont: systemBold 18;
 @myqtkNavigationBarButtonFont: systemBold 17;
-@myqtkNavBarColor: @myqtkDarkestBackgroundColor;
+@myqtkNavBarColor: @myqtkWhiteColor;
 @myqtkNavBarImageSizeForLargeState: 40.0;
 @myqtkNavBarImageSizeForLargeState-iPhone-SE: 30.0;
 @myqtkNavBarImageSizeForLargeState-iPhone-5s: 30.0;

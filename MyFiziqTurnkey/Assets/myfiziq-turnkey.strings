@@ -27,12 +27,12 @@
 "MYQTK_CARD_CM"                             = "cm";
 "MYQTK_CARD_IN"                             = "\"";
 "MYQTK_CARD_FT"                             = "'";
-"MYQTK_CARD_ATTR_chestCM"                   = "Chest";
-"MYQTK_CARD_ATTR_waistCM"                   = "Waist";
-"MYQTK_CARD_ATTR_hipsCM"                    = "Hips";
-"MYQTK_CARD_ATTR_thighCM"                   = "Thighs";
-"MYQTK_CARD_ATTR_weightKG"                  = "Weight";
-"MYQTK_CARD_ATTR_heightCM"                  = "Height";
+"MYQTK_CARD_ATTR_chest"                   = "Chest";
+"MYQTK_CARD_ATTR_waist"                   = "Waist";
+"MYQTK_CARD_ATTR_hips"                    = "Hips";
+"MYQTK_CARD_ATTR_thigh"                   = "Thighs";
+"MYQTK_CARD_ATTR_weight"                  = "Weight";
+"MYQTK_CARD_ATTR_height"                  = "Height";
 "MYQTK_CARD_ATTR_tbf"                       = "TBF";
 
 // My Scans
