@@ -48,8 +48,8 @@
     return mfz;
 }
 
-- (void)setCSSFile:(NSURL *)cssFilepath {
-    [[MyFiziqTurnkeyCommon shared] setCSSFile:cssFilepath];
+- (void)setResourceBundle:(NSBundle *)bundle {
+    [[MyFiziqTurnkeyCommon shared] setResourceBundle:bundle];
 }
 
 - (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure {

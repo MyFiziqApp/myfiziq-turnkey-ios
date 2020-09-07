@@ -34,10 +34,10 @@
     @return Singleton instance value of the class object.
  */
 + (instancetype _Nullable)shared;
-/** Set the CSS file for cutom styling. App will need all SDK style overrides in a single file.
-    @param cssFilepath Path to the CSS file resource to apply styles.
+/** Set the resource bundle for cutom styling. App will need all SDK style overrides in a single file.
+    @param bundle Instance of the resource bundle containing style overrides (CSS, images, etc...).
  */
-- (void)setCSSFile:(NSURL *)cssFilepath;
+- (void)setResourceBundle:(NSBundle *)bundle;
 /** Configure `MyFiziq` with the associated App key (recieved from registering App with MyFiziq). This will automatically
     handle user re-authentication so no further setup code is needed.
     @param conf The connection configuration, should contain `MFZSdkSetupKey` ("Key"), `MFZSdkSetupSecret` ("Secret"),

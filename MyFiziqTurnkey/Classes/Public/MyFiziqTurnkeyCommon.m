@@ -70,9 +70,11 @@
     return mfzCommon;
 }
 
-- (void)setCSSFile:(NSURL *)cssFilepath {
-    InterfaCSS *sharedCSS = [InterfaCSS sharedInstance];
-    [sharedCSS loadStyleSheetFromFile:cssFilepath.path];
+- (void)setResourceBundle:(NSBundle *)bundle {
+    if (!bundle) {
+        return;
+    }
+    self.internalBundle = bundle;
 }
 
 - (NSBundle *)sdkBundle {

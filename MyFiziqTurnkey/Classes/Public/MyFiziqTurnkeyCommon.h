@@ -24,8 +24,8 @@
     @return Singleton instance value of the class object.
  */
 + (instancetype _Nullable)shared;
-/** Set the CSS file for cutom styling. App will need all SDK style overrides in a single file.
-    @param cssFilepath Path to the CSS file resource to apply styles.
+/** Set the resource bundle for cutom styling. App will need all SDK style overrides in a single file.
+    @param bundle Instance of the resource bundle containing style overrides (CSS, images, etc...).
  */
-- (void)setCSSFile:(NSURL *)cssFilepath;
+- (void)setResourceBundle:(NSBundle *)bundle;
 @end
