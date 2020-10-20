@@ -83,14 +83,14 @@
 #pragma mark - Private Methods
 
 - (void)checkAvatarsCount {
-    NSUInteger count = [[[MyFiziqSDK shared].avatars all] count];
+    NSUInteger count = [[[MyFiziqSDKCoreLite shared].avatars all] count];
     self.myqGalleryView.hidden = count < 1;
     self.myqNoAvatarsTrackView.hidden = count > 0;
     if ((count < 1 && !self.hasCheckedForAvatars) || self.currentAvatarsCount != count) {
         self.currentAvatarsCount = count;
         [self didPullToRefreshwithCompletion:nil];
     }
-    [self.myqGalleryView updateAvatars:[[MyFiziqSDK shared].avatars all]];
+    [self.myqGalleryView updateAvatars:[[MyFiziqSDKCoreLite shared].avatars all]];
 }
 
 #pragma mark - Actions
@@ -123,7 +123,7 @@
 - (void)didPullToRefreshwithCompletion:(void (^ _Nullable)(NSArray<id<MyFiziqCommonAvatarDelegate>> * _Nullable result, NSError * _Nullable error))completion {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         self.hasCheckedForAvatars = YES;
-        [[[MyFiziqSDK shared] avatars] requestAvatarsWithSuccess:^{
+        [[[MyFiziqSDKCoreLite shared] avatars] requestAvatarsWithSuccess:^{
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self checkAvatarsCount];
                 if (completion) {

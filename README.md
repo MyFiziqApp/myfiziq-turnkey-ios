@@ -41,7 +41,7 @@ The MyFiziq Turnkey:iOS solution is simply a convience solution on how an app co
 
 1. Fork the MyFiziq Turnkey:iOS repo to a new repo, from GitHub repo `https://github.com/MyFiziqApp/myfiziq-turnkey-ios`.
 2. Make alterations as need to the code base and make custom styling as needed to meet the needs on the integration.
-3. In the partner App, update the Podfile to add the Turnkey (reccommend as a direct git link). Eg: `pod "MyFiziqTurnkey", :git => 'https://github.com/EXAMPLE/myfiziq-turnkey-ios.git', :branch => '19.1.9_trunk'`.
+3. In the partner App, update the Podfile to add the Turnkey (reccommend as a direct git link). Eg: `pod "MyFiziqTurnkey", :git => 'https://github.com/EXAMPLE/myfiziq-turnkey-ios.git', :branch => '19.1.16_trunk'`.
 
 ## Getting Started
 

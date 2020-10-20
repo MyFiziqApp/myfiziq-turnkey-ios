@@ -95,7 +95,7 @@
 #pragma mark - Helper Methods
 
 + (void)goToVC:(UIViewController *)vc {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         return;
     }
     [self presentMyFiziqTurnkeyViewController:vc];

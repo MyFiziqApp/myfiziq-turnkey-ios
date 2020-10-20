@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import "MYQTKNew.h"
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 #import <MyFiziqSDKInputView/MyFiziqInputView.h>
 #import <PureLayout/PureLayout.h>
 #import "MYQTKSubViewOnboarding.h"
@@ -25,15 +25,15 @@
 
 @interface MYQTKNew ()<MyFiziqInputViewDelegate, MyFiziqInputViewDataSource, MYQTKSubViewOnboardingDelegate>
 @property (strong, nonatomic) MyFiziqInputView *inputView;
-@property (readonly, nonatomic) MyFiziqSDK *myfiziq;
+@property (readonly, nonatomic) MyFiziqSDKCoreLite *myfiziq;
 @end
 
 @implementation MYQTKNew
 
 #pragma mark - Properties
 
-- (MyFiziqSDK *)myfiziq {
-    return [MyFiziqSDK shared];
+- (MyFiziqSDKCoreLite *)myfiziq {
+    return [MyFiziqSDKCoreLite shared];
 }
 
 - (MyFiziqInputView *)inputView {

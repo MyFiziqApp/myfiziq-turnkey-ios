@@ -17,7 +17,7 @@
 
 #import <UIKit/UIKit.h>
 #import <PureLayout/PureLayout.h>
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 #import "MyFiziqTurnkeyCommon.h"
 
 @interface MYQTKBaseView : UIView

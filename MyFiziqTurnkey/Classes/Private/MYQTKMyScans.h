@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import "MYQTKBaseViewController.h"
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 
 @protocol MYQTKMyScansDelegate;
 // The `MYQTKMyScans` view controller is used to display list of avatar results for the user to view more detail

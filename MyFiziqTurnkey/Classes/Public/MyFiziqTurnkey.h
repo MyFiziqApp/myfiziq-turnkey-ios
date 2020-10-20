@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 #import <MyFiziqSDKLoginView/MyFiziqLogin.h>
 #import "MyFiziqTurnkeyCommon.h"
 #import "MyFiziqTurnkeyView.h"

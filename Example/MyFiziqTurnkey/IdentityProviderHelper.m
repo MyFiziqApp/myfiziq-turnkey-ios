@@ -464,7 +464,7 @@
 // TURNKEY EXAMPLE: To auto login/register backing MyFiziq user, this method saves repeating code for determining user claims
 - (void)myfiziqTurnkeyAuth {
     // Check MyFiziq setup is complete.
-    if ([MyFiziqSDK shared].statusConnection != MFZSdkConnectionStatusReady) {
+    if ([MyFiziqSDKCoreLite shared].statusConnection != MFZSdkConnectionStatusReady) {
         NSLog(@"ERROR: MyFiziq SDK setup not complete prior to calling 'myfiziqTurnkeyAuth'. User will not be logged in.");
         return;
     }

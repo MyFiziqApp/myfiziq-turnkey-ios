@@ -29,7 +29,7 @@
 @interface MYQTKTrack () <MYQTKNoAvatarsViewDelegate, MyFiziqTrackSDKTrackingViewDelegate, MYQTKMyScansDelegate, MYQTKSubViewHomeDelegate>
 @property (strong, nonatomic) MYQTKNoAvatarsView *myqNoAvatarsTrackView;
 @property (strong, nonatomic) MyFiziqTrackSDKTrackingView *trackingView;
-@property (readonly, nonatomic) MyFiziqSDK *myfiziq;
+@property (readonly, nonatomic) MyFiziqSDKCoreLite *myfiziq;
 @property (strong, nonatomic) MYQTKNavigationBarConstants *navBarIconHelper;
 @property (strong, nonatomic) UIButton *optionsButton;
 @end
@@ -38,8 +38,8 @@
 
 #pragma mark - Properties
 
-- (MyFiziqSDK *)myfiziq {
-    return [MyFiziqSDK shared];
+- (MyFiziqSDKCoreLite *)myfiziq {
+    return [MyFiziqSDKCoreLite shared];
 }
 
 - (MyFiziqTrackSDKTrackingView *)trackingView {
@@ -78,7 +78,7 @@
     if ([self.myfiziq.avatars.all count] > 1) {
         self.myqNoAvatarsTrackView.hidden = YES;
         self.trackingView.hidden = NO;
-        [self.trackingView setTrackViewMeasurementType:[MyFiziqSDK shared].user.measurementPreference];
+        [self.trackingView setTrackViewMeasurementType:[MyFiziqSDKCoreLite shared].user.measurementPreference];
         [self.trackingView setTrackAvatars:self.myfiziq.avatars.all];
         self.optionsButton.hidden = NO;
     } else {

@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import <UIKit/UIKit.h>
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 
 /** Represents a 'snapshot' view displaying latest measurement result in compact UI. Acts as the 'gateway' to the MyFiziq offering. */
 @interface MyFiziqTurnkeyView : UIView

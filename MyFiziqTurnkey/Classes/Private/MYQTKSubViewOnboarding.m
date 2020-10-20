@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import "MYQTKSubViewOnboarding.h"
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 #import <MyFiziqSDKOnboardingView/MyFiziqOnboardingView.h>
 #import "MyFiziqTurnkey.h"
 
@@ -61,7 +61,7 @@
 - (void)beginAvatarCreationProcess {
   // REQUIRED: After user details are updated, the MyFiziq avatar creation process can now be initiated.
   // NOTE: This process will present a capture screen modally, with the calling view controller appearing when the capture process completes.
-  [[MyFiziqSDK shared] initiateAvatarCreationWithOptions:nil withMiscellaneousData:[MyFiziqTurnkey shared].miscData fromViewController:self completion:^(NSError * _Nullable errCapture) {
+  [[MyFiziqSDKCoreLite shared] initiateAvatarCreationWithOptions:nil withMiscellaneousData:[MyFiziqTurnkey shared].miscData fromViewController:self completion:^(NSError * _Nullable errCapture) {
       if (errCapture) {
           switch (errCapture.code) {
               case MFZSdkErrorCodeOKCaptureCancel:
@@ -94,7 +94,7 @@
 
 // No skip if first time user, other allow skip.
 - (MyFiziqOnboardingViewMode)onboardingMode {
-  if ([MyFiziqSDK shared].avatars.all.count == 0) {
+  if ([MyFiziqSDKCoreLite shared].avatars.all.count == 0) {
     return MyFiziqOnboardingViewModeFull;
   }
   return MyFiziqOnboardingViewModeSkip;

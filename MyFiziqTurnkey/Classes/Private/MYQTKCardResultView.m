@@ -148,7 +148,7 @@
 #pragma mark - Update Methods
 
 - (void)refresh {
-    MyFiziqAvatar *avatar = [MyFiziqSDK shared].avatars.all.firstObject;
+    MyFiziqAvatar *avatar = [MyFiziqSDKCoreLite shared].avatars.all.firstObject;
     if (avatar && avatar.hasThumbnail && avatar.thumbnailImage) {
         UIImage *avatarImage = avatar.thumbnailImage;
         self.viewResultAvatar.image = avatarImage;
@@ -195,7 +195,7 @@
     if (cell == nil) {
         cell = [[MYQTKCardResultCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[MYQTKCardResultCellView cellIdentifier]];
     }
-    MyFiziqAvatar *latestAvatar = [MyFiziqSDK shared].avatars.all.firstObject;
+    MyFiziqAvatar *latestAvatar = [MyFiziqSDKCoreLite shared].avatars.all.firstObject;
     if (!latestAvatar) {
         return cell;
     }
@@ -236,7 +236,7 @@
 }
 
 - (NSString *)getTextForValue:(double)value forAttribute:(MFZAvatarAttribute)attr {
-    MFZMeasurement type = [MyFiziqSDK shared].user.measurementPreference;
+    MFZMeasurement type = [MyFiziqSDKCoreLite shared].user.measurementPreference;
     if (attr == MFZAvatarAttributeWeight) {
         return [self massOutputForKg:value withType:type];
     }

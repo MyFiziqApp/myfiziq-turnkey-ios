@@ -63,7 +63,7 @@
 
 - (void)userCustomAuthenticateForId:(NSString *)partnerUserId withClaims:(NSArray<NSString *> *)claims withSalt:(NSString *)iv completion:(void (^)(NSError * _Nullable))completion {
     // Check that the MyFiziq service has been setup.
-    if ([MyFiziqSDK shared].statusConnection != MFZSdkConnectionStatusReady) {
+    if ([MyFiziqSDKCoreLite shared].statusConnection != MFZSdkConnectionStatusReady) {
         MFZLog(MFZLogLevelError, @"Called custom auth before MyFiziq setup called/completed successfully.");
         NSLog(@"MYQTK-ERR: Called custom auth before MyFiziq setup called/completed successfully.");
     }
@@ -108,20 +108,20 @@
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         // Force implies that all card views show spinner until refresh has completed.
         // Also show spinner where user is not auth'd (or indirectly, service not setup yet).
-        if (force || [MyFiziqSDK shared].statusConnection != MFZSdkConnectionStatusReady) {
+        if (force || [MyFiziqSDKCoreLite shared].statusConnection != MFZSdkConnectionStatusReady) {
             for (MyFiziqTurnkeyView *card in self.turnkeyCardViews) {
                 [card showLoading];
             }
         }
         // Check that the MyFiziq service has been setup.
-        if ([MyFiziqSDK shared].statusConnection != MFZSdkConnectionStatusReady) {
+        if ([MyFiziqSDKCoreLite shared].statusConnection != MFZSdkConnectionStatusReady) {
             MFZLog(MFZLogLevelError, @"Called refresh before MyFiziq setup called/completed successfully.");
             NSLog(@"MYQTK-ERR: Called refresh before MyFiziq setup called/completed successfully.");
             return;
         }
         // Sync with service if user is auth'd
-        if ([MyFiziqSDK shared].user.isLoggedIn) {
-            [[MyFiziqSDK shared].avatars requestAvatarsWithSuccess:^{
+        if ([MyFiziqSDKCoreLite shared].user.isLoggedIn) {
+            [[MyFiziqSDKCoreLite shared].avatars requestAvatarsWithSuccess:^{
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     MFZLog(MFZLogLevelInfo, @"Called refresh with MYQ service sucessfully.");
                     [self refreshCardViews];
@@ -153,47 +153,47 @@
 #pragma mark - User Intrinsics
 
 - (void)setUserGender:(MFZGender)gender {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         MFZLog(MFZLogLevelError, @"User not logged in, cannot set gender value.");
         return;
     }
-    [MyFiziqSDK shared].user.gender = gender;
+    [MyFiziqSDKCoreLite shared].user.gender = gender;
 }
 
 - (void)setUserWeight:(float)weight forType:(MFZMeasurement)unit {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         MFZLog(MFZLogLevelError, @"User not logged in, cannot set weight value.");
         return;
     }
     if (unit == MFZMeasurementMetric) {
-        [MyFiziqSDK shared].user.weightInKg = weight;
+        [MyFiziqSDKCoreLite shared].user.weightInKg = weight;
         return;
     }
     // Need to convert lbs to kgs
     NSMeasurement<NSUnitMass *> *pounds = [[NSMeasurement alloc] initWithDoubleValue:weight unit:NSUnitMass.poundsMass];
-    [MyFiziqSDK shared].user.weightInKg = [pounds measurementByConvertingToUnit:NSUnitMass.kilograms].doubleValue;
+    [MyFiziqSDKCoreLite shared].user.weightInKg = [pounds measurementByConvertingToUnit:NSUnitMass.kilograms].doubleValue;
 }
 
 - (void)setUserHeight:(float)height forType:(MFZMeasurement)unit {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         MFZLog(MFZLogLevelError, @"User not logged in, cannot set height value.");
         return;
     }
     if (unit == MFZMeasurementMetric) {
-        [MyFiziqSDK shared].user.heightInCm = height;
+        [MyFiziqSDKCoreLite shared].user.heightInCm = height;
         return;
     }
     // Need to convert inches to cms
     NSMeasurement<NSUnitLength *> *inches = [[NSMeasurement alloc] initWithDoubleValue:height unit:NSUnitLength.inches];
-    [MyFiziqSDK shared].user.heightInCm = [inches measurementByConvertingToUnit:NSUnitLength.centimeters].doubleValue;
+    [MyFiziqSDKCoreLite shared].user.heightInCm = [inches measurementByConvertingToUnit:NSUnitLength.centimeters].doubleValue;
 }
 
 - (void)setUserUseMetric:(BOOL)metric {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         MFZLog(MFZLogLevelError, @"User not logged in, cannot set prefered unit type.");
         return;
     }
-    [MyFiziqSDK shared].user.measurementPreference = metric ? MFZMeasurementMetric : MFZMeasurementImperial;
+    [MyFiziqSDKCoreLite shared].user.measurementPreference = metric ? MFZMeasurementMetric : MFZMeasurementImperial;
 }
 
 #pragma mark - Platform Card View Requirements
@@ -211,11 +211,11 @@
 }
 
 - (NSDictionary<NSString *, NSNumber *> *)getLatestResultForType:(MFZMeasurement)type {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         MFZLog(MFZLogLevelError, @"User not logged in, cannot return latest result.");
         return nil;
     }
-    MyFiziqAvatar *latest = [MyFiziqSDK shared].avatars.all.firstObject;
+    MyFiziqAvatar *latest = [MyFiziqSDKCoreLite shared].avatars.all.firstObject;
     if (!latest || !latest.measurements) {
         MFZLog(MFZLogLevelInfo, @"User has no results yet, returning nil.");
         return nil;
@@ -250,7 +250,7 @@
 
 - (void)sendBillingEventId:(NSUInteger)eventId miscData:(NSDictionary *)data {
     // Checks
-    if ([MyFiziqSDK shared].statusConnection != MFZSdkConnectionStatusReady) {
+    if ([MyFiziqSDKCoreLite shared].statusConnection != MFZSdkConnectionStatusReady) {
         MFZLog(MFZLogLevelError, @"MyFiziq service not yet initialized, billing cannot be sent yet.");
         return;
     }

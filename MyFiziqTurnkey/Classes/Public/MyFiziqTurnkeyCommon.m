@@ -17,7 +17,7 @@
 
 #import "MyFiziqTurnkeyCommon.h"
 #import <MyFaCSS/InterfaCSS.h>
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 #import <MyFiziqSDKCommon/MyFiziqCommonBundle.h>
 #import <MyFiziqSDKInputView/MyFiziqInputView.h>
 #import <MyFiziqSDKLoginView/MyFiziqLoginCommon.h>

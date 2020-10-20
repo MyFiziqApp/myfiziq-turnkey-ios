@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import "SettingsTableViewCell.h"
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 
 @interface SettingsTableViewCell()
 @property (assign, nonatomic) MyFiziqTurnKeyExampleAtrributeIdentifier measurementIdentifier;
@@ -56,7 +56,7 @@
             self.attributeTitleLabel.text = @"Gender";
             self.attributeTextField.hidden = YES;
             self.genderSegmentControl.hidden = NO;
-            self.genderSegmentControl.selectedSegmentIndex = [MyFiziqSDK shared].user.gender == MFZGenderMale ? 0 : 1;
+            self.genderSegmentControl.selectedSegmentIndex = [MyFiziqSDKCoreLite shared].user.gender == MFZGenderMale ? 0 : 1;
             break;
         case MyFiziqTurnKeyExampleAtrributeIdentifierWeight:
             self.attributeTitleLabel.text = @"Weight";

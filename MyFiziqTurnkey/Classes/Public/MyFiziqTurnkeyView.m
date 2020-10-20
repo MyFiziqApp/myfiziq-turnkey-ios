@@ -102,7 +102,7 @@
 #pragma mark - Public Methods
 
 - (void)refresh {
-    if (![MyFiziqSDK shared].user.isLoggedIn) {
+    if (![MyFiziqSDKCoreLite shared].user.isLoggedIn) {
         self.viewNone.hidden = YES;
         self.viewResult.hidden = YES;
         [self.viewSpinner show];
@@ -114,7 +114,7 @@
     [self.viewSpinner hide];
     self.viewButtons.hidden = NO;
     // If no results for the user, show the No Measurements view.
-    if ([MyFiziqSDK shared].avatars.all.count == 0) {
+    if ([MyFiziqSDKCoreLite shared].avatars.all.count == 0) {
         self.viewNone.hidden = NO;
         self.viewResult.hidden = YES;
     } else {

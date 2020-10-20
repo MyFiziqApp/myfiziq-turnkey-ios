@@ -68,12 +68,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"MeasurementPreference"] == nil) {
-        [MyFiziqSDK shared].user.measurementPreference = MFZMeasurementMetric;
+        [MyFiziqSDKCoreLite shared].user.measurementPreference = MFZMeasurementMetric;
         self.unitSegmentControl.selectedSegmentIndex = 0;
         [self saveMeasurementToUserDefaults];
     } else {
         int measurementPreference = [[[NSUserDefaults standardUserDefaults] valueForKey:@"MeasurementPreference"] intValue];
-        [MyFiziqSDK shared].user.measurementPreference = measurementPreference == 0 ? MFZMeasurementMetric : MFZMeasurementImperial;
+        [MyFiziqSDKCoreLite shared].user.measurementPreference = measurementPreference == 0 ? MFZMeasurementMetric : MFZMeasurementImperial;
         self.unitSegmentControl.selectedSegmentIndex = measurementPreference;
     }
 }
@@ -144,9 +144,9 @@
 
 - (IBAction)didSelectUnit:(id)sender {
     if (self.unitSegmentControl.selectedSegmentIndex == 0) {
-        [MyFiziqSDK shared].user.measurementPreference = MFZMeasurementMetric;
+        [MyFiziqSDKCoreLite shared].user.measurementPreference = MFZMeasurementMetric;
     } else {
-        [MyFiziqSDK shared].user.measurementPreference = MFZMeasurementImperial;
+        [MyFiziqSDKCoreLite shared].user.measurementPreference = MFZMeasurementImperial;
     }
     [self saveMeasurementToUserDefaults];
 }
@@ -159,7 +159,7 @@
 }
 
 - (void)saveMeasurementToUserDefaults {
-    [[NSUserDefaults standardUserDefaults] setValue:[MyFiziqSDK shared].user.measurementPreference == MFZMeasurementImperial ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:0] forKey:@"MeasurementPreference"];
+    [[NSUserDefaults standardUserDefaults] setValue:[MyFiziqSDKCoreLite shared].user.measurementPreference == MFZMeasurementImperial ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:0] forKey:@"MeasurementPreference"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.myfiziqTurnkeyView refresh];
 }

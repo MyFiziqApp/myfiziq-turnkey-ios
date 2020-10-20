@@ -17,7 +17,7 @@
 
 #import "SettingsViewController.h"
 #import "SettingsTableViewCell.h"
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 #import <MyFiziqSDKCommon/MyFiziqCommonMath.h>
 
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
@@ -162,8 +162,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.weightInKg = [MyFiziqSDK shared].user.weightInKg;
-    self.heightInCm = [MyFiziqSDK shared].user.heightInCm;
+    self.weightInKg = [MyFiziqSDKCoreLite shared].user.weightInKg;
+    self.heightInCm = [MyFiziqSDKCoreLite shared].user.heightInCm;
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGestureRecognizer];
@@ -229,10 +229,10 @@
     [self.dobPicker setMaximumDate:youngestDate];
     NSString *displayValue;
     NSDate *selectedDate;
-    if ([MyFiziqSDK shared].user.birthdate) {
-        [self.dobPicker setDate:[MyFiziqSDK.shared.user birthdate]];
-        displayValue = [dateFormatter stringFromDate:[MyFiziqSDK.shared.user birthdate]];
-        selectedDate = [MyFiziqSDK.shared.user birthdate];
+    if ([MyFiziqSDKCoreLite shared].user.birthdate) {
+        [self.dobPicker setDate:[MyFiziqSDKCoreLite.shared.user birthdate]];
+        displayValue = [dateFormatter stringFromDate:[MyFiziqSDKCoreLite.shared.user birthdate]];
+        selectedDate = [MyFiziqSDKCoreLite.shared.user birthdate];
     } else {
         int defaultAge = 25;
         NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
@@ -250,13 +250,13 @@
 - (NSString *)setPickerWeightDefaultViewValues {
     NSString *displayValue;
     int row;
-    NSLog(@"measurementPreference %lu", (unsigned long)[MyFiziqSDK shared].user.measurementPreference);
-    self.selectedWeightUnit = [MyFiziqSDK shared].user.measurementPreference;
-    if ([MyFiziqSDK shared].user.measurementPreference == MFZMeasurementMetric) {
-        displayValue = [NSString stringWithFormat:@"%.1f kg", [MyFiziqSDK shared].user.weightInKg];
+    NSLog(@"measurementPreference %lu", (unsigned long)[MyFiziqSDKCoreLite shared].user.measurementPreference);
+    self.selectedWeightUnit = [MyFiziqSDKCoreLite shared].user.measurementPreference;
+    if ([MyFiziqSDKCoreLite shared].user.measurementPreference == MFZMeasurementMetric) {
+        displayValue = [NSString stringWithFormat:@"%.1f kg", [MyFiziqSDKCoreLite shared].user.weightInKg];
         row = 0;
     } else {
-        NSMeasurement<NSUnitMass *> *weightKilograms = [[NSMeasurement alloc] initWithDoubleValue:[MyFiziqSDK shared].user.weightInKg unit:NSUnitMass.kilograms];
+        NSMeasurement<NSUnitMass *> *weightKilograms = [[NSMeasurement alloc] initWithDoubleValue:[MyFiziqSDKCoreLite shared].user.weightInKg unit:NSUnitMass.kilograms];
         displayValue = [NSString stringWithFormat:@"%.1f lbs", [weightKilograms measurementByConvertingToUnit:NSUnitMass.poundsMass].doubleValue];
         row = 1;
     }
@@ -268,12 +268,12 @@
 - (NSString *)setPickerHeightDefaultViewValues {
     NSString *displayValue;
     int row;
-    self.selectedHeightUnit = [MyFiziqSDK shared].user.measurementPreference;
-    if ([MyFiziqSDK shared].user.measurementPreference == MFZMeasurementMetric) {
-        displayValue = [NSString stringWithFormat:@"%.0f cm", [MyFiziqSDK shared].user.heightInCm];
+    self.selectedHeightUnit = [MyFiziqSDKCoreLite shared].user.measurementPreference;
+    if ([MyFiziqSDKCoreLite shared].user.measurementPreference == MFZMeasurementMetric) {
+        displayValue = [NSString stringWithFormat:@"%.0f cm", [MyFiziqSDKCoreLite shared].user.heightInCm];
         row = 0;
     } else {
-        NSMeasurement<NSUnitMass *> *heightCm = [[NSMeasurement alloc] initWithDoubleValue:[MyFiziqSDK shared].user.heightInCm unit:NSUnitLength.centimeters];
+        NSMeasurement<NSUnitMass *> *heightCm = [[NSMeasurement alloc] initWithDoubleValue:[MyFiziqSDKCoreLite shared].user.heightInCm unit:NSUnitLength.centimeters];
         NSInteger heightInFeet = (NSInteger)[heightCm measurementByConvertingToUnit:NSUnitLength.feet].doubleValue;
         NSInteger heightInInches = [heightCm measurementByConvertingToUnit:NSUnitLength.inches].doubleValue;
         float valueInchesComponentInt = heightInInches - (heightInFeet * 12);
@@ -460,10 +460,10 @@
         [self showViewController:alert sender:self];
     } else {
         // REQUIRED: Before initiating the avatar creation process, the user height and weight must first be updated.
-        [MyFiziqSDK shared].user.heightInCm = self.heightInCm;
-        [MyFiziqSDK shared].user.weightInKg = self.weightInKg;
-        [MyFiziqSDK shared].user.gender = genderCell.genderSegmentControl.selectedSegmentIndex == 0 ? MFZGenderMale : MFZGenderFemale;
-        [MyFiziqSDK shared].user.birthdate = self.selectedDate;
+        [MyFiziqSDKCoreLite shared].user.heightInCm = self.heightInCm;
+        [MyFiziqSDKCoreLite shared].user.weightInKg = self.weightInKg;
+        [MyFiziqSDKCoreLite shared].user.gender = genderCell.genderSegmentControl.selectedSegmentIndex == 0 ? MFZGenderMale : MFZGenderFemale;
+        [MyFiziqSDKCoreLite shared].user.birthdate = self.selectedDate;
     }
 }
 

@@ -46,7 +46,7 @@
     if (!_myqHomeView) {
         _myqHomeView = [[MyFiziqProfileHomeView alloc] init];
         _myqHomeView.delegate = self;
-        _myqHomeView.measurementPreference = [[MyFiziqSDK shared] user].measurementPreference;
+        _myqHomeView.measurementPreference = [[MyFiziqSDKCoreLite shared] user].measurementPreference;
     }
     return _myqHomeView;
 }
@@ -69,7 +69,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     _trashButton.hidden = NO;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.myqHomeView setWithAvatar:self.myqSelectedAvatar andUnitPreference:[[MyFiziqSDK shared] user].measurementPreference];
+        [self.myqHomeView setWithAvatar:self.myqSelectedAvatar andUnitPreference:[[MyFiziqSDKCoreLite shared] user].measurementPreference];
     });
 }
 
@@ -137,7 +137,7 @@
 }
 
 - (void)deleteSelectedAvatar {
-    [[[MyFiziqSDK shared] avatars] deleteAvatars:@[self.myqSelectedAvatar] success:^{
+    [[[MyFiziqSDKCoreLite shared] avatars] deleteAvatars:@[self.myqSelectedAvatar] success:^{
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self displayLoadingViewVisible:NO];
             if (!self.delegate) {

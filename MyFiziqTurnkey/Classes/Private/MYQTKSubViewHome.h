@@ -16,7 +16,7 @@
 //  limitations under the License.
 
 #import "MYQTKBaseViewController.h"
-#import <MyFiziqSDK/MyFiziqSDK.h>
+#import <MyFiziqSDKCoreLite/MyFiziqSDKCoreLite.h>
 
 @protocol MYQTKSubViewHomeDelegate <NSObject>
 - (void)didDeleteAvatarWithAttemptID:(NSString *)attemptID;
