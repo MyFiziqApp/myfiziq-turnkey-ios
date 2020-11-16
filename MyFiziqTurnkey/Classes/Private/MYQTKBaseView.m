@@ -113,60 +113,13 @@
     [self presentMyFiziqTurnkeyViewController:vc];
 }
 
-/*+ (void)presentMyFiziqTurnkeyViewController:(UIViewController *)viewController {
-    UIViewController *activeViewController = [MYQTKBaseView findBestViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
-    // Modal present the MyScans view controller
-    if (!viewController) {
-        return;
-    }
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [activeViewController presentViewController:navController animated:YES completion:nil];
-}*/
-
 + (void)presentMyFiziqTurnkeyViewController:(UITabBarController *)tabBarController {
     UIViewController *activeViewController = [MYQTKBaseView findBestViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
     // Modal present the MyScans view controller
     if (!tabBarController) {
         return;
     }
-    //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    //navController.modalPresentationStyle = UIModalPresentationFullScreen;
     [activeViewController presentViewController:tabBarController animated:YES completion:nil];
-}
-
-+ (UIViewController *)findBestViewController:(UIViewController*)vc {
-    if (vc.presentedViewController) {
-        // Return presented view controller
-        return [MYQTKBaseView findBestViewController:vc.presentedViewController];
-    } else if ([vc isKindOfClass:[UISplitViewController class]]) {
-        // Return right hand side
-        UISplitViewController* svc = (UISplitViewController*) vc;
-        if (svc.viewControllers.count > 0) {
-            return [MYQTKBaseView findBestViewController:svc.viewControllers.lastObject];
-        } else {
-            return vc;
-        }
-    } else if ([vc isKindOfClass:[UINavigationController class]]) {
-        // Return top view
-        UINavigationController* svc = (UINavigationController*) vc;
-        if (svc.viewControllers.count > 0) {
-            return [MYQTKBaseView findBestViewController:svc.topViewController];
-        } else {
-            return vc;
-        }
-    } else if ([vc isKindOfClass:[UITabBarController class]]) {
-        // Return visible view
-        UITabBarController* svc = (UITabBarController*) vc;
-        if (svc.viewControllers.count > 0) {
-            return [MYQTKBaseView findBestViewController:svc.selectedViewController];
-        } else {
-            return vc;
-        }
-    } else {
-        // Unknown view controller type, return last child view controller
-        return vc;
-    }
 }
 
 #pragma mark - Actions
