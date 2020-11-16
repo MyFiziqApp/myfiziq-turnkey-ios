@@ -30,6 +30,10 @@
     is to allow automatic refresh of user measurement state.
  */
 @property (strong, nonatomic) NSMutableSet *turnkeyCardViews;
+/**
+ Tab bar controller for turn key view.
+ */
+@property (readonly, nonatomic) UITabBarController *tabBarController;
 /** Singleton interface.
     @return Singleton instance value of the class object.
  */
@@ -100,12 +104,18 @@
  */
 - (void)setUserUseMetric:(BOOL)metric;
 // The following are all to ease creation of platform specific card view.
-/** Show the My Scans screen, for use by platform cardview implementation. */
-- (void)showMyScans;
-/** Show the Track screen, for use by platform cardview implementation. */
-- (void)showTrack;
-/** Show the New Scan screen, for use by platform cardview implementation. */
-- (void)showNew;
+/** Show the My Scans screen, for use by platform cardview implementation.
+    @param showTabBar show or hide tab bar.
+ */
+- (void)showMyScans:(BOOL)showTabBar;
+/** Show the Track screen, for use by platform cardview implementation.
+    @param showTabBar show or hide tab bar.
+ */
+- (void)showTrack:(BOOL)showTabBar;
+/** Show the New Scan screen, for use by platform cardview implementation.
+    @param showTabBar show or hide tab bar.
+ */
+- (void)showNew:(BOOL)showTabBar;
 /** Return a simple key-value dictionary/map of result measurements, converted into measurement type, for use by
     platform cardview implementation.
     @param type The measurement unit preference (i.e. metric or imperial).

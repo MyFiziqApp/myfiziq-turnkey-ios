@@ -98,7 +98,7 @@
     //Make sure the scrollable view is added on top of heirarchy in order to shrink large title of nav bar on scroll.
     [self.view addSubview:self.trackingView];
     [self.view addSubview:self.myqNoAvatarsTrackView];
-    self.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_TRACK", @"TRACK");
+    self.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_TRACK", @"TRACK");
     self.navBarIconHelper = [MYQTKNavigationBarConstants new];
     if (self.navigationController) {
         [self.navigationController.navigationBar addSubview:self.optionsButton];

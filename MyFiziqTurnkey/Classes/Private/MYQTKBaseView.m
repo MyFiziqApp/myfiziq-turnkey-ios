@@ -19,13 +19,24 @@
 #import "MYQTKMyScans.h"
 #import "MYQTKTrack.h"
 #import "MYQTKNew.h"
+#import "MyFiziqTurnkey.h"
 
 @interface MYQTKBaseView()
 // - State
 @property (assign, nonatomic) BOOL didSetupConstraints;
+@property (assign, nonatomic) UITabBarController *tabBarContoller;
 @end
 
 @implementation MYQTKBaseView
+
+#pragma mark - Properties
+
+- (UITabBarController *)tabBarContoller {
+    if (!_tabBarContoller) {
+        _tabBarContoller = [[UITabBarController alloc] init];
+    }
+    return _tabBarContoller;
+}
 
 #pragma mark - Init Methods
 
@@ -62,6 +73,7 @@
 }
 
 - (void)commonInit {
+    [self setTabControllers];
 }
 
 #pragma clang diagnostic push
@@ -101,7 +113,7 @@
     [self presentMyFiziqTurnkeyViewController:vc];
 }
 
-+ (void)presentMyFiziqTurnkeyViewController:(UIViewController *)viewController {
+/*+ (void)presentMyFiziqTurnkeyViewController:(UIViewController *)viewController {
     UIViewController *activeViewController = [MYQTKBaseView findBestViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
     // Modal present the MyScans view controller
     if (!viewController) {
@@ -110,6 +122,17 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navController.modalPresentationStyle = UIModalPresentationFullScreen;
     [activeViewController presentViewController:navController animated:YES completion:nil];
+}*/
+
++ (void)presentMyFiziqTurnkeyViewController:(UITabBarController *)tabBarController {
+    UIViewController *activeViewController = [MYQTKBaseView findBestViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
+    // Modal present the MyScans view controller
+    if (!tabBarController) {
+        return;
+    }
+    //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    //navController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [activeViewController presentViewController:tabBarController animated:YES completion:nil];
 }
 
 + (UIViewController *)findBestViewController:(UIViewController*)vc {
@@ -161,6 +184,37 @@
 + (void)actionShowNew {
     UIViewController *vc = [[MYQTKNew alloc] init];
     [MYQTKBaseView goToVC:vc];
+}
+
+- (void)setTabControllers {
+    NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
+    //NSArray *vcTabBarImageArray;
+    for (UIViewController *viewController in viewControllersArray) {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        //viewController.tabBarItem.image =
+    }
+    self.tabBarContoller.viewControllers = viewControllersArray;
+}
+
++ (void)actionShowAll:(BOOL)showTabBar {
+    UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
+    tabBarController.selectedIndex = 0;
+    [tabBarController.tabBar setHidden:!showTabBar];
+    [MYQTKBaseView presentMyFiziqTurnkeyViewController:tabBarController];
+}
+
++ (void)actionShowNew:(BOOL)showTabBar {
+    UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
+    tabBarController.selectedIndex = 1;
+    [tabBarController.tabBar setHidden:!showTabBar];
+    [MYQTKBaseView presentMyFiziqTurnkeyViewController:tabBarController];
+}
+
++ (void)actionShowTrack:(BOOL)showTabBar {
+    UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
+    tabBarController.selectedIndex = 2;
+    [tabBarController.tabBar setHidden:!showTabBar];
+    [MYQTKBaseView presentMyFiziqTurnkeyViewController:tabBarController];
 }
 
 @end

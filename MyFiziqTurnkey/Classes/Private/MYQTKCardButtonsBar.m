@@ -85,16 +85,16 @@
 
 #pragma mark - Button Handlers
 
- - (void)tappedShowAllButtonFromSender:(id _Nullable)sender {
-     [MYQTKBaseView actionShowAll];
+- (void)tappedShowAllButtonFromSender:(id _Nullable)sender {
+    [MYQTKBaseView actionShowAll:YES];
 }
 
- - (void)tappedTrackButtonFromSender:(id _Nullable)sender {
-    [MYQTKBaseView actionShowTrack];
+- (void)tappedTrackButtonFromSender:(id _Nullable)sender {
+    [MYQTKBaseView actionShowTrack:YES];
 }
 
- - (void)tappedNewButtonFromSender:(id _Nullable)sender {
-    [MYQTKBaseView actionShowNew];
+- (void)tappedNewButtonFromSender:(id _Nullable)sender {
+    [MYQTKBaseView actionShowNew:YES];
 }
 
 @end
