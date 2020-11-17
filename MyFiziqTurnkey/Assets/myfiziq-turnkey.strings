@@ -35,6 +35,9 @@
 "MYQTK_CARD_ATTR_height"                  = "Height";
 "MYQTK_CARD_ATTR_tbf"                       = "TBF";
 
+"MFZ_INPUT_NO_SCAN_ACCESS_TITLE"            = "You are unable to start a new scan as your access has expired.";
+"MFZ_INPUT_NO_SCAN_ACCESS_SUB_TITLE"        = "For more information, please contact support from the app where you purchased Body Scan on Demand.";
+
 // My Scans
 "MYQTK_TITLE_MY_SCANS"                      = "My Scans";
 "MYQTK_TITLE_NEW_MEASUREMENT"               = "New Measurement";
@@ -48,3 +51,5 @@
 "MFZ_INPUT_DISMISS"                         = "Done";
 // SDK Core
 "MFZ_SDK_STR_HELP_ALIGN_ACK"                = "Continue";
+
+
