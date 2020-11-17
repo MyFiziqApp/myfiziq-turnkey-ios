@@ -24,7 +24,7 @@
 
 // NOTE: Create the layout using PureLayout, not storyboards
 
-@interface MYQTKNew ()<MyFiziqInputViewDelegate, MyFiziqInputViewDataSource, MYQTKSubViewOnboardingDelegate, MyFiziqTurnkeyDatasourceDelegate>
+@interface MYQTKNew ()<MyFiziqInputViewDelegate, MyFiziqInputViewDataSource, MYQTKSubViewOnboardingDelegate>
 @property (strong, nonatomic) MyFiziqInputView *inputView;
 @property (readonly, nonatomic) MyFiziqSDKCoreLite *myfiziq;
 @property (strong, nonatomic) UIView *restrictedScansAccessView;
@@ -113,8 +113,8 @@
     [self.restrictedScansTitleView addSubview:self.noAccessLabel];
     [self.restrictedScansTitleView addSubview:self.noAccessSubLabel];
     [self.view addSubview:self.restrictedScansAccessView];
-    self.noAccessLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MFZ_INPUT_NO_SCAN_ACCESS_TITLE", @"You are unable to start a new scan as your access has expired.");
-    self.noAccessSubLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MFZ_INPUT_NO_SCAN_ACCESS_SUB_TITLE", @"For more information, please contact support from the app where you purchased Body Scan on Demand.");
+    self.noAccessLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_TITLE", @"");
+    self.noAccessSubLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_SUB_TITLE", @"For more information, please contact support from the app where you purchased Body Scan on Demand.");
 }
 
 #pragma mark - MyFiziqInputViewDataSource
