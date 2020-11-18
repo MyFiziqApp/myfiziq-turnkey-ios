@@ -50,7 +50,7 @@
 - (void)commonInit {
     MFZStyleView(MyFiziqTurnkeyCommon, self.view, @"myq-tk-input-view");
     [self.view addSubview:self.inputView];
-    self.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_NEW_MEASUREMENT", @"New Measurements");
+    self.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_NEW_MEASUREMENT", @"New Measurements");
 }
 
 - (void)commonSetContraints {

@@ -19,6 +19,7 @@
 #import "MYQTKMyScans.h"
 #import "MYQTKTrack.h"
 #import "MYQTKNew.h"
+#import "MyFiziqTurnkey.h"
 
 @interface MYQTKBaseView()
 // - State
@@ -101,32 +102,70 @@
     [self presentMyFiziqTurnkeyViewController:vc];
 }
 
-+ (void)presentMyFiziqTurnkeyViewController:(UIViewController *)viewController {
-    UIViewController *activeViewController = [[MyFiziqCommon shared] topMostViewController];
++ (void)presentMyFiziqTurnkeyViewController:(UITabBarController *)tabBarController {
+    UIViewController *activeViewController = [MYQTKBaseView findBestViewController:[UIApplication sharedApplication].delegate.window.rootViewController];
     // Modal present the MyScans view controller
-    if (!viewController) {
+    if (!tabBarController) {
         return;
     }
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [activeViewController presentViewController:navController animated:YES completion:nil];
+    [activeViewController presentViewController:tabBarController animated:YES completion:nil];
+}
+
++ (UIViewController *)findBestViewController:(UIViewController*)vc {
+    if (vc.presentedViewController) {
+        // Return presented view controller
+        return [MYQTKBaseView findBestViewController:vc.presentedViewController];
+    } else if ([vc isKindOfClass:[UISplitViewController class]]) {
+        // Return right hand side
+        UISplitViewController* svc = (UISplitViewController*) vc;
+        if (svc.viewControllers.count > 0) {
+            return [MYQTKBaseView findBestViewController:svc.viewControllers.lastObject];
+        } else {
+            return vc;
+        }
+    } else if ([vc isKindOfClass:[UINavigationController class]]) {
+        // Return top view
+        UINavigationController* svc = (UINavigationController*) vc;
+        if (svc.viewControllers.count > 0) {
+            return [MYQTKBaseView findBestViewController:svc.topViewController];
+        } else {
+            return vc;
+        }
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        // Return visible view
+        UITabBarController* svc = (UITabBarController*) vc;
+        if (svc.viewControllers.count > 0) {
+            return [MYQTKBaseView findBestViewController:svc.selectedViewController];
+        } else {
+            return vc;
+        }
+    } else {
+        // Unknown view controller type, return last child view controller
+        return vc;
+    }
 }
 
 #pragma mark - Actions
 
-+ (void)actionShowAll {
-    UIViewController *vc = [[MYQTKMyScans alloc] init];
-    [MYQTKBaseView goToVC:vc];
++ (void)actionShowAll:(BOOL)showTabBar {
+    UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
+    tabBarController.selectedIndex = 0;
+    [tabBarController.tabBar setHidden:!showTabBar];
+    [MYQTKBaseView presentMyFiziqTurnkeyViewController:tabBarController];
 }
 
-+ (void)actionShowTrack {
-    UIViewController *vc = [[MYQTKTrack alloc] init];
-    [MYQTKBaseView goToVC:vc];
++ (void)actionShowNew:(BOOL)showTabBar {
+    UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
+    tabBarController.selectedIndex = 1;
+    [tabBarController.tabBar setHidden:!showTabBar];
+    [MYQTKBaseView presentMyFiziqTurnkeyViewController:tabBarController];
 }
 
-+ (void)actionShowNew {
-    UIViewController *vc = [[MYQTKNew alloc] init];
-    [MYQTKBaseView goToVC:vc];
++ (void)actionShowTrack:(BOOL)showTabBar {
+    UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
+    tabBarController.selectedIndex = 2;
+    [tabBarController.tabBar setHidden:!showTabBar];
+    [MYQTKBaseView presentMyFiziqTurnkeyViewController:tabBarController];
 }
 
 @end

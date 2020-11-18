@@ -48,3 +48,7 @@
 "MFZ_INPUT_DISMISS"                         = "Done";
 // SDK Core
 "MFZ_SDK_STR_HELP_ALIGN_ACK"                = "Continue";
+// tab bar
+"MFZ_SDK_TAB_HOME"                          = "";
+"MFZ_SDK_TAB_NEW"                           = "";
+"MFZ_SDK_TAB_TRACK"                         = "";

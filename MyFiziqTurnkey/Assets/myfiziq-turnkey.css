@@ -276,3 +276,10 @@
 
 @mfzCommonSpinnerBackgroundColor: clear;
 @mfzCommonSpinnerActivityViewTintColor: @myqtkBlackColor;
+
+/* Tab Bar */
+@myqtkTabBarTintColor: #44BEE6;
+.myqtk-tabbar-view {
+    /* UITabBar */
+    selectedImageTintColor: @myqtkTabBarTintColor;
+}
