@@ -44,7 +44,7 @@
 - (UITabBarController *)tabBarController {
     if (!_tabBarController) {
         _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.tabBar.tintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkTabBarTintColor");
+        MFZStyleView(MyFiziqTurnkeyCommon, _tabBarController.tabBar, @"myqtk-tabbar-view");
     }
     return _tabBarController;
 }

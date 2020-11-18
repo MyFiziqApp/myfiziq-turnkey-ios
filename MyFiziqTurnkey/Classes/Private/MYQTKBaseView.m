@@ -24,19 +24,9 @@
 @interface MYQTKBaseView()
 // - State
 @property (assign, nonatomic) BOOL didSetupConstraints;
-@property (assign, nonatomic) UITabBarController *tabBarContoller;
 @end
 
 @implementation MYQTKBaseView
-
-#pragma mark - Properties
-
-- (UITabBarController *)tabBarContoller {
-    if (!_tabBarContoller) {
-        _tabBarContoller = [[UITabBarController alloc] init];
-    }
-    return _tabBarContoller;
-}
 
 #pragma mark - Init Methods
 
@@ -73,7 +63,6 @@
 }
 
 - (void)commonInit {
-    [self setTabControllers];
 }
 
 #pragma clang diagnostic push
@@ -122,32 +111,41 @@
     [activeViewController presentViewController:tabBarController animated:YES completion:nil];
 }
 
-#pragma mark - Actions
-
-+ (void)actionShowAll {
-    UIViewController *vc = [[MYQTKMyScans alloc] init];
-    [MYQTKBaseView goToVC:vc];
-}
-
-+ (void)actionShowTrack {
-    UIViewController *vc = [[MYQTKTrack alloc] init];
-    [MYQTKBaseView goToVC:vc];
-}
-
-+ (void)actionShowNew {
-    UIViewController *vc = [[MYQTKNew alloc] init];
-    [MYQTKBaseView goToVC:vc];
-}
-
-- (void)setTabControllers {
-    NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
-    //NSArray *vcTabBarImageArray;
-    for (UIViewController *viewController in viewControllersArray) {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        //viewController.tabBarItem.image =
++ (UIViewController *)findBestViewController:(UIViewController*)vc {
+    if (vc.presentedViewController) {
+        // Return presented view controller
+        return [MYQTKBaseView findBestViewController:vc.presentedViewController];
+    } else if ([vc isKindOfClass:[UISplitViewController class]]) {
+        // Return right hand side
+        UISplitViewController* svc = (UISplitViewController*) vc;
+        if (svc.viewControllers.count > 0) {
+            return [MYQTKBaseView findBestViewController:svc.viewControllers.lastObject];
+        } else {
+            return vc;
+        }
+    } else if ([vc isKindOfClass:[UINavigationController class]]) {
+        // Return top view
+        UINavigationController* svc = (UINavigationController*) vc;
+        if (svc.viewControllers.count > 0) {
+            return [MYQTKBaseView findBestViewController:svc.topViewController];
+        } else {
+            return vc;
+        }
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        // Return visible view
+        UITabBarController* svc = (UITabBarController*) vc;
+        if (svc.viewControllers.count > 0) {
+            return [MYQTKBaseView findBestViewController:svc.selectedViewController];
+        } else {
+            return vc;
+        }
+    } else {
+        // Unknown view controller type, return last child view controller
+        return vc;
     }
-    self.tabBarContoller.viewControllers = viewControllersArray;
 }
+
+#pragma mark - Actions
 
 + (void)actionShowAll:(BOOL)showTabBar {
     UITabBarController *tabBarController = [MyFiziqTurnkey shared].tabBarController;
