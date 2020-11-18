@@ -100,11 +100,11 @@
 - (void)commonSetContraints {
     [self.inputView autoPinEdgesToSuperviewSafeArea];
     [self.restrictedScansAccessView autoPinEdgesToSuperviewSafeArea];
-    [self.restrictedScansTitleView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake([MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewTitleViewTop") doubleValue], [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewTitleViewLeft") doubleValue], 0, [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewTitleViewRight") doubleValue]) excludingEdge:ALEdgeBottom];
+    [self.restrictedScansTitleView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake([MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewTitleViewTop") doubleValue], [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewTitleViewLeft") doubleValue], 0, [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewTitleViewRight") doubleValue]) excludingEdge:ALEdgeBottom];
     [self.noAccessLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
-    [self.noAccessLabel autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewTitleHeight") doubleValue]];
-    [self.noAccessSubLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.noAccessLabel withOffset:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewSubTitleTop") doubleValue]];
-    [self.noAccessSubLabel autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewSubTitleHeight") doubleValue]];
+    [self.noAccessLabel autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewTitleHeight") doubleValue]];
+    [self.noAccessSubLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.noAccessLabel withOffset:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewSubTitleTop") doubleValue]];
+    [self.noAccessSubLabel autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewSubTitleHeight") doubleValue]];
     [self.noAccessSubLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
 }
 
@@ -113,7 +113,7 @@
     [self.restrictedScansTitleView addSubview:self.noAccessLabel];
     [self.restrictedScansTitleView addSubview:self.noAccessSubLabel];
     [self.view addSubview:self.restrictedScansAccessView];
-    self.noAccessLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_TITLE", @"");
+    self.noAccessLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_TITLE", @"You are unable to start a new scan as your access has expired.");
     self.noAccessSubLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_SUB_TITLE", @"For more information, please contact support from the app where you purchased Body Scan on Demand.");
 }
 

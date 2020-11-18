@@ -30,12 +30,12 @@
 @myqtkNavBarImageSizeForSmallState: 32.0;
 @myqtkNavBarHeightSmallState: 44.0;
 @myqtknavBarHeightLargeState: 96.5;
-@myqInputNoAccessViewTitleViewTop: 120;
-@myqInputNoAccessViewTitleViewLeft: 30;
-@myqInputNoAccessViewTitleViewRight: 30;
-@myqInputNoAccessViewTitleHeight: 100;
-@myqInputNoAccessViewSubTitleHeight: 90;
-@myqInputNoAccessViewSubTitleTop: 10;
+@myqtkNoAccessViewTitleViewTop: 120;
+@myqtkNoAccessViewTitleViewLeft: 30;
+@myqtkNoAccessViewTitleViewRight: 30;
+@myqtkNoAccessViewTitleHeight: 100;
+@myqtkNoAccessViewSubTitleHeight: 90;
+@myqtkNoAccessViewSubTitleTop: 10;
 
 /* Turnkey View specific styling */
 @myqtkTrackBackButtonHeight: 80;

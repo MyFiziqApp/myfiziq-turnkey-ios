@@ -36,7 +36,7 @@
 "MYQTK_CARD_ATTR_tbf"                     = "TBF";
 
 "MYQTK_NO_SCAN_ACCESS_TITLE"              = "You are unable to start a new scan as your access has expired.";
-"MYQTK_NO_SCAN_ACCESS_SUB_TITLE"          = "For more information, please contact support from the app where you                                             purchased Body Scan on Demand.";
+"MYQTK_NO_SCAN_ACCESS_SUB_TITLE"          = "For more information, please contact support from the app where you purchased Body Scan on Demand.";
 
 // My Scans
 "MYQTK_TITLE_MY_SCANS"                      = "My Scans";
