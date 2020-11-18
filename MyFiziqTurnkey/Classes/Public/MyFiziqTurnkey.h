@@ -21,6 +21,15 @@
 #import "MyFiziqTurnkeyCommon.h"
 #import "MyFiziqTurnkeyView.h"
 
+/** Protocol acting as datasource for the sdk to respond to scans access . */
+@protocol MyFiziqTurnkeyDatasourceDelegate<NSObject>
+@required
+/**
+ @return Boolean signifying if scans are allowed to view or not.
+ */
+- (BOOL)newScansAllowed;
+@end
+
 /** Handles 'boilerplate' MyFiziq initialization tasks for turnkey solution. */
 @interface MyFiziqTurnkey : NSObject
 /** Optional setting of JSON compliant additonal data to be appended to the next scan. Useful for cross-reference tracking of the result if needed. */
@@ -30,6 +39,8 @@
     is to allow automatic refresh of user measurement state.
  */
 @property (strong, nonatomic) NSMutableSet *turnkeyCardViews;
+/** Reference to the `MyFiziqTurnkeyDatasourceDelegate` datasource. */
+@property (weak, nonatomic) id<MyFiziqTurnkeyDatasourceDelegate> _Nullable datasource;
 /**
  Tab bar controller for turn key view.
  */

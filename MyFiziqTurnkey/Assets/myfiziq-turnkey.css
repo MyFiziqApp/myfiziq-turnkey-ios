@@ -30,6 +30,12 @@
 @myqtkNavBarImageSizeForSmallState: 32.0;
 @myqtkNavBarHeightSmallState: 44.0;
 @myqtknavBarHeightLargeState: 96.5;
+@myqtkNoAccessViewTitleViewTop: 120;
+@myqtkNoAccessViewTitleViewLeft: 30;
+@myqtkNoAccessViewTitleViewRight: 30;
+@myqtkNoAccessViewTitleHeight: 100;
+@myqtkNoAccessViewSubTitleHeight: 90;
+@myqtkNoAccessViewSubTitleTop: 10;
 
 /* Turnkey View specific styling */
 @myqtkTrackBackButtonHeight: 80;
@@ -77,6 +83,33 @@
   backgroundColor: @myqtkBackgroundColor;
 }
 
+.myq-tk-input-view-restricted-access {
+    /* UIView */
+    backgroundColor: @myqtkBackgroundColor;
+}
+
+.myq-tk-input-view-restricted-access-title-view {
+    /* UIView */
+    backgroundColor: @myqtkBackgroundColor;
+}
+
+.myq-tk-input-view-restricted-access-title {
+    /* UILabel */
+    font: systemBold 22;
+    titleColor: @myqtkBlackColor;
+    numberOfLines: 0;
+    lineBreakMode: wordWrapping;
+    textAlignment: center;
+}
+
+.myq-tk-input-view-restricted-access-sub-title {
+    /* UILabel */
+    font: systemBold 18;
+    titleColor: @myqtkBlackColor;
+    numberOfLines: 0;
+    lineBreakMode: wordWrapping;
+    textAlignment: center;
+}
 
 /*****************************************/
 /* Card View                             */

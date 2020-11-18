@@ -33,7 +33,10 @@
 "MYQTK_CARD_ATTR_thigh"                   = "Thighs";
 "MYQTK_CARD_ATTR_weight"                  = "Weight";
 "MYQTK_CARD_ATTR_height"                  = "Height";
-"MYQTK_CARD_ATTR_tbf"                       = "TBF";
+"MYQTK_CARD_ATTR_tbf"                     = "TBF";
+
+"MYQTK_NO_SCAN_ACCESS_TITLE"              = "You are unable to start a new scan as your access has expired.";
+"MYQTK_NO_SCAN_ACCESS_SUB_TITLE"          = "For more information, please contact support from the app where you purchased Body Scan on Demand.";
 
 // My Scans
 "MYQTK_TITLE_MY_SCANS"                      = "My Scans";
@@ -48,6 +51,7 @@
 "MFZ_INPUT_DISMISS"                         = "Done";
 // SDK Core
 "MFZ_SDK_STR_HELP_ALIGN_ACK"                = "Continue";
+
 // tab bar
 "MFZ_SDK_TAB_HOME"                          = "";
 "MFZ_SDK_TAB_NEW"                           = "";
