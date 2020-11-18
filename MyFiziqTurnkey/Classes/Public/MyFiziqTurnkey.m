@@ -20,10 +20,14 @@
 #import <MyFaCSS/InterfaCSS.h>
 #import "MyFiziqTurnkeyCommon.h"
 #import "MYQTKBaseView.h"
+#import "MYQTKMyScans.h"
+#import "MYQTKTrack.h"
+#import "MYQTKNew.h"
 
 @interface MyFiziqTurnkey() <MyFiziqLoginDelegate>
 @property (weak, nonatomic) void (^setupSuccess)(void);
 @property (weak, nonatomic) void (^setupFailed)(NSError * err);
+@property (strong, nonatomic) UITabBarController *tabBarController;
 @end
 
 @implementation MyFiziqTurnkey
@@ -35,6 +39,14 @@
         _turnkeyCardViews = [[NSMutableSet alloc] initWithCapacity:2];
     }
     return _turnkeyCardViews;
+}
+
+- (UITabBarController *)tabBarController {
+    if (!_tabBarController) {
+        _tabBarController = [[UITabBarController alloc] init];
+        MFZStyleView(MyFiziqTurnkeyCommon, _tabBarController.tabBar, @"myqtk-tabbar-view");
+    }
+    return _tabBarController;
 }
 
 #pragma mark - Methods
@@ -140,6 +152,7 @@
     if (self.setupSuccess) {
         self.setupSuccess();
     }
+    [self setTabControllers];
 }
 
 - (void)myfiziqSetupFailedWithError:(NSError *)error {
@@ -198,16 +211,31 @@
 
 #pragma mark - Platform Card View Requirements
 
-- (void)showMyScans {
-    [MYQTKBaseView actionShowAll];
+- (void)setTabControllers {
+    NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
+    NSMutableArray *viewControllerNavigationArray = [[NSMutableArray alloc] init];
+    NSArray *vcTabBarImageArray = @[MFZImage(MyFiziqTurnkeyCommon, @"icon-home"), MFZImage(MyFiziqTurnkeyCommon, @"icon-new"), MFZImage(MyFiziqTurnkeyCommon, @"icon-track")];
+    NSArray *titleArray = @[MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_HOME", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_NEW", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_TRACK", @"")];
+    for (int i = 0; i < [vcTabBarImageArray count]; i++) {
+        UIViewController *viewController = [viewControllersArray objectAtIndex:i];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewControllersArray[i]];
+        [viewControllerNavigationArray addObject:navigationController];
+        viewController.tabBarItem.image = vcTabBarImageArray[i];
+        viewController.tabBarItem.title = titleArray[i];
+    }
+    self.tabBarController.viewControllers = viewControllerNavigationArray;
 }
 
-- (void)showTrack {
-    [MYQTKBaseView actionShowTrack];
+- (void)showMyScans:(BOOL)showTabBar {
+    [MYQTKBaseView actionShowAll:showTabBar];
 }
 
-- (void)showNew {
-    [MYQTKBaseView actionShowNew];
+- (void)showTrack:(BOOL)showTabBar {
+    [MYQTKBaseView actionShowTrack:showTabBar];
+}
+
+- (void)showNew:(BOOL)showTabBar {
+    [MYQTKBaseView actionShowNew:showTabBar];
 }
 
 - (NSDictionary<NSString *, NSNumber *> *)getLatestResultForType:(MFZMeasurement)type {

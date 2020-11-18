@@ -24,7 +24,7 @@
 - (void)commonInit;
 - (void)doUpdateConstraints;
 + (void)goToVC:(UIViewController *)vc;
-+ (void)actionShowAll;
-+ (void)actionShowTrack;
-+ (void)actionShowNew;
++ (void)actionShowAll:(BOOL)showTabBar;
++ (void)actionShowTrack:(BOOL)showTabBar;
++ (void)actionShowNew:(BOOL)showTabBar;
 @end
