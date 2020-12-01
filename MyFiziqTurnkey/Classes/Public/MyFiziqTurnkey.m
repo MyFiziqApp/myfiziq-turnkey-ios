@@ -25,8 +25,8 @@
 #import "MYQTKNew.h"
 
 @interface MyFiziqTurnkey() <MyFiziqLoginDelegate>
-@property (weak, nonatomic) void (^setupSuccess)(void);
-@property (weak, nonatomic) void (^setupFailed)(NSError * err);
+@property (strong, nonatomic) void (^setupSuccess)(void);
+@property (strong, nonatomic) void (^setupFailed)(NSError * err);
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @end
 
