@@ -23,6 +23,7 @@
 #import "MYQTKSubViewHome.h"
 #import "MYQTKNavigationBarConstants.h"
 #import "MYQTKNew.h"
+#import "MyFiziqTurnkey.h"
 
 // NOTE: Create the layout using PureLayout, not storyboards
 
@@ -53,9 +54,17 @@
 
 - (MYQTKNoAvatarsView *)myqNoAvatarsTrackView {
     if (!_myqNoAvatarsTrackView) {
-        _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_TRACK_TITLE_TEXT", @"You have no 3D body scans")
-                                                                   detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_TRACK_DETAIL_TEXT", @"You need at least 2 measurements to use the Track feature.")
-                                                             shouldShowButton:YES];
+        BOOL showNewButton = [MyFiziqTurnkey shared].datasource ? [[MyFiziqTurnkey shared].datasource newScansAllowed] : NO;
+        if (showNewButton) {
+            _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_TRACK_TITLE_TEXT", @"Measure. Track. Transform.")
+                                                                    detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_TRACK_DETAIL_TEXT", @"You need at least two measurements\nto use the Track feature.")
+                                                              shouldShowButton:YES];
+        } else {
+            _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ONLY_TRACK_TITLE", @"Measure. Track. Transform.")
+                                                                    detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ONLY_TRACK_DETAIL", @"You need at least two measurements\nto use the Track feature.")
+                                                              shouldShowButton:NO];
+        }
+        
         _myqNoAvatarsTrackView.delegate = self;
         _myqNoAvatarsTrackView.hidden = NO;
     }

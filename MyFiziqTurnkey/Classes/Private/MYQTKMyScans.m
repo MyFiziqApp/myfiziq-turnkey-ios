@@ -22,6 +22,7 @@
 #import "MYQTKNoAvatarsView.h"
 #import "MYQTKSubViewHome.h"
 #import "MYQTKNew.h"
+#import "MyFiziqTurnkey.h"
 
 // NOTE: Create the layout using PureLayout, not storyboards
 
@@ -48,9 +49,17 @@
 
 - (MYQTKNoAvatarsView *)myqNoAvatarsTrackView {
     if (!_myqNoAvatarsTrackView) {
-        _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_GALLERY_TITLE_TEXT", @"You have no 3D body scans")
-                                                                detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_GALLERY_DETAIL_TEXT", @"At least one body scan is needed to be displayed.")
-                                                          shouldShowButton:YES];
+        BOOL showNewButton = [MyFiziqTurnkey shared].datasource ? [[MyFiziqTurnkey shared].datasource newScansAllowed] : NO;
+        if (showNewButton) {
+            _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_GALLERY_TITLE_TEXT", @"No Body Scans")
+                                                                    detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_GALLERY_DETAIL_TEXT", @"At least one body scan is needed to be displayed.")
+                                                              shouldShowButton:YES];
+        } else {
+            _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ONLY_GALLERY_TITLE", @"No Body Scans")
+                                                                    detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ONLY_GALLERY_DETAIL", @"Renew your subscription\nto take a Body Scan.")
+                                                              shouldShowButton:NO];
+        }
+        
         _myqNoAvatarsTrackView.delegate = self;
         _myqNoAvatarsTrackView.hidden = NO;
     }

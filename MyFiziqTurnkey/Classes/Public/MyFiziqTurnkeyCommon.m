@@ -89,4 +89,8 @@
     return @"myfiziq-turnkey";
 }
 
+- (NSString *)stringsTable {
+    return [self sdkStringsTable];
+}
+
 @end

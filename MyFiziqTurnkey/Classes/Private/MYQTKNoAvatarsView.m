@@ -136,12 +136,7 @@
 #pragma mark - Private Methods
 
 - (void)setTextForLabel:(UILabel *)selectedLabel withText:(NSString *)text {
-    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:text];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    CGFloat spacingValue = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkParagraphStyleLineSpacing") floatValue];
-    paragraphStyle.lineSpacing = spacingValue;
-    [titleString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, text.length)];
-    selectedLabel.attributedText = titleString;
+    selectedLabel.text = text;
 }
 
 #pragma mark - Actions

@@ -21,16 +21,14 @@
 #import <PureLayout/PureLayout.h>
 #import "MYQTKSubViewOnboarding.h"
 #import "MyFiziqTurnKey.h"
+#import "MYQTKNoAvatarsView.h"
 
 // NOTE: Create the layout using PureLayout, not storyboards
 
 @interface MYQTKNew ()<MyFiziqInputViewDelegate, MyFiziqInputViewDataSource, MYQTKSubViewOnboardingDelegate>
 @property (strong, nonatomic) MyFiziqInputView *inputView;
 @property (readonly, nonatomic) MyFiziqSDKCoreLite *myfiziq;
-@property (strong, nonatomic) UIView *restrictedScansAccessView;
-@property (strong, nonatomic) UIView *restrictedScansTitleView;
-@property (strong, nonatomic) UILabel *noAccessLabel;
-@property (strong, nonatomic) UILabel *noAccessSubLabel;
+@property (strong, nonatomic) MYQTKNoAvatarsView *myqNoAvatarsTrackView;
 @end
 
 @implementation MYQTKNew
@@ -50,36 +48,15 @@
     return _inputView;
 }
 
-- (UIView *)restrictedScansAccessView {
-    if (!_restrictedScansAccessView) {
-        _restrictedScansAccessView = [[UIView alloc] init];
-        MFZStyleView(MyFiziqTurnkeyCommon, _restrictedScansAccessView, @"myq-tk-input-view-restricted-access");
+- (MYQTKNoAvatarsView *)myqNoAvatarsTrackView {
+    if (!_myqNoAvatarsTrackView) {
+        _myqNoAvatarsTrackView = [[MYQTKNoAvatarsView alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ONLY_NEW_TITLE", @"Subscription Ended")
+                                                                detailText:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ONLY_NEW_DETAIL", @"Renew your subscription\nto take a Body Scan.")
+                                                          shouldShowButton:NO];
+        _myqNoAvatarsTrackView.delegate = self;
+        _myqNoAvatarsTrackView.hidden = NO;
     }
-    return _restrictedScansAccessView;
-}
-
-- (UIView *)restrictedScansTitleView {
-    if (!_restrictedScansTitleView) {
-        _restrictedScansTitleView = [[UIView alloc] init];
-        MFZStyleView(MyFiziqTurnkeyCommon, _restrictedScansTitleView, @"myq-tk-input-view-restricted-access-title-view");
-    }
-    return _restrictedScansTitleView;
-}
-
-- (UILabel *)noAccessLabel {
-    if (!_noAccessLabel) {
-        _noAccessLabel = [[UILabel alloc] init];
-        MFZStyleView(MyFiziqTurnkeyCommon, _noAccessLabel, @"myq-tk-input-view-restricted-access-title");
-    }
-    return _noAccessLabel;
-}
-
-- (UILabel *)noAccessSubLabel {
-    if (!_noAccessSubLabel) {
-        _noAccessSubLabel = [[UILabel alloc] init];
-        MFZStyleView(MyFiziqTurnkeyCommon, _noAccessSubLabel, @"myq-tk-input-view-restricted-access-sub-title");
-    }
-    return _noAccessSubLabel;
+    return _myqNoAvatarsTrackView;
 }
 
 #pragma mark - Methods
@@ -87,34 +64,22 @@
 - (void)commonInit {
     MFZStyleView(MyFiziqTurnkeyCommon, self.view, @"myq-tk-input-view");
     [self.view addSubview:self.inputView];
-    self.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_NEW_MEASUREMENT", @"New Measurements");
-    [self setRestrictedScansView];
-    if (![MyFiziqTurnkey shared].datasource && ![[MyFiziqTurnkey shared].datasource respondsToSelector:@selector(newScansAllowed)]) {
-        MFZLog(MFZLogLevelInfo, @"Datasource method `newScansAllowed:` has not been implemented.");
-        self.restrictedScansAccessView.hidden = NO;
-        return;
+    if ([MFZStyleVarBool(MyFiziqTurnkeyCommon, @"myqtkShowTabBarNames") boolValue]) {
+        self.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_NEW_MEASUREMENT", @"New Measurements");
     }
-    self.restrictedScansAccessView.hidden = [[MyFiziqTurnkey shared].datasource newScansAllowed];
+    [self.view addSubview:self.myqNoAvatarsTrackView];
 }
 
 - (void)commonSetContraints {
     [self.inputView autoPinEdgesToSuperviewSafeArea];
-    [self.restrictedScansAccessView autoPinEdgesToSuperviewSafeArea];
-    [self.restrictedScansTitleView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake([MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewTitleViewTop") doubleValue], [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqInputNoAccessViewTitleViewLeft") doubleValue], 0, [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewTitleViewRight") doubleValue]) excludingEdge:ALEdgeBottom];
-    [self.noAccessLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
-    [self.noAccessLabel autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewTitleHeight") doubleValue]];
-    [self.noAccessSubLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.noAccessLabel withOffset:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewSubTitleTop") doubleValue]];
-    [self.noAccessSubLabel autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkNoAccessViewSubTitleHeight") doubleValue]];
-    [self.noAccessSubLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
+    [self.myqNoAvatarsTrackView autoPinEdgesToSuperviewSafeArea];
 }
 
-- (void)setRestrictedScansView {
-    [self.restrictedScansAccessView addSubview:self.restrictedScansTitleView];
-    [self.restrictedScansTitleView addSubview:self.noAccessLabel];
-    [self.restrictedScansTitleView addSubview:self.noAccessSubLabel];
-    [self.view addSubview:self.restrictedScansAccessView];
-    self.noAccessLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_TITLE", @"You are unable to start a new scan as your access has expired.");
-    self.noAccessSubLabel.text = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_SCAN_ACCESS_SUB_TITLE", @"For more information, please contact support from the app where you purchased Body Scan on Demand.");
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    BOOL hideNew = [MyFiziqTurnkey shared].datasource ? [[MyFiziqTurnkey shared].datasource newScansAllowed] : NO;
+    self.myqNoAvatarsTrackView.hidden = hideNew;
+    self.inputView.hidden = !hideNew;
 }
 
 #pragma mark - MyFiziqInputViewDataSource

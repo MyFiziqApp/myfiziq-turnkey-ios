@@ -37,6 +37,8 @@
 @myqtkNoAccessViewSubTitleHeight: 90;
 @myqtkNoAccessViewSubTitleTop: 10;
 
+@myqtkShowTabBarNames: false;
+
 /* Turnkey View specific styling */
 @myqtkTrackBackButtonHeight: 80;
 
@@ -256,14 +258,15 @@
 /* No Avatars Views                      */
 /*****************************************/
 
-@myqtkNoAvatarsTextFont: system 22;
+@myqtkNoAvatarsTitleFont: systemBold 24;
+@myqtkNoAvatarsDetailFont: system 14;
 @myqtkNoAvatarsButtonFont: system 25;
 @myqtkButtonDropShadowHeight: 7.5;
 @myqtkButtonDropShadowWidth: 0.0;
 @myqtkButtonDropShadowColor: black;
 @myqtkButtonDropShadowRadius: 7.5;
 @myqtkButtonDropShadowOpacity: 1.0;
-@myqtkOneAvatarTitleInset: 50.0;
+@myqtkOneAvatarTitleInset: 110.0;
 @myqtkOneAvatarTitleHeight: 2.0;
 @myqtkOneAvatarTitleHeight-iPhone-5s: 2.0;
 @myqtkOneAvatarTitleHeight-iPhone-SE: 2.0;
@@ -276,7 +279,7 @@
 
 .myq-tk-no-avatars-title {
     /* UILabel */
-    font: @myqtkNoAvatarsTextFont;
+    font: @myqtkNoAvatarsTitleFont;
     numberOfLines: 0;
     lineBreakMode: wordWrapping;
     textColor: @myqtkBlackColor;
@@ -285,7 +288,7 @@
 
 .myq-tk-no-avatars-detail {
     /* UILabel */
-    font: @myqtkNoAvatarsTextFont;
+    font: @myqtkNoAvatarsDetailFont;
     numberOfLines: 0;
     lineBreakMode: wordWrapping;
     textColor: @myqtkBlackColor;

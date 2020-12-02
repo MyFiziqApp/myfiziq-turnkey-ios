@@ -24,8 +24,8 @@
 /** Protocol acting as datasource for the sdk to respond to scans access . */
 @protocol MyFiziqTurnkeyDatasourceDelegate<NSObject>
 @required
-/**
- @return Boolean signifying if scans are allowed to view or not.
+/** Boolean signifying if scans are allowed to view or not.
+    @return Boolean signifying if scans are allowed to view or not.
  */
 - (BOOL)newScansAllowed;
 @end
@@ -33,7 +33,7 @@
 /** Handles 'boilerplate' MyFiziq initialization tasks for turnkey solution. */
 @interface MyFiziqTurnkey : NSObject
 /** Optional setting of JSON compliant additonal data to be appended to the next scan. Useful for cross-reference tracking of the result if needed. */
-@property (strong, nonatomic) NSDictionary *miscData;
+@property (strong, nonatomic) NSDictionary * _Nullable miscData;
 /** This property will list all MyFiziq Turnkey Card Views. Usually there will be just one card view for the app.
     The card view will automatically register itself to this set, so app code to do this will not be needed. The use of this set
     is to allow automatic refresh of user measurement state.
@@ -41,10 +41,9 @@
 @property (strong, nonatomic) NSMutableSet *turnkeyCardViews;
 /** Reference to the `MyFiziqTurnkeyDatasourceDelegate` datasource. */
 @property (weak, nonatomic) id<MyFiziqTurnkeyDatasourceDelegate> _Nullable datasource;
-/**
- Tab bar controller for turn key view.
+/** Tab bar controller for turn key view.
  */
-@property (readonly, nonatomic) UITabBarController *tabBarController;
+@property (readonly, nonatomic) UITabBarController * _Nullable tabBarController;
 /** Singleton interface.
     @return Singleton instance value of the class object.
  */
@@ -52,7 +51,7 @@
 /** Set the resource bundle for cutom styling. App will need all SDK style overrides in a single file.
     @param bundle Instance of the resource bundle containing style overrides (CSS, images, etc...).
  */
-- (void)setResourceBundle:(NSBundle *)bundle;
+- (void)setResourceBundle:(NSBundle * _Nonnull)bundle;
 /** Configure `MyFiziq` with the associated App key (recieved from registering App with MyFiziq). This will automatically
     handle user re-authentication so no further setup code is needed.
     @param conf The connection configuration, should contain `MFZSdkSetupKey` ("Key"), `MFZSdkSetupSecret` ("Secret"),

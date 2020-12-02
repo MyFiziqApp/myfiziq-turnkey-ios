@@ -1,11 +1,17 @@
 
 // Turnkey specific text
 "MYQTK_CLOSE"                               = "Close";
-"MYQTK_NO_AVATARS_VIEW_GALLERY_TITLE_TEXT"  = "You have no measurement results";
+"MYQTK_NO_AVATARS_VIEW_ONLY_GALLERY_TITLE"  = "No Body Scans";
+"MYQTK_NO_AVATARS_VIEW_ONLY_GALLERY_DETAIL" = "Renew your subscription\nto take a Body Scan.";
+"MYQTK_NO_AVATARS_VIEW_GALLERY_TITLE_TEXT"  = "No Body Scans";
 "MYQTK_NO_AVATARS_VIEW_GALLERY_DETAIL_TEXT" = "At least one body scan is\nneeded to be displayed.";
 "MYQTK_NO_AVATARS_VIEW_ACTION_BUTTON_TITLE" = "Start";
-"MYQTK_NO_AVATARS_VIEW_TRACK_TITLE_TEXT"    = "You need at least two\nmeasurements\nto use the Track feature";
-"MYQTK_NO_AVATARS_VIEW_TRACK_DETAIL_TEXT"   = "";
+"MYQTK_NO_AVATARS_VIEW_ONLY_TRACK_TITLE"    = "Measure. Track. Transform.";
+"MYQTK_NO_AVATARS_VIEW_ONLY_TRACK_DETAIL"   = "You need at least two measurements\nto use the Track feature.";
+"MYQTK_NO_AVATARS_VIEW_TRACK_TITLE_TEXT"    = "Measure. Track. Transform.";
+"MYQTK_NO_AVATARS_VIEW_TRACK_DETAIL_TEXT"   = "You need at least two measurements\nto use the Track feature.";
+"MYQTK_NO_AVATARS_VIEW_ONLY_NEW_TITLE"      = "Subscription Ended";
+"MYQTK_NO_AVATARS_VIEW_ONLY_NEW_DETAIL"     = "Renew your subscription\nto take a Body Scan.";
 "MYQTK_DELETE_AVATAR_ALERT_TITLE"           = "Delete Measurement";
 "MYQTK_DELETE_AVATAR_ALERT_MESSAGE"         = "Do you wish to delete this measurement?\n\nThis cannot be undone.";
 "MYQTK_ALERT_CONTINUE"                      = "Continue";
