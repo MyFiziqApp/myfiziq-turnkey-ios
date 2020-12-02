@@ -63,6 +63,7 @@
 
 - (void)commonInit {
     MFZStyleView(MyFiziqTurnkeyCommon, self.view, @"myq-tk-input-view");
+    self.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_NEW_MEASUREMENT", @"New Measurement");
     [self.view addSubview:self.inputView];
     if ([MFZStyleVarBool(MyFiziqTurnkeyCommon, @"myqtkShowTabBarNames") boolValue]) {
         self.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_NEW_MEASUREMENT", @"New Measurements");

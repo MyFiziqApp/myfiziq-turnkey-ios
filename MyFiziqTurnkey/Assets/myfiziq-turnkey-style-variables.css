@@ -1,0 +1,31 @@
+
+/* Turnkey Common */
+@myqtkHighlightColor: #FF5621;
+@myqtkBlackColor: #1F232D;
+@myqtkWhiteColor: #FEFEFE;
+@myqtkBackgroundColor: #EFEFEF;
+@myqtkDarkestBackgroundColor: #a3a3aA;
+@myqtkSeparatorColor: #4D4D4D;
+@myqtkNavBarColor: @myqtkWhiteColor;
+@myqtkButtonDropShadowColor: black;
+@myqtkTabBarTintColor: #44BEE6;
+@myqtkNavigationBarTitleColor: @myqtkBlackColor;
+@myqtkNavigationBarButtonColor: @myqtkHighlightColor;
+
+@myqtkNavigationBarLargeTitleFont: systemBold 28;
+@myqtkNavigationBarTitleFont: systemBold 18;
+@myqtkNavigationBarButtonFont: systemBold 17;
+@myqtkCardViewTitleFont: systemBold 26;
+@myqtkCardViewBodyFont: system 16;
+@myqtkNoAvatarsTitleFont: systemBold 24;
+@myqtkNoAvatarsDetailFont: system 14;
+@myqtkNoAvatarsButtonFont: system 25;
+
+@myqtkShowTabBarNames: false;
+
+/*******************************************************/
+/* SDK STYLE OVERRIDES                                 */
+/*******************************************************/
+
+@mfzCommonSpinnerBackgroundColor: clear;
+@mfzCommonSpinnerActivityViewTintColor: @myqtkBlackColor;

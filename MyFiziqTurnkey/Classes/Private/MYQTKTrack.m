@@ -104,10 +104,10 @@
 
 - (void)commonInit {
     MFZStyleView(MyFiziqTurnkeyCommon, self.view, @"myq-tk-track-view");
+    self.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_TRACK", @"TRACK");
     //Make sure the scrollable view is added on top of heirarchy in order to shrink large title of nav bar on scroll.
     [self.view addSubview:self.trackingView];
     [self.view addSubview:self.myqNoAvatarsTrackView];
-    self.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_TITLE_TRACK", @"TRACK");
     self.navBarIconHelper = [MYQTKNavigationBarConstants new];
     if (self.navigationController) {
         [self.navigationController.navigationBar addSubview:self.optionsButton];

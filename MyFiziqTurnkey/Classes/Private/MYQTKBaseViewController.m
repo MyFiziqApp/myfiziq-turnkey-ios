@@ -37,11 +37,11 @@
     }
     if (self.navigationController) {
         NSDictionary *titleAttributes = @{
-            NSForegroundColorAttributeName:MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkWhiteColor"),
+            NSForegroundColorAttributeName:MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarTitleColor"),
             NSFontAttributeName:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarTitleFont")
         };
         NSDictionary *largeAttributes = @{
-            NSForegroundColorAttributeName:MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkWhiteColor"),
+            NSForegroundColorAttributeName:MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarTitleColor"),
             NSFontAttributeName:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarLargeTitleFont")
         };
         if (@available(iOS 13, *)) {
@@ -64,7 +64,7 @@
                                                                       target:self
                                                                       action:@selector(backButtonAction:)];
         [buttonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonFont"),
-                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkHighlightColor"),
+                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonColor"),
                                             NSForegroundColorAttributeName, nil]
                                   forState:UIControlStateNormal];
         self.navigationItem.leftBarButtonItem = buttonItem;

@@ -56,16 +56,16 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         mfzCommon = [[MyFiziqTurnkeyCommon alloc] init];
-        [[MyFiziqCommon shared] insert:mfzCommon withOrder:MYQTK_STYLE_Z_ORDER];
         // Call all SDKs to make sure they are all loaded.
-        [MyFiziqCommonBundle shared];
-        [MyFiziqSDKCommon shared];
-        [MyFiziqInputCommon shared];
-        [MyFiziqLoginCommon shared];
-        [MyFiziqOnboardingCommon shared];
-        [MyFiziqProfileCommon shared];
-        [MyFiziqSupportSDKCommon shared];
-        [MyFiziqTrackSDKCommon shared];
+        [MyFiziqCommonBundle shared].common = mfzCommon;
+        [MyFiziqSDKCommon shared].common = mfzCommon;
+        [MyFiziqInputCommon shared].common = mfzCommon;
+        [MyFiziqLoginCommon shared].common = mfzCommon;
+        [MyFiziqOnboardingCommon shared].common = mfzCommon;
+        [MyFiziqProfileCommon shared].common = mfzCommon;
+        [MyFiziqSupportSDKCommon shared].common = mfzCommon;
+        [MyFiziqTrackSDKCommon shared].common = mfzCommon;
+        [[MyFiziqCommon shared] insert:mfzCommon withOrder:MYQTK_STYLE_Z_ORDER];
     });
     return mfzCommon;
 }
@@ -89,8 +89,26 @@
     return @"myfiziq-turnkey";
 }
 
+- (NSInteger)zIndex {
+    return 0;
+}
+
+// New Common
+
 - (NSString *)stringsTable {
     return [self sdkStringsTable];
+}
+
+- (NSDictionary<NSNumber *,NSString *> *)css {
+    return @{
+        @(MFZStyleBaseZ + MFZStyleSDKStyleVariablesZ): @"myfiziq-turnkey-style-variables",
+        @(MFZStyleBaseZ + MFZStyleSDKLayoutZ): @"myfiziq-turnkey-layouts",
+        @(MFZStyleBaseZ + MFZStyleSDKClassesZ): @"myfiziq-turnkey-classes"
+    };
+}
+
+- (NSBundle *)bundle {
+    return [self sdkBundle];
 }
 
 @end

@@ -1,0 +1,84 @@
+
+/* Navigation Bar Styling */
+@myqtkNavBarImageSizeForLargeState: 40.0;
+@myqtkNavBarImageSizeForLargeState-iPhone-SE: 30.0;
+@myqtkNavBarImageSizeForLargeState-iPhone-5s: 30.0;
+@myqtkNavBarImageRightMargin: 16.0;
+@myqtkNavBarImageRightMargin-iPhone-SE: 12.0;
+@myqtkNavBarImageRightMargin-iPhone-5s: 12.0;
+@myqtkNavBarImageBottomMarginForLargeState: 12.0;
+@myqtkNavBarImageBottomMarginForLargeState-iPhone-SE: 10.0;
+@myqtkNavBarImageBottomMarginForLargeState-iPhone-5s: 10.0;
+@myqtkNavBarImageBottomMarginForSmallState: 6.0;
+@myqtkNavBarImageSizeForSmallState: 32.0;
+@myqtkNavBarHeightSmallState: 44.0;
+@myqtknavBarHeightLargeState: 96.5;
+@myqtkNoAccessViewTitleViewTop: 120;
+@myqtkNoAccessViewTitleViewLeft: 30;
+@myqtkNoAccessViewTitleViewRight: 30;
+@myqtkNoAccessViewTitleHeight: 100;
+@myqtkNoAccessViewSubTitleHeight: 90;
+@myqtkNoAccessViewSubTitleTop: 10;
+
+/* Turnkey View specific styling */
+@myqtkTrackBackButtonHeight: 80;
+
+@myqtkCardPadding: 20.0;
+@myqtkCardContainerBottomInset: 70.0;
+
+/* None Container */
+@myqtkCardNoneTitleWidth: 204.0;
+@myqtkCardNoneTitleHeight: 22.0;
+@myqtkCardNoneTitleTopPadding: 40.0;
+@myqtkCardNoneTitleLeftPadding: @myqtkCardPadding;
+@myqtkCardNoneBodyWidth: 170.0;
+@myqtkCardNoneBodyHeight: 60.0;
+@myqtkCardNoneBodyTopPadding: @myqtkCardPadding;
+@myqtkCardNoneNewButtonTopPadding: 24.0;
+@myqtkCardNoneNewButtonHeight: 40.0;
+@myqtkCardNoneAvatarWidth: 120.0;
+@myqtkCardNoneAvatarRightPadding: @myqtkCardPadding;
+
+/* Result Container */
+@myqtkCardResultTitleHeight: 22.0;
+@myqtkCardResultTitleTopPadding: @myqtkCardPadding;
+@myqtkCardResultTitleLeftPadding: @myqtkCardPadding;
+@myqtkCardResultTitleRightPadding: @myqtkCardPadding;
+@myqtkCardResultDateHeight: 16.0;
+@myqtkCardResultDateTopPadding: 4.0;
+@myqtkCardResultDateLeftPadding: @myqtkCardPadding;
+@myqtkCardResultDateRightPadding: @myqtkCardPadding;
+@myqtkCardResultAvatarWidth: 110.0;
+@myqtkCardResultAvatarTopPadding: 0.0;
+@myqtkCardResultAvatarRightPadding: @myqtkCardPadding;
+@myqtkCardResultAvatarBottomPadding: 6.0;
+@myqtkCardResultTableCellHeight: 24.0;
+@myqtkCardResultTableWidth: 200.0;
+@myqtkCardResultTableTopPadding: @myqtkCardPadding;
+@myqtkCardResultTableLeftPadding: 24.0;
+
+/* Buttons Bar */
+@myqtkCardButtonsBarHeight: 50.0;
+@myqtkCardButtonsBarLeftPadding: @myqtkCardPadding;
+@myqtkCardButtonsBarRightPadding: @myqtkCardPadding;
+@myqtkCardButtonsBarBottomPadding: 6.0;
+@myqtkCardButtonWidth: 104.0;
+@myqtkCardButtonMyScansHeight: 40.0;
+@myqtkCardButtonTrackHeight: 40.0;
+@myqtkCardButtonNewHeight: 40.0;
+
+@myqtkButtonDropShadowHeight: 7.5;
+@myqtkButtonDropShadowWidth: 0.0;
+
+@myqtkButtonDropShadowRadius: 7.5;
+@myqtkButtonDropShadowOpacity: 1.0;
+@myqtkOneAvatarTitleInset: 110.0;
+@myqtkOneAvatarTitleHeight: 2.0;
+@myqtkOneAvatarTitleHeight-iPhone-5s: 2.0;
+@myqtkOneAvatarTitleHeight-iPhone-SE: 2.0;
+@myqtkOneAvatarDescriptionTopOffset: 12.0;
+@myqtkOneAvatarDescriptionHeight: 2.0;
+@myqtkOneAvatarButtonHeight: 50.0;
+@myqtkOneAvatarButtonWidth: 220.0;
+@myqtkSdkOneAvatarButtonTopOffset: 30.0;
+@myqtkParagraphStyleLineSpacing: 5.0;
