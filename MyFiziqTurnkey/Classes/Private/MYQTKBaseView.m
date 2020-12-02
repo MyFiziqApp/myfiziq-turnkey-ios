@@ -108,6 +108,7 @@
     if (!tabBarController) {
         return;
     }
+    tabBarController.modalPresentationStyle = UIModalPresentationFullScreen;
     [activeViewController presentViewController:tabBarController animated:YES completion:nil];
 }
 
