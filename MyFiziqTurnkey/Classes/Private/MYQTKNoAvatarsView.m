@@ -52,14 +52,9 @@
         MFZStyleView(MyFiziqTurnkeyCommon, _actionButton, @"myq-tk-no-avatar-button");
         [_actionButton setTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_NO_AVATARS_VIEW_ACTION_BUTTON_TITLE", @"Start").uppercaseString forState:UIControlStateNormal];
         [_actionButton addTarget:self action:@selector(didTapActionButton:) forControlEvents:UIControlEventTouchUpInside];
-        _actionButton.layer.shadowColor = [MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkButtonDropShadowColor") CGColor];
         CGFloat shadowHeight = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkButtonDropShadowHeight") floatValue];
         CGFloat shadowWidth = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkButtonDropShadowWidth") floatValue];
-        CGFloat shadowRadius = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkButtonDropShadowRadius") floatValue];
-        CGFloat shadowOpacity = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkButtonDropShadowOpacity") floatValue];
         _actionButton.layer.shadowOffset = CGSizeMake(shadowWidth, shadowHeight);
-        _actionButton.layer.shadowRadius = shadowRadius;
-        _actionButton.layer.shadowOpacity = shadowOpacity;
     }
     return _actionButton;
 }

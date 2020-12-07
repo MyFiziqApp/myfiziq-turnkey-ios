@@ -26,9 +26,6 @@
 #import <MyFiziqSDKSupport/MyFiziqSupportSDKCommon.h>
 #import <MyFiziqSDKTrackingView/MyFiziqTrackSDKCommon.h>
 
-// Turnkey style layer is behind App default ordering, and above default SDK style ordering (for CSS cascading load ordering).
-#define MYQTK_STYLE_Z_ORDER             50
-
 @interface MyFiziqTurnkeyCommon()
 @property (nonatomic, strong) NSBundle *internalBundle;
 @end
@@ -65,7 +62,7 @@
         [MyFiziqProfileCommon shared].common = mfzCommon;
         [MyFiziqSupportSDKCommon shared].common = mfzCommon;
         [MyFiziqTrackSDKCommon shared].common = mfzCommon;
-        [[MyFiziqCommon shared] insert:mfzCommon withOrder:MYQTK_STYLE_Z_ORDER];
+        [[MyFiziqCommon shared] insert:mfzCommon];
     });
     return mfzCommon;
 }
@@ -77,38 +74,20 @@
     self.internalBundle = bundle;
 }
 
-- (NSBundle *)sdkBundle {
-    return self.internalBundle;
-}
-
-- (NSString *)sdkCssName {
-    return @"myfiziq-turnkey";
-}
-
-- (NSString *)sdkStringsTable {
-    return @"myfiziq-turnkey";
-}
-
-- (NSInteger)zIndex {
-    return 0;
-}
-
-// New Common
-
 - (NSString *)stringsTable {
-    return [self sdkStringsTable];
+    return @"myfiziq-turnkey";
 }
 
 - (NSDictionary<NSNumber *,NSString *> *)css {
     return @{
-        @(MFZStyleBaseZ + MFZStyleSDKStyleVariablesZ): @"myfiziq-turnkey-style-variables",
-        @(MFZStyleBaseZ + MFZStyleSDKLayoutZ): @"myfiziq-turnkey-layouts",
-        @(MFZStyleBaseZ + MFZStyleSDKClassesZ): @"myfiziq-turnkey-classes"
+        @(MFZStyleSDKStyleVariablesZ): @"myfiziq-turnkey-style-variables",
+        @(MFZStyleSDKLayoutZ): @"myfiziq-turnkey-layouts",
+        @(MFZStyleSDKClassesZ): @"myfiziq-turnkey-classes"
     };
 }
 
 - (NSBundle *)bundle {
-    return [self sdkBundle];
+    return self.internalBundle;
 }
 
 @end

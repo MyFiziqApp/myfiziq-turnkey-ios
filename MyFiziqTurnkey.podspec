@@ -17,7 +17,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MyFiziqTurnkey'
-  s.version          = '19.1.16'
+  s.version          = '19.8.0'
   s.summary          = 'MyFiziq Turnkey integration template'
   s.description      = <<-DESC
 Optional submodule that provides a generic template drop-in integration solution (a.k.a turnkey solution).
@@ -27,10 +27,10 @@ Optional submodule that provides a generic template drop-in integration solution
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache 2.0', :file => 'LICENSE.md' }
   s.author           = { 'MyFiziq' => 'dev@myfiziq.com' }
-  s.source           = { :git => 'https://github.com/MyFiziqApp/myfiziq-turnkey-ios.git', :branch => '19.1.16_trunk' }
+  s.source           = { :git => 'https://github.com/MyFiziqApp/myfiziq-turnkey-ios.git', :branch => '19.8.0_trunk' }
   s.social_media_url = 'https://twitter.com/MyFiziq'
 
-  s.ios.deployment_target = '12.1'
+  s.ios.deployment_target = '13.4'
 
   s.source_files = 'MyFiziqTurnkey/Classes/**/*'
   s.public_header_files = 'MyFiziqTurnkey/Classes/Public/*.h'
@@ -45,15 +45,15 @@ Optional submodule that provides a generic template drop-in integration solution
     "QuartzCore",
     "UIKit"
   ]
-  s.dependency 'MyFaCSS', '~> 19.1.0'
-  s.dependency 'MyFiziqSDKCommon', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKBilling', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKCoreLite', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKLoginView', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKSupport', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKOnboardingView', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKTrackingView', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKProfileView', '~> 19.1.16'
-  s.dependency 'MyFiziqSDKInputView', '~> 19.1.16'
+  s.dependency 'MyFaCSS', '~> 19.1.6'
+  s.dependency 'MyFiziqSDKCommon', '~> 19.8'
+  s.dependency 'MyFiziqSDKBilling', '~> 19.8'
+  s.dependency 'MyFiziqSDKCoreLite', '~> 19.8'
+  s.dependency 'MyFiziqSDKLoginView', '~> 19.8'
+  s.dependency 'MyFiziqSDKSupport', '~> 19.8'
+  s.dependency 'MyFiziqSDKOnboardingView', '~> 19.8'
+  s.dependency 'MyFiziqSDKTrackingView', '~> 19.8'
+  s.dependency 'MyFiziqSDKProfileView', '~> 19.8'
+  s.dependency 'MyFiziqSDKInputView', '~> 19.8'
   
 end

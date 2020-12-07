@@ -52,7 +52,6 @@
 		76934C1EE1706C06DB1B08FB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		84BCC15364A8B0C9198AF433 /* Pods-MyFiziqTurnkey_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Example.debug.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C0010CFD0361296D8AECFE0A /* Pods-MyFiziqTurnkey_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Tests.release.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Tests/Pods-MyFiziqTurnkey_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D9A6AC7D23E819520053806B /* View Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "View Controllers"; sourceTree = "<group>"; };
 		D9A6AC7F23E819660053806B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D9A6AC8023E819660053806B /* IdentityProviderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityProviderHelper.h; sourceTree = "<group>"; };
 		D9A6AC8123E819660053806B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -149,7 +148,6 @@
 				D9A6AC8723E8196C0053806B /* LaunchScreen.storyboard */,
 				D9A6AC8923E8198F0053806B /* main.m */,
 				6003F595195388D20070C39A /* Info.plist */,
-				D9A6AC7D23E819520053806B /* View Controllers */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 			);
 			name = "Example for MyFiziqTurnkey";
@@ -463,7 +461,7 @@
 				DEVELOPMENT_TEAM = R8N9468BQ5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = MyFiziqTurnkey/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 19.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myfiziq.demo.MyFiziqTurnkeyExample;
@@ -483,7 +481,7 @@
 				DEVELOPMENT_TEAM = R8N9468BQ5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = MyFiziqTurnkey/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 19.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myfiziq.demo.MyFiziqTurnkeyExample;

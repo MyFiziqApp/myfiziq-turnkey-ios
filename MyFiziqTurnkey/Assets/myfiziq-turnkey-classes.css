@@ -55,7 +55,7 @@
 .myq-tk-input-view-restricted-access-title {
     /* UILabel */
     font: systemBold 22;
-    titleColor: @myqtkBlackColor;
+    titleColor: @mfzCommonSDKTextColorPrimary;
     numberOfLines: 0;
     lineBreakMode: wordWrapping;
     textAlignment: center;
@@ -64,7 +64,7 @@
 .myq-tk-input-view-restricted-access-sub-title {
     /* UILabel */
     font: systemBold 18;
-    titleColor: @myqtkBlackColor;
+    titleColor: @mfzCommonSDKTextColorPrimary;
     numberOfLines: 0;
     lineBreakMode: wordWrapping;
     textAlignment: center;
@@ -79,24 +79,22 @@
 .myq-tk-card-title {
     /* UILabel */
     font: @myqtkCardViewTitleFont;
-    textColor: @myqtkHighlightColor;
+/*    textColor: @mfzCommonSDKColorFeature;*/
     textAlignment: center;
 }
 
 .myq-tk-card-body {
     /* UILabel */
     font: @myqtkCardViewBodyFont;
-    textColor: @myqtkBlackColor;
+    textColor: @mfzCommonSDKTextColorPrimary;
     textAlignment: center;
     lineBreakMode: wordWrapping;
     numberOfLines: 0;
 }
 
-
-
 .myq-tk-card-none-view {
     /* UIView */
-    backgroundColor: @myqtkWhiteColor;
+    backgroundColor: @mfzCommonSDKColorBackground;
     cornerRadius: 8.0;
 }
 
@@ -115,7 +113,7 @@
 
 .myq-tk-card-result-view {
     /* UIView */
-    backgroundColor: @myqtkWhiteColor;
+    backgroundColor: @mfzCommonSDKColorBackground;
     cornerRadius: 8.0;
 }
 
@@ -152,10 +150,8 @@
     @extend .myq-tk-card-body;
     /* UILabel */
     textAlignment: right;
-    textColor: @myqtkHighlightColor;
+    textColor: @myqtkColorFeature;
 }
-
-
 
 .myq-tk-card-buttons-container {
     /* UIView */
@@ -167,7 +163,7 @@
     font: @myqtkNoAvatarsTitleFont;
     numberOfLines: 0;
     lineBreakMode: wordWrapping;
-    textColor: @myqtkBlackColor;
+    textColor: @mfzCommonSDKTextColorPrimary;
     textAlignment: center;
 }
 
@@ -176,21 +172,19 @@
     font: @myqtkNoAvatarsDetailFont;
     numberOfLines: 0;
     lineBreakMode: wordWrapping;
-    textColor: @myqtkBlackColor;
+    textColor: @mfzCommonSDKTextColorPrimary;
     textAlignment: center;
 }
 
 .myq-tk-no-avatar-button {
-    @extend .mfz-common-standard-button;
     /* UIButton */
     cornerRadius: 25.0;
-    backgroundColor: @myqtkHighlightColor;
+    backgroundColor: @myqtkColorFeature;
     titleLabel.font: @myqtkNoAvatarsButtonFont;
-    titleColor(normal): @myqtkBlackColor;
+    titleColor(normal): @mfzCommonSDKTextColorPrimary;
 }
 
 .myqtk-tabbar-view {
     /* UITabBar */
-    selectedImageTintColor: @myqtkTabBarTintColor;
-    backgroundColor: white;
+    selectedImageTintColor: @myqtkColorFeature;
 }

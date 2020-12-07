@@ -38,6 +38,17 @@
 
 @implementation UserLoginViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    BOOL isDarkMode = [[UIScreen mainScreen] traitCollection].userInterfaceStyle == UIUserInterfaceStyleDark;
+    UIColor *textColor = isDarkMode ? [UIColor whiteColor] : [UIColor blackColor];
+    UIColor *bgColor = isDarkMode ? [UIColor blackColor] : [UIColor whiteColor];
+    self.emailField.textColor = textColor;
+    self.passwordField.textColor = textColor;
+    self.emailField.backgroundColor = bgColor;
+    self.passwordField.backgroundColor = bgColor;
+}
+
 #pragma mark Property methods
 
 - (IdentityProviderHelper *)idp {

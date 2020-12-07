@@ -169,6 +169,11 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+}
+
 #pragma mark - Private
 
 - (double)weightInPounds {

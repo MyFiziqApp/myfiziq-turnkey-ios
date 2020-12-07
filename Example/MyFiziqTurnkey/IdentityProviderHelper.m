@@ -24,14 +24,14 @@
 
 // For app to mimic a partner (which will have their own user auth / idp), this app uses a different idP than the MyFiziqSDK
 // service.
-#define MFTK_AWS_COGNITO_REGION         @"REPLACE ME"
-#define MFTK_AWS_CLIENT_ID              @"REPLACE ME"
-#define MFTK_AWS_USERPOOL_ID            @"REPLACE ME"
-#define MFTK_AWS_FEDERATION_ID          @"REPLACE ME"
-#define MFTK_AWS_ACC_ID                 @"REPLACE ME"
-#define MFTK_APP_ID                     @"REPLACE ME"
-#define MFTK_VENDOR                     @"REPLACE ME"
-#define MFTK_ENV                        @"REPLACE ME"
+#define MFTK_AWS_COGNITO_REGION     @"us-west-2"
+#define MFTK_AWS_CLIENT_ID       @"23h0i8893eat6r4arq7jsuv738"
+#define MFTK_AWS_USERPOOL_ID      @"us-west-2_LVY8yEI85"
+#define MFTK_AWS_FEDERATION_ID     @"us-west-2:153b2a81-b6b2-42ad-9934-e55a3247b853"
+#define MFTK_AWS_ACC_ID         @"157028805677"
+#define MFTK_APP_ID           @"785fi9k6"
+#define MFTK_VENDOR           @"6ed4e77b"
+#define MFTK_ENV            @"staging"
 
 
 @implementation IdentityProviderHelper
@@ -493,7 +493,12 @@
         [[MyFiziqTurnkey shared] userCustomAuthenticateForId:self.currentUser.username
                                                   withClaims:claims
                                                     withSalt:EXAMPLE_MFTK_SALT
-                                                  completion:nil];
+                                                  completion:^(NSError * _Nullable error) {
+            if (error) {
+                MFZLog(MFZLogLevelError, @"Error custom authentication: %@", error);
+            }
+            
+        }];
             
         return nil;
     }];

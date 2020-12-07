@@ -80,6 +80,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+    [self.myfiziqTurnkeyView refresh];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -162,6 +164,10 @@
     [[NSUserDefaults standardUserDefaults] setValue:[MyFiziqSDKCoreLite shared].user.measurementPreference == MFZMeasurementImperial ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:0] forKey:@"MeasurementPreference"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.myfiziqTurnkeyView refresh];
+}
+
+- (IBAction)showTurnkey {
+    [[MyFiziqTurnkey shared] showNew:YES];
 }
 
 @end

@@ -49,13 +49,13 @@
             [appearance configureWithOpaqueBackground];
             appearance.titleTextAttributes = titleAttributes;
             appearance.largeTitleTextAttributes = largeAttributes;
-            appearance.backgroundColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavBarColor");
+            appearance.backgroundColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorBackground");
             self.navigationController.navigationBar.standardAppearance = appearance;
             self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
         } else {
             self.navigationController.navigationBar.largeTitleTextAttributes = largeAttributes;
             self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
-            self.navigationController.navigationBar.barTintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavBarColor");
+            self.navigationController.navigationBar.barTintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorBackground");
         }
         self.navigationController.navigationBar.translucent = NO;
         self.navigationController.navigationBar.prefersLargeTitles = YES;
@@ -64,7 +64,7 @@
                                                                       target:self
                                                                       action:@selector(backButtonAction:)];
         [buttonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonFont"),
-                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonColor"),
+                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorFeature"),
                                             NSForegroundColorAttributeName, nil]
                                   forState:UIControlStateNormal];
         self.navigationItem.leftBarButtonItem = buttonItem;
@@ -78,6 +78,15 @@
         self.didSetupConstraints = YES;
         [self performSelector:@selector(commonSetContraints)];
     }
+    int interfaceStyleCSSVal = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkSupportedUserInterfaceStyle") intValue];
+    if (interfaceStyleCSSVal > 0) {
+        UIUserInterfaceStyle currentStyle = UIUserInterfaceStyleLight;
+        if (interfaceStyleCSSVal == 2) {
+            currentStyle = UIUserInterfaceStyleDark;
+        }
+        [self setOverrideUserInterfaceStyle:currentStyle];
+    }
+    
 }
 
 - (void)viewDidLayoutSubviews {
