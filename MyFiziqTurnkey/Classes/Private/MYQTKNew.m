@@ -115,7 +115,7 @@
 
 #pragma mark - MyFiziqInputViewDelegate
 
-- (void)didCompleteInputWithValues:(NSArray<id<MyFiziqCommonPickerValueDelegate>> * _Nonnull)values {
+- (void)didCompleteInputWithValues:(NSArray<id<MyFiziqCommonPickerValueDelegate>> *)values miscData:(NSDictionary<NSString *,id> *)miscData {
     [self.myfiziq.user setGender:[self.inputView getInputViewGender]];
     [self.myfiziq.user setHeightInCm:[[self.inputView getInputViewHeight] getHeightCM]];
     [self.myfiziq.user setWeightInKg:[[self.inputView getInputViewWeight] getWeightKG]];

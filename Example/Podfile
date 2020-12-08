@@ -8,7 +8,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'MyFiziqTurnkey_Example' do
-  platform :ios, '12.1'
+  platform :ios, '13.4'
   pod 'MyFiziqTurnkey', :path => '../'
 end
 

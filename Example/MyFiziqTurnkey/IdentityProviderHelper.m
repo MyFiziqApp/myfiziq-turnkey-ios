@@ -33,7 +33,6 @@
 #define MFTK_VENDOR                     @"REPLACE ME"
 #define MFTK_ENV                        @"REPLACE ME"
 
-
 @implementation IdentityProviderHelper
 
 #pragma mark Property methods
@@ -493,8 +492,12 @@
         [[MyFiziqTurnkey shared] userCustomAuthenticateForId:self.currentUser.username
                                                   withClaims:claims
                                                     withSalt:EXAMPLE_MFTK_SALT
-                                                  completion:nil];
+                                                  completion:^(NSError * _Nullable error) {
+            if (error) {
+                MFZLog(MFZLogLevelError, @"Error custom authentication: %@", error);
+            }
             
+        }];
         return nil;
     }];
 }

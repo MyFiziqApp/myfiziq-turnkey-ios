@@ -62,8 +62,7 @@
 - (UIImageView *)viewNoneAvatar {
     if (!_viewNoneAvatar) {
         _viewNoneAvatar = [[UIImageView alloc] initWithImage:MFZImage(MyFiziqTurnkeyCommon, @"myqtk-avatar-male")];
-        _viewNoneAvatar.contentMode = UIViewContentModeScaleAspectFit;
-        _viewNoneAvatar.clipsToBounds = YES;
+        MFZStyleView(MyFiziqTurnkeyCommon, _viewNoneAvatar, @"myq-tk-card-no-result-image-view");
     }
     return _viewNoneAvatar;
 }

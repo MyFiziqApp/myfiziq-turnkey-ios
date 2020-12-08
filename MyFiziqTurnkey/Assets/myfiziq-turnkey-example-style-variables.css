@@ -1,0 +1,17 @@
+/*******************************************************/
+/* CUSTOM STYLE VARIABLES                              */
+/*******************************************************/
+@myqtkSupportedUserInterfaceStyle: 1;
+/*******************************************************/
+/* SDK STYLE OVERRIDES                                 */
+/*******************************************************/
+/* Transform the style of most of the app with these lines. */
+/*@mfzCommonSDKColorFeature: #EDADC7;*/
+/*@mfzCommonSDKColorBackground: lightgray;*/
+/*@mfzCommonSDKColorBackgroundSecondary: #F5F5F5;*/
+/*@mfzCommonSDKTextColorPrimary: white;*/
+/*@mfzCommonSDKTextColorSecondary: lightgray;*/
+/*@mfzCommonSDKFontFamilyRegular: "KohinoorBangla-Regular";*/
+/*@mfzCommonSDKFontFamilyBold: "KohinoorBangla-Semibold";*/
+/* Changes the color of the 3 buttons (My Scans, New, Track) on the card. */
+@mfzCommonSDKButtonWarningColorEnabled: blue;

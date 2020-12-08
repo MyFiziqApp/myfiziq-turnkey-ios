@@ -19,6 +19,7 @@
 #import "IdentityProviderHelper.h"
 // TURNKEY EXAMPLE: Import MyFiziq Turnkey to initialize the MyFiziq service on app start up.
 @import MyFiziqTurnkey;
+#import "MYQTKExampleCommon.h"
 
 #define EXAMPLE_MFZ_KEY     @"REPLACE ME"
 #define EXAMPLE_MFZ_SECRET  @"REPLACE ME"
@@ -29,7 +30,6 @@
 #pragma mark - UIApplicationDelegate methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     // TURNKEY EXAMPLE: Initialize MyFiziq service ASAP, best when App Starts. This will also attempt to automatically
     // login prior user session.
     NSDictionary<NSString *, NSString *> *credentials = @{
@@ -37,13 +37,24 @@
         MFZSdkSetupSecret:EXAMPLE_MFZ_SECRET,
         MFZSdkSetupEnvironment:EXAMPLE_MFZ_ENV
     };
+    // Setup the app with credentials
     [[MyFiziqTurnkey shared] setupWithConfig:credentials success:^{
-        if ([IdentityProviderHelper shared].userIsSignedIn) {
+        NSLog(@"MyFiziq SDK setup completed successfully.");
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"MyFiziq SDK setup failed with error: %@.", error);
+    } reauthenticated:^(BOOL reauthenticated, NSError * _Nonnull error) {
+        if (!reauthenticated) {
+            // Present the login view.
+            NSLog(@"User was not reauthenticated. Error may have occured: %@", error);
+            return;
+        }
+        if (reauthenticated && [IdentityProviderHelper shared].userIsSignedIn) {
             // TURNKEY EXAMPLE: User logged in (authenticated), so authorize the user to the MyFiziq service.
             [[IdentityProviderHelper shared] myfiziqTurnkeyAuth];
         }
-    } failure:nil];
-    
+    }];
+//    // Initialise the common class
+//    [MYQTKExampleCommon shared];
     return YES;
 }
 

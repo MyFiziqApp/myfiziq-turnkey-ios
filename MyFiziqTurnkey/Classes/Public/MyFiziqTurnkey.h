@@ -59,11 +59,12 @@
     @param success The callback code block that will be invoked asynchronously if and when the `MyFiziq` service is setup
     successfully.
     @param failure The callback code block that will be invoked asynchronously if and when the `MyFiziq` service setup has
-    failed.
+    @param authenticated The callback that returns whether the user session was successfully authenticated or whether it failed with an error. An error does not always mean failure to reauthenticate so be aware of this.
  */
 - (void)setupWithConfig:(NSDictionary * _Nonnull)conf
                 success:(void (^ _Nullable)())success
-                failure:(void (^ _Nullable)(NSError * _Nonnull error))failure;
+                failure:(void (^ _Nullable)(NSError * _Nonnull error))failure
+        reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nonnull error))authenticated;
 /** Custom user authentication is for integration to environments that don't provide an AWS Cognito compatible idP such
     as Open ID Connect, SAML, or OAuth. This basically authorises a user using a set of user claims, by either logging
     in the user (if already exists), or registering the user first and then logging the user in. A user logout call will be

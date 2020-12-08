@@ -1,14 +1,14 @@
 
 /* Navigation Bar Styling */
 @myqtkNavBarImageSizeForLargeState: 40.0;
-@myqtkNavBarImageSizeForLargeState-iPhone-SE: 30.0;
-@myqtkNavBarImageSizeForLargeState-iPhone-5s: 30.0;
+@myqtkNavBarImageSizeForLargeState-4p7-inch-device: 30.0;
+@myqtkNavBarImageSizeForLargeState-4-inch-device: 30.0;
 @myqtkNavBarImageRightMargin: 16.0;
-@myqtkNavBarImageRightMargin-iPhone-SE: 12.0;
-@myqtkNavBarImageRightMargin-iPhone-5s: 12.0;
+@myqtkNavBarImageRightMargin-4p7-inch-device: 12.0;
+@myqtkNavBarImageRightMargin-4-inch-device: 12.0;
 @myqtkNavBarImageBottomMarginForLargeState: 12.0;
-@myqtkNavBarImageBottomMarginForLargeState-iPhone-SE: 10.0;
-@myqtkNavBarImageBottomMarginForLargeState-iPhone-5s: 10.0;
+@myqtkNavBarImageBottomMarginForLargeState-4p7-inch-device: 10.0;
+@myqtkNavBarImageBottomMarginForLargeState-4-inch-device: 10.0;
 @myqtkNavBarImageBottomMarginForSmallState: 6.0;
 @myqtkNavBarImageSizeForSmallState: 32.0;
 @myqtkNavBarHeightSmallState: 44.0;
@@ -74,8 +74,8 @@
 @myqtkButtonDropShadowOpacity: 1.0;
 @myqtkOneAvatarTitleInset: 110.0;
 @myqtkOneAvatarTitleHeight: 2.0;
-@myqtkOneAvatarTitleHeight-iPhone-5s: 2.0;
-@myqtkOneAvatarTitleHeight-iPhone-SE: 2.0;
+@myqtkOneAvatarTitleHeight-4-inch-device: 2.0;
+@myqtkOneAvatarTitleHeight-4p7-inch-device: 2.0;
 @myqtkOneAvatarDescriptionTopOffset: 12.0;
 @myqtkOneAvatarDescriptionHeight: 2.0;
 @myqtkOneAvatarButtonHeight: 50.0;

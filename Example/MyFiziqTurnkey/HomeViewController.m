@@ -31,7 +31,7 @@
 #define AVATAR_REFRESH_INTERVAL         10.0
 #define NOTIFICATION_AVATAR_REFRESH     @"kNotificationAvatarRefresh"
 
-@interface HomeViewController ()
+@interface HomeViewController () <MyFiziqTurnkeyDatasourceDelegate>
 // OPTIONAL: Helper class for user logout.
 @property (nonatomic, readonly) IdentityProviderHelper *idp;
 // OPTIONAL: The avatar state should be periodically be re-synced to inform the user when a new avatar has been created
@@ -63,6 +63,7 @@
     } else {
         self.unitSegmentControl.tintColor = [UIColor brownColor];
     }
+    [MyFiziqTurnkey shared].datasource = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,6 +81,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+    [self.myfiziqTurnkeyView refresh];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -162,6 +165,12 @@
     [[NSUserDefaults standardUserDefaults] setValue:[MyFiziqSDKCoreLite shared].user.measurementPreference == MFZMeasurementImperial ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:0] forKey:@"MeasurementPreference"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.myfiziqTurnkeyView refresh];
+}
+
+#pragma mark - Turnkey Datasource
+
+- (BOOL)newScansAllowed {
+    return YES;
 }
 
 @end

@@ -16,7 +16,6 @@
 //  limitations under the License.
 
 #import "MYQTKMyScans.h"
-#import <MyFiziqSDKCommon/MyFiziqCommonGalleryView.h>
 #import <MyFiziqSDKCommon/MyFiziqCommonGalleryCardView.h>
 #import <PureLayout/PureLayout.h>
 #import "MYQTKNoAvatarsView.h"
@@ -28,7 +27,7 @@
 
 // The Button and Label is for demonstration only.
 
-@interface MYQTKMyScans () <MyFiziqCommonGalleryViewDelegate, MYQTKNoAvatarsViewDelegate>
+@interface MYQTKMyScans () <MyFiziqCommonGalleryCardViewDelegate, MYQTKNoAvatarsViewDelegate>
 @property (assign, nonatomic) BOOL hasCheckedForAvatars;
 @property (assign, nonatomic) NSUInteger currentAvatarsCount;
 @property (strong, nonatomic) MyFiziqCommonGalleryCardView *myqCardGalleryView;
@@ -110,8 +109,7 @@
 #pragma mark - No Avatars View Delegate
 
 - (void)didTapNoAvatarsViewButtonFromView:(MYQTKNoAvatarsView * _Nonnull)noAvatarsView {
-    MYQTKNew *newVC = [MYQTKNew new];
-    [self.navigationController showViewController:newVC sender:self];
+    [self.tabBarController setSelectedIndex:1];
 }
 
 #pragma mark -  MyFiziqCommonGalleryCardViewDelegate

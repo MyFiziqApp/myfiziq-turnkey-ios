@@ -44,30 +44,32 @@
             NSForegroundColorAttributeName:MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarTitleColor"),
             NSFontAttributeName:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarLargeTitleFont")
         };
-        if (@available(iOS 13, *)) {
-            UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
-            [appearance configureWithOpaqueBackground];
-            appearance.titleTextAttributes = titleAttributes;
-            appearance.largeTitleTextAttributes = largeAttributes;
-            appearance.backgroundColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavBarColor");
-            self.navigationController.navigationBar.standardAppearance = appearance;
-            self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
-        } else {
-            self.navigationController.navigationBar.largeTitleTextAttributes = largeAttributes;
-            self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
-            self.navigationController.navigationBar.barTintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavBarColor");
-        }
+        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+        [appearance configureWithOpaqueBackground];
+        appearance.titleTextAttributes = titleAttributes;
+        appearance.largeTitleTextAttributes = largeAttributes;
+        appearance.backgroundColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarBackgroundColor");
+        appearance.shadowColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarSeparatorColor");
+        self.navigationController.navigationBar.standardAppearance = appearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+        self.navigationController.navigationBar.barTintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarBackgroundColor");
         self.navigationController.navigationBar.translucent = NO;
         self.navigationController.navigationBar.prefersLargeTitles = YES;
-        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_CLOSE", @"close")
+        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_CLOSE", @"Close")
                                                                        style:UIBarButtonItemStylePlain
                                                                       target:self
                                                                       action:@selector(backButtonAction:)];
         [buttonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonFont"),
-                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonColor"),
+                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorFeature"),
                                             NSForegroundColorAttributeName, nil]
                                   forState:UIControlStateNormal];
         self.navigationItem.leftBarButtonItem = buttonItem;
+        // TAB BAR STYLING
+        UITabBarAppearance *tabAppearance = [[UITabBarAppearance alloc] init];
+        tabAppearance.backgroundColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkTabBarBackgroundColor");
+        tabAppearance.shadowColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarSeparatorColor");
+        [self.tabBarController.tabBar setStandardAppearance:tabAppearance];
+        self.tabBarController.tabBar.translucent = NO;
     }
 }
 
@@ -77,6 +79,15 @@
     if (!self.didSetupConstraints && [self respondsToSelector:@selector(commonSetContraints)]) {
         self.didSetupConstraints = YES;
         [self performSelector:@selector(commonSetContraints)];
+    }
+    [self setUserInterfaceStyle];
+}
+
+- (void)setUserInterfaceStyle {
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"MyFiziqDarkModeActive"] boolValue]) {
+        [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleDark];
+    } else {
+        [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
     }
 }
 

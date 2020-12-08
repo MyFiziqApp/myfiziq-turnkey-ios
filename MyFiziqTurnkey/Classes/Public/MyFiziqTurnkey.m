@@ -23,11 +23,13 @@
 #import "MYQTKMyScans.h"
 #import "MYQTKTrack.h"
 #import "MYQTKNew.h"
+#import "MYQTKTabBarController.h"
 
 @interface MyFiziqTurnkey() <MyFiziqLoginDelegate>
 @property (strong, nonatomic) void (^setupSuccess)(void);
 @property (strong, nonatomic) void (^setupFailed)(NSError * err);
-@property (strong, nonatomic) UITabBarController *tabBarController;
+@property (strong, nonatomic) void (^authenticated)(BOOL isLoggedIn, NSError * err);
+@property (strong, nonatomic) MYQTKTabBarController *tabBarController;
 @end
 
 @implementation MyFiziqTurnkey
@@ -41,9 +43,9 @@
     return _turnkeyCardViews;
 }
 
-- (UITabBarController *)tabBarController {
+- (MYQTKTabBarController *)tabBarController {
     if (!_tabBarController) {
-        _tabBarController = [[UITabBarController alloc] init];
+        _tabBarController = [[MYQTKTabBarController alloc] init];
         MFZStyleView(MyFiziqTurnkeyCommon, _tabBarController.tabBar, @"myqtk-tabbar-view");
     }
     return _tabBarController;
@@ -64,10 +66,11 @@
     [[MyFiziqTurnkeyCommon shared] setResourceBundle:bundle];
 }
 
-- (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure {
+- (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nonnull error))authenticated {
     // Call MyFiziq setup (via Login SDK helper).
     self.setupSuccess = success;
     self.setupFailed = failure;
+    self.authenticated = authenticated;
     [MyFiziqLogin shared].myfiziqCredentials = conf;
     [MyFiziqLogin shared].loginDelegate = self;
     [[MyFiziqLogin shared] reloadMyFiziqSDK];
@@ -81,7 +84,7 @@
     }
     [[MyFiziqLogin shared] userCustomAuthenticateForId:partnerUserId withClaims:claims withSalt:iv completion:^(NSError * _Nullable err) {
         if (err) {
-            MFZLog(MFZLogLevelError, @"Failed user authorization");
+            MFZLog(MFZLogLevelError, @"Failed user authorization: %@", err);
             NSLog(@"MYQTK-ERR: Failed user authorization.");
         } else {
             MFZLog(MFZLogLevelInfo, @"Successfully authorized user");
@@ -147,10 +150,12 @@
 
 #pragma mark - MyFiziqSDKLogin Delegate methods
 
-- (void)myfiziqIsReadyAndUserLoggedIn:(BOOL)isLoggedIn {
-    MFZLog(MFZLogLevelInfo, @"Successfully initialized MyFiziq service");
-    if (self.setupSuccess) {
-        self.setupSuccess();
+- (void)myfiziqUserLoggedIn:(BOOL)isLoggedIn withError:(NSError * _Nullable)error {
+    if (self.authenticated) {
+        self.authenticated(isLoggedIn, error);
+    }
+    if (!isLoggedIn) {
+        return;
     }
     [self setTabControllers];
 }
@@ -161,6 +166,13 @@
         self.setupFailed(error);
     }
     [self refresh:YES];
+}
+
+- (void)myfiziqSetupSuccessful {
+    MFZLog(MFZLogLevelInfo, @"Successfully initialized MyFiziq service");
+    if (self.setupSuccess) {
+        self.setupSuccess();
+    }
 }
 
 #pragma mark - User Intrinsics
@@ -213,9 +225,18 @@
 
 - (void)setTabControllers {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        int availableInterfaceStyle = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkSupportedUserInterfaceStyle") intValue];
+        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:@"MyFiziqDarkModeActive"];
+        if ((availableInterfaceStyle == 0 && [[UIScreen mainScreen] traitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) || availableInterfaceStyle == 2) {
+            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"MyFiziqDarkModeActive"];
+        }
         NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
         NSMutableArray *viewControllerNavigationArray = [[NSMutableArray alloc] init];
-        NSArray *vcTabBarImageArray = @[MFZImage(MyFiziqTurnkeyCommon, @"icon-home"), MFZImage(MyFiziqTurnkeyCommon, @"icon-new"), MFZImage(MyFiziqTurnkeyCommon, @"icon-track")];
+        NSArray *vcTabBarImageArray = @[
+            MFZImage(MyFiziqTurnkeyCommon, @"icon-home"),
+            MFZImage(MyFiziqTurnkeyCommon, @"icon-new"),
+            MFZImage(MyFiziqTurnkeyCommon, @"icon-track")
+        ];
         NSArray *titleArray = @[MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_HOME", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_NEW", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_TRACK", @"")];
         for (int i = 0; i < [vcTabBarImageArray count]; i++) {
             UIViewController *viewController = [viewControllersArray objectAtIndex:i];

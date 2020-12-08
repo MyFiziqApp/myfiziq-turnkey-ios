@@ -1,31 +1,34 @@
+@myqtkColorFeature: @mfzCommonSDKColorFeature;
+@myqtkBackgroundColor: @mfzCommonSDKColorBackground;
+@myqtkDarkestBackgroundColor: @mfzCommonSDKColorBackground-dark;
+@myqtkSeparatorColor: @mfzCommonSDKColorSeparator;
+@myqtkNavigationBarBackgroundColor: @mfzCommonSDKColorBackground;
+@myqtkNavigationBarSeparatorColor: @myqtkSeparatorColor;
+@myqtkTabBarBackgroundColor: @mfzCommonSDKColorBackground;
+@myqtkButtonDropShadowColor: @mfzCommonSDKColorOverlay;
+@myqtkNavigationBarTitleColor: @mfzCommonSDKTextColorPrimary;
+@myqtkNavigationBarButtonColor: @mfzCommonSDKColorFeature;
 
-/* Turnkey Common */
-@myqtkHighlightColor: #FF5621;
-@myqtkBlackColor: #1F232D;
-@myqtkWhiteColor: #FEFEFE;
-@myqtkBackgroundColor: #EFEFEF;
-@myqtkDarkestBackgroundColor: #a3a3aA;
-@myqtkSeparatorColor: #4D4D4D;
-@myqtkNavBarColor: @myqtkWhiteColor;
-@myqtkButtonDropShadowColor: black;
-@myqtkTabBarTintColor: #44BEE6;
-@myqtkNavigationBarTitleColor: @myqtkBlackColor;
-@myqtkNavigationBarButtonColor: @myqtkHighlightColor;
+@myqtkNavigationBarLargeTitleFont: @mfzCommonSDKFontFamilyBold 34;
+@myqtkNavigationBarTitleFont: @mfzCommonSDKFontFamilyBold @mfzCommonSDKFontSizeTitle3;
+@myqtkNavigationBarButtonFont: @mfzCommonSDKFontFamilyBold @mfzCommonSDKFontSizeBody;
+@myqtkCardViewTitleFont: @mfzCommonSDKFontFamilyBold 26;
+@myqtkCardViewBodyFont: @mfzCommonSDKFontFamilyRegular 16;
+@myqtkNoAvatarsTitleFont: @mfzCommonSDKFontFamilyBold 24;
+@myqtkNoAvatarsDetailFont: @mfzCommonSDKFontFamilyRegular 14;
 
-@myqtkNavigationBarLargeTitleFont: systemBold 28;
-@myqtkNavigationBarTitleFont: systemBold 18;
-@myqtkNavigationBarButtonFont: systemBold 17;
-@myqtkCardViewTitleFont: systemBold 26;
-@myqtkCardViewBodyFont: system 16;
-@myqtkNoAvatarsTitleFont: systemBold 24;
-@myqtkNoAvatarsDetailFont: system 14;
-@myqtkNoAvatarsButtonFont: system 25;
-
+/*******************************************************/
+/* CUSTOM STYLE VARIABLES                              */
+/*******************************************************/
 @myqtkShowTabBarNames: false;
-
+/* Set the interface style (dark mode, light mode, both)
+ 0 = both
+ 1 = light only
+ 2 = dark only
+ */
+@myqtkSupportedUserInterfaceStyle: 0;
 /*******************************************************/
 /* SDK STYLE OVERRIDES                                 */
 /*******************************************************/
-
 @mfzCommonSpinnerBackgroundColor: clear;
-@mfzCommonSpinnerActivityViewTintColor: @myqtkBlackColor;
+@mfzCommonSpinnerActivityViewTintColor: @mfzCommonSDKColorActivityIndicator;
