@@ -38,7 +38,7 @@
     The card view will automatically register itself to this set, so app code to do this will not be needed. The use of this set
     is to allow automatic refresh of user measurement state.
  */
-@property (strong, nonatomic) NSMutableSet *turnkeyCardViews;
+@property (strong, nonatomic) NSMutableSet * _Nonnull turnkeyCardViews;
 /** Reference to the `MyFiziqTurnkeyDatasourceDelegate` datasource. */
 @property (weak, nonatomic) id<MyFiziqTurnkeyDatasourceDelegate> _Nullable datasource;
 /** Tab bar controller for turn key view.
