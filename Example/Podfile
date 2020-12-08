@@ -10,7 +10,6 @@ inhibit_all_warnings!
 target 'MyFiziqTurnkey_Example' do
   platform :ios, '13.4'
   pod 'MyFiziqTurnkey', :path => '../'
-  pod 'MyFiziqSDKLoginView', :path => '../../../myfiziq-sdk-loginview'
 end
 
 post_install do |installer|

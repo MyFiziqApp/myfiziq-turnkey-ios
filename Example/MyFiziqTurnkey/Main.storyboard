@@ -700,34 +700,17 @@
                                     <action selector="didSelectSettings:" destination="I9E-UQ-ech" eventType="touchUpInside" id="Cdy-Zu-SeE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPB-QY-S86">
-                                <rect key="frame" x="88" y="616" width="201" height="44"/>
-                                <color key="backgroundColor" red="0.66664814949999995" green="0.47453415389999998" blue="0.25880217550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="PVJ-91-AVe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <state key="normal" title="NEW SCAN">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="showTurnkey" destination="I9E-UQ-ech" eventType="touchUpInside" id="ogT-mz-M7z"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5aM-o3-pMO"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Zsw-hR-u8G" firstAttribute="leading" secondItem="Vuf-Vd-STv" secondAttribute="leadingMargin" id="4RE-nN-i2N"/>
                             <constraint firstItem="lsW-7v-eUG" firstAttribute="top" secondItem="uf9-pt-qYj" secondAttribute="bottom" constant="8" id="71z-vI-dkl"/>
-                            <constraint firstItem="rPB-QY-S86" firstAttribute="leading" secondItem="5aM-o3-pMO" secondAttribute="leading" constant="88" id="AzB-mP-T5F"/>
                             <constraint firstItem="gt4-xV-lcz" firstAttribute="top" secondItem="QGh-Bc-Qui" secondAttribute="bottom" constant="20" id="B1a-F5-9pJ"/>
                             <constraint firstItem="gt4-xV-lcz" firstAttribute="centerX" secondItem="5aM-o3-pMO" secondAttribute="centerX" id="Edu-X6-ovK"/>
                             <constraint firstItem="5aM-o3-pMO" firstAttribute="trailing" secondItem="QGh-Bc-Qui" secondAttribute="trailing" constant="50" id="Eyz-Xf-Ffi"/>
                             <constraint firstItem="lsW-7v-eUG" firstAttribute="centerX" secondItem="Vuf-Vd-STv" secondAttribute="centerX" id="Gaz-4D-U6Y"/>
                             <constraint firstItem="QGh-Bc-Qui" firstAttribute="leading" secondItem="5aM-o3-pMO" secondAttribute="leading" constant="50" id="Hjm-OM-Mja"/>
-                            <constraint firstItem="5aM-o3-pMO" firstAttribute="trailing" secondItem="rPB-QY-S86" secondAttribute="trailing" constant="86" id="I5I-9x-MaQ"/>
-                            <constraint firstItem="5aM-o3-pMO" firstAttribute="bottom" secondItem="rPB-QY-S86" secondAttribute="bottom" constant="7" id="KG0-AE-rBC"/>
                             <constraint firstItem="uf9-pt-qYj" firstAttribute="leading" secondItem="Zsw-hR-u8G" secondAttribute="leading" id="KUm-iy-vly"/>
                             <constraint firstItem="QGh-Bc-Qui" firstAttribute="top" secondItem="lsW-7v-eUG" secondAttribute="bottom" constant="60" id="e12-DX-qS5"/>
                             <constraint firstItem="Zsw-hR-u8G" firstAttribute="top" secondItem="5aM-o3-pMO" secondAttribute="top" id="gL1-zb-Gq6"/>

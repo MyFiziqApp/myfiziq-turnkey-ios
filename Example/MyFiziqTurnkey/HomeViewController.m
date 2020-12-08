@@ -167,10 +167,6 @@
     [self.myfiziqTurnkeyView refresh];
 }
 
-- (IBAction)showTurnkey {
-    [[MyFiziqTurnkey shared] showNew:YES];
-}
-
 #pragma mark - Turnkey Datasource
 
 - (BOOL)newScansAllowed {

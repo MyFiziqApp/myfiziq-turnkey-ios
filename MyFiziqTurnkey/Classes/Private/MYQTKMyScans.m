@@ -109,8 +109,6 @@
 #pragma mark - No Avatars View Delegate
 
 - (void)didTapNoAvatarsViewButtonFromView:(MYQTKNoAvatarsView * _Nonnull)noAvatarsView {
-//    MYQTKNew *newVC = [MYQTKNew new];
-//    [self.navigationController showViewController:newVC sender:self];
     [self.tabBarController setSelectedIndex:1];
 }
 

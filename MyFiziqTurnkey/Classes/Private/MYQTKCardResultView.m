@@ -313,7 +313,7 @@
             break;
         }
         case MFZAvatarAttributeHips: {
-            return MFZString(MyFiziqTurnkeyCommon, @"MYQTK_CARD_ATTR_hip", @"Hips");
+            return MFZString(MyFiziqTurnkeyCommon, @"MYQTK_CARD_ATTR_hips", @"Hips");
             break;
         }
         case MFZAvatarAttributeThigh: {
