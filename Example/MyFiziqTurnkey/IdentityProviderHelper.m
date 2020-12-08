@@ -24,14 +24,14 @@
 
 // For app to mimic a partner (which will have their own user auth / idp), this app uses a different idP than the MyFiziqSDK
 // service.
-#define MFTK_AWS_COGNITO_REGION         @"us-west-2"
-#define MFTK_AWS_CLIENT_ID              @"22ck2d7dc961j1l5c1op13ds7g"
-#define MFTK_AWS_USERPOOL_ID            @"us-west-2_3LG5t16Tn"
-#define MFTK_AWS_FEDERATION_ID          @"us-west-2:cc2de9bb-8806-49a9-881b-85a55442bde1"
-#define MFTK_AWS_ACC_ID                 @"949608987648"
-#define MFTK_APP_ID                     @"08538ccb"
-#define MFTK_VENDOR                     @"myq-app"
-#define MFTK_ENV                        @"08538ccb"
+#define MFTK_AWS_COGNITO_REGION         @"REPLACE ME"
+#define MFTK_AWS_CLIENT_ID              @"REPLACE ME"
+#define MFTK_AWS_USERPOOL_ID            @"REPLACE ME"
+#define MFTK_AWS_FEDERATION_ID          @"REPLACE ME"
+#define MFTK_AWS_ACC_ID                 @"REPLACE ME"
+#define MFTK_APP_ID                     @"REPLACE ME"
+#define MFTK_VENDOR                     @"REPLACE ME"
+#define MFTK_ENV                        @"REPLACE ME"
 
 @implementation IdentityProviderHelper
 

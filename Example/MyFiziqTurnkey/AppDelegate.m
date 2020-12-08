@@ -21,9 +21,9 @@
 @import MyFiziqTurnkey;
 #import "MYQTKExampleCommon.h"
 
-#define EXAMPLE_MFZ_KEY     @"eyJ1cmwiOiJodHRwczovL215cS1maXRuZXNzLXN0YWdpbmcuYXZhdGFyLm15Zml6aXEuY29tIiwiYWlkIjoiMzAwZGM0OGYiLCJ2aWQiOiI3MWEwZTM4ZiIsImNpZCI6IjZtYjFmcWJsdDEwdDVyYmJrbnBkcm1lbTl1In0="
-#define EXAMPLE_MFZ_SECRET  @"5rdciFYJJzGHXn2XKhRhuw=="
-#define EXAMPLE_MFZ_ENV     @"staging"
+#define EXAMPLE_MFZ_KEY     @"REPLACE ME"
+#define EXAMPLE_MFZ_SECRET  @"REPLACE ME"
+#define EXAMPLE_MFZ_ENV     @"REPLACE ME"
 
 @implementation AppDelegate
 
