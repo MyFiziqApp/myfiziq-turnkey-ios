@@ -153,6 +153,20 @@
     textColor: @myqtkColorFeature;
 }
 
+.myq-tk-card-result-image-view {
+    /* UIImageView */
+    clipsToBounds: YES;
+    contentMode: scaleAspectFill;
+    backgroundColor: clear;
+}
+
+.myq-tk-card-no-result-image-view {
+    /* UIImageView */
+    clipsToBounds: YES;
+    contentMode: scaleAspectFit;
+    backgroundColor: @mfzCommonSDKColorBackground;
+}
+
 .myq-tk-card-buttons-container {
     /* UIView */
     backgroundColor: clear;
@@ -177,14 +191,21 @@
 }
 
 .myq-tk-no-avatar-button {
+    @extend .mfz-common-sdk-standard-button;
     /* UIButton */
-    cornerRadius: 25.0;
     backgroundColor: @myqtkColorFeature;
-    titleLabel.font: @myqtkNoAvatarsButtonFont;
-    titleColor(normal): @mfzCommonSDKTextColorPrimary;
+    titleColor(normal): @mfzCommonSDKButtonTitleColor;
+    titleLabel.font: @mfzCommonSDKButtonFont;
 }
 
 .myqtk-tabbar-view {
     /* UITabBar */
     selectedImageTintColor: @myqtkColorFeature;
+}
+
+.mfztkMeshViewmfz-common-sdk-mesh-view {
+    /* SCNView : UIView */
+    backgroundColor: clear;
+    borderColor: clear;
+    borderWidth: 0.5;
 }

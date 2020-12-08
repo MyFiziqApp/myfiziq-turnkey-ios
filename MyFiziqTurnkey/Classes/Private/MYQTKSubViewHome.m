@@ -116,11 +116,11 @@
     id<MyFiziqCommonAlertDelegate> alertView = MFZAlert(MyFiziqTurnkeyCommon,
                                                         MFZString(MyFiziqTurnkeyCommon, @"MYQTK_DELETE_AVATAR_ALERT_TITLE", @"Delete Measurement"),
                                                         MFZString(MyFiziqTurnkeyCommon, @"MYQTK_DELETE_AVATAR_ALERT_MESSAGE", @"Do you wish to delete this measurement?\n\nThis cannot be undone."));
-    MyFiziqCommonAlertAction *deleteAction = [[MyFiziqCommonAlertAction alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_ALERT_CONTINUE", @"Continue") style:MFZAlertActionStyleHighlighted block:^{
+    MyFiziqCommonAlertAction *deleteAction = [[MyFiziqCommonAlertAction alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_ALERT_CONTINUE", @"Continue") style:MFZAlertActionStyleNormal block:^{
         [self displayLoadingViewVisible:YES];
         [self deleteSelectedAvatar];
     }];
-    MyFiziqCommonAlertAction *cancelAction = [[MyFiziqCommonAlertAction alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_ALERT_CANCEL", @"Cancel") style:MFZAlertActionStyleNormal];
+    MyFiziqCommonAlertAction *cancelAction = [[MyFiziqCommonAlertAction alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_ALERT_CANCEL", @"Cancel") style:MFZAlertActionStyleHighlighted];
     [alertView addAction:deleteAction];
     [alertView addAction:cancelAction];
     [alertView showWithOverlay:YES];

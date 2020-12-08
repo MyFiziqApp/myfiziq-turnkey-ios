@@ -68,8 +68,8 @@
     MFZStyleView(MyFiziqTurnkeyCommon, self, @"myq-tk-card-buttons-container");
     // Container: Buttons Bar
     [self addSubview:self.viewButtonMyScans];
-    [self addSubview:self.viewButtonTrack];
     [self addSubview:self.viewButtonNew];
+    [self addSubview:self.viewButtonTrack];
 }
 
 - (void)doUpdateConstraints {
@@ -79,7 +79,7 @@
     [self.viewButtonTrack autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkCardButtonTrackHeight") doubleValue]];
     // Button: New
     [self.viewButtonNew autoSetDimension:ALDimensionHeight toSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkCardButtonNewHeight") doubleValue]];
-    NSArray<UIView *> *buttons = @[self.viewButtonMyScans, self.viewButtonTrack, self.viewButtonNew];
+    NSArray<UIView *> *buttons = @[self.viewButtonMyScans, self.viewButtonNew, self.viewButtonTrack];
     [buttons autoDistributeViewsAlongAxis:ALAxisHorizontal alignedTo:ALAttributeBottom withFixedSize:[MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkCardButtonWidth") doubleValue]];
 }
 

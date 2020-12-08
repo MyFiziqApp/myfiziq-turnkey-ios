@@ -19,24 +19,25 @@
 #import "IdentityProviderHelper.h"
 // TURNKEY EXAMPLE: Import MyFiziq Turnkey to initialize the MyFiziq service on app start up.
 @import MyFiziqTurnkey;
+#import "MYQTKExampleCommon.h"
 
-#define EXAMPLE_MFZ_KEY     "eyJ1cmwiOiJodHRwczovL215cS1hcHAtZGV2LmF2YXRhci5teWZpemlxLmNvbSIsImFpZCI6IjA4NTM4Y2NiIiwidmlkIjoiNzI4MmNlZjIiLCJjaWQiOiIyMmNrMmQ3ZGM5NjFqMWw1YzFvcDEzZHM3ZyJ9"
-#define EXAMPLE_MFZ_SECRET  "Ztwt+KjTJ4CiYDg5XaE16A=="
-#define EXAMPLE_MFZ_ENV     "dev"
+#define EXAMPLE_MFZ_KEY     @"eyJ1cmwiOiJodHRwczovL215cS1maXRuZXNzLXN0YWdpbmcuYXZhdGFyLm15Zml6aXEuY29tIiwiYWlkIjoiMzAwZGM0OGYiLCJ2aWQiOiI3MWEwZTM4ZiIsImNpZCI6IjZtYjFmcWJsdDEwdDVyYmJrbnBkcm1lbTl1In0="
+#define EXAMPLE_MFZ_SECRET  @"5rdciFYJJzGHXn2XKhRhuw=="
+#define EXAMPLE_MFZ_ENV     @"staging"
 
 @implementation AppDelegate
 
 #pragma mark - UIApplicationDelegate methods
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     // TURNKEY EXAMPLE: Initialize MyFiziq service ASAP, best when App Starts. This will also attempt to automatically
     // login prior user session.
     NSDictionary<NSString *, NSString *> *credentials = @{
-        MFZSdkSetupKey:@EXAMPLE_MFZ_KEY,
-        MFZSdkSetupSecret:@EXAMPLE_MFZ_SECRET,
-        MFZSdkSetupEnvironment:@EXAMPLE_MFZ_ENV
+        MFZSdkSetupKey:EXAMPLE_MFZ_KEY,
+        MFZSdkSetupSecret:EXAMPLE_MFZ_SECRET,
+        MFZSdkSetupEnvironment:EXAMPLE_MFZ_ENV
     };
+    // Setup the app with credentials
     [[MyFiziqTurnkey shared] setupWithConfig:credentials success:^{
         NSLog(@"MyFiziq SDK setup completed successfully.");
     } failure:^(NSError * _Nonnull error) {
@@ -52,6 +53,8 @@
             [[IdentityProviderHelper shared] myfiziqTurnkeyAuth];
         }
     }];
+    // Initialise the common class
+    [MYQTKExampleCommon shared];
     return YES;
 }
 

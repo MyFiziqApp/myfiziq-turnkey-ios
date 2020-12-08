@@ -47,6 +47,10 @@
 
 #pragma mark - Methods
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)commonInit {
   MFZStyleView(MyFiziqTurnkeyCommon, self.view, @"myq-tk-sub-track-chooser-view");
   [self.view addSubview:self.viewExample];

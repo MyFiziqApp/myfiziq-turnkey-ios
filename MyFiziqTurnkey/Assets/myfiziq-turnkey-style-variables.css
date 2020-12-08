@@ -1,23 +1,21 @@
-@myqtkColorFeature: #FF5621;
-
-
+@myqtkColorFeature: @mfzCommonSDKColorFeature;
 @myqtkBackgroundColor: @mfzCommonSDKColorBackground;
 @myqtkDarkestBackgroundColor: @mfzCommonSDKColorBackground-dark;
 @myqtkSeparatorColor: @mfzCommonSDKColorSeparator;
-@myqtkNavBarColor: @myqtkWhiteColor;
+@myqtkNavigationBarBackgroundColor: @mfzCommonSDKColorBackground;
+@myqtkNavigationBarSeparatorColor: @myqtkSeparatorColor;
+@myqtkTabBarBackgroundColor: @mfzCommonSDKColorBackground;
 @myqtkButtonDropShadowColor: @mfzCommonSDKColorOverlay;
-@myqtkTabBarTintColor: @mfzCommonSDKColorBackgroundSecondary;
 @myqtkNavigationBarTitleColor: @mfzCommonSDKTextColorPrimary;
 @myqtkNavigationBarButtonColor: @mfzCommonSDKColorFeature;
 
-@myqtkNavigationBarLargeTitleFont: @mfzCommonSDKFontFamilyBold @mfzCommonSDKFontSizeTitle1;
+@myqtkNavigationBarLargeTitleFont: @mfzCommonSDKFontFamilyBold 34;
 @myqtkNavigationBarTitleFont: @mfzCommonSDKFontFamilyBold @mfzCommonSDKFontSizeTitle3;
 @myqtkNavigationBarButtonFont: @mfzCommonSDKFontFamilyBold @mfzCommonSDKFontSizeBody;
 @myqtkCardViewTitleFont: @mfzCommonSDKFontFamilyBold 26;
 @myqtkCardViewBodyFont: @mfzCommonSDKFontFamilyRegular 16;
 @myqtkNoAvatarsTitleFont: @mfzCommonSDKFontFamilyBold 24;
 @myqtkNoAvatarsDetailFont: @mfzCommonSDKFontFamilyRegular 14;
-@myqtkNoAvatarsButtonFont: @mfzCommonSDKFontFamilyRegular 25;
 
 /*******************************************************/
 /* CUSTOM STYLE VARIABLES                              */
@@ -29,10 +27,8 @@
  2 = dark only
  */
 @myqtkSupportedUserInterfaceStyle: 0;
-
 /*******************************************************/
 /* SDK STYLE OVERRIDES                                 */
 /*******************************************************/
-
 @mfzCommonSpinnerBackgroundColor: clear;
 @mfzCommonSpinnerActivityViewTintColor: @mfzCommonSDKColorActivityIndicator;

@@ -25,7 +25,7 @@
 // - State
 @property (strong, nonatomic) NSArray<NSString *> *displayMeasurements;
 // - UIViews behind the curtain
-@property (strong, nonatomic) id<MyFiziqCommonMeshDelegate> viewMesh;
+@property (strong, nonatomic) MyFiziqCommonMeshView *viewMesh;
 // - Sub UIViews
 @property (strong, nonatomic) UIView *viewCurtain;
 @property (strong, nonatomic) UILabel *viewResultTitle;
@@ -46,9 +46,10 @@
     return _displayMeasurements;
 }
 
-- (id<MyFiziqCommonMeshDelegate>)viewMesh {
+- (MyFiziqCommonMeshView *)viewMesh {
     if (!_viewMesh) {
         _viewMesh = MFZMeshView(MyFiziqTurnkeyCommon, nil);
+        _viewMesh.styleOverridePrefix = @"mfztkMeshView";
     }
     return _viewMesh;
 }
@@ -85,6 +86,7 @@
         _viewResultMeasurements.dataSource = self;
         _viewResultMeasurements.delegate = self;
         _viewResultMeasurements.scrollEnabled = false;
+        [_viewResultMeasurements setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
         [_viewResultMeasurements registerClass:[MYQTKCardResultCellView class] forCellReuseIdentifier:[MYQTKCardResultCellView cellIdentifier]];
     }
     return _viewResultMeasurements;
@@ -93,8 +95,7 @@
 - (UIImageView *)viewResultAvatar {
     if (!_viewResultAvatar) {
         _viewResultAvatar = [[UIImageView alloc] init];
-        _viewResultAvatar.contentMode = UIViewContentModeScaleAspectFill;
-        _viewResultAvatar.clipsToBounds = YES;
+        MFZStyleView(MyFiziqTurnkeyCommon, _viewResultAvatar, @"myq-tk-card-result-image-view");
     }
     return _viewResultAvatar;
 }

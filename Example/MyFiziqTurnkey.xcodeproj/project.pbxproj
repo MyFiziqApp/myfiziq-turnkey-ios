@@ -14,6 +14,11 @@
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		AA9711B553BDF00C7F9F9035 /* Pods_MyFiziqTurnkey_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A616720A2C393DE881F8E2 /* Pods_MyFiziqTurnkey_Example.framework */; };
+		B7C2EB69257F21FF001D7752 /* myfiziq-turnkey-example-style-variables.css in Resources */ = {isa = PBXBuildFile; fileRef = B7C2EB68257F21FF001D7752 /* myfiziq-turnkey-example-style-variables.css */; };
+		B7C2EB6D257F22DB001D7752 /* MYQTKExampleCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2EB6C257F22DB001D7752 /* MYQTKExampleCommon.m */; };
+		B7C2EB70257F2380001D7752 /* myfiziq-turnkey-example.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7C2EB6F257F2380001D7752 /* myfiziq-turnkey-example.strings */; };
+		B7C2EB73257F23CD001D7752 /* myfiziq-turnkey-example-layouts.css in Resources */ = {isa = PBXBuildFile; fileRef = B7C2EB72257F23CD001D7752 /* myfiziq-turnkey-example-layouts.css */; };
+		B7C2EB77257F23DE001D7752 /* myfiziq-turnkey-example-classes.css in Resources */ = {isa = PBXBuildFile; fileRef = B7C2EB76257F23DE001D7752 /* myfiziq-turnkey-example-classes.css */; };
 		D9A6AC8423E819660053806B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9A6AC7F23E819660053806B /* Main.storyboard */; };
 		D9A6AC8523E819660053806B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A6AC8223E819660053806B /* AppDelegate.m */; };
 		D9A6AC8623E819660053806B /* IdentityProviderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A6AC8323E819660053806B /* IdentityProviderHelper.m */; };
@@ -51,6 +56,12 @@
 		6813616BA5624C7DE587B593 /* Pods-MyFiziqTurnkey_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Example.release.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example.release.xcconfig"; sourceTree = "<group>"; };
 		76934C1EE1706C06DB1B08FB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		84BCC15364A8B0C9198AF433 /* Pods-MyFiziqTurnkey_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Example.debug.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Example/Pods-MyFiziqTurnkey_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		B7C2EB68257F21FF001D7752 /* myfiziq-turnkey-example-style-variables.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "myfiziq-turnkey-example-style-variables.css"; path = "../../MyFiziqTurnkey/Assets/myfiziq-turnkey-example-style-variables.css"; sourceTree = "<group>"; };
+		B7C2EB6B257F22DB001D7752 /* MYQTKExampleCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYQTKExampleCommon.h; sourceTree = "<group>"; };
+		B7C2EB6C257F22DB001D7752 /* MYQTKExampleCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYQTKExampleCommon.m; sourceTree = "<group>"; };
+		B7C2EB6F257F2380001D7752 /* myfiziq-turnkey-example.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "myfiziq-turnkey-example.strings"; sourceTree = "<group>"; };
+		B7C2EB72257F23CD001D7752 /* myfiziq-turnkey-example-layouts.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "myfiziq-turnkey-example-layouts.css"; sourceTree = "<group>"; };
+		B7C2EB76257F23DE001D7752 /* myfiziq-turnkey-example-classes.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "myfiziq-turnkey-example-classes.css"; sourceTree = "<group>"; };
 		C0010CFD0361296D8AECFE0A /* Pods-MyFiziqTurnkey_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFiziqTurnkey_Tests.release.xcconfig"; path = "Target Support Files/Pods-MyFiziqTurnkey_Tests/Pods-MyFiziqTurnkey_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D9A6AC7F23E819660053806B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D9A6AC8023E819660053806B /* IdentityProviderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityProviderHelper.h; sourceTree = "<group>"; };
@@ -124,6 +135,8 @@
 		6003F593195388D20070C39A /* Example for MyFiziqTurnkey */ = {
 			isa = PBXGroup;
 			children = (
+				B7C2EB6B257F22DB001D7752 /* MYQTKExampleCommon.h */,
+				B7C2EB6C257F22DB001D7752 /* MYQTKExampleCommon.m */,
 				D9C2140E23E81C6A00AA2A72 /* HomeViewController.h */,
 				D9C2140C23E81C6A00AA2A72 /* HomeViewController.m */,
 				D9C2141623E81C6A00AA2A72 /* InitializingViewController.h */,
@@ -149,6 +162,10 @@
 				D9A6AC8923E8198F0053806B /* main.m */,
 				6003F595195388D20070C39A /* Info.plist */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				B7C2EB6F257F2380001D7752 /* myfiziq-turnkey-example.strings */,
+				B7C2EB68257F21FF001D7752 /* myfiziq-turnkey-example-style-variables.css */,
+				B7C2EB72257F23CD001D7752 /* myfiziq-turnkey-example-layouts.css */,
+				B7C2EB76257F23DE001D7752 /* myfiziq-turnkey-example-classes.css */,
 			);
 			name = "Example for MyFiziqTurnkey";
 			path = MyFiziqTurnkey;
@@ -256,7 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				B7C2EB73257F23CD001D7752 /* myfiziq-turnkey-example-layouts.css in Resources */,
 				D9A6AC8823E8196C0053806B /* LaunchScreen.storyboard in Resources */,
+				B7C2EB69257F21FF001D7752 /* myfiziq-turnkey-example-style-variables.css in Resources */,
+				B7C2EB77257F23DE001D7752 /* myfiziq-turnkey-example-classes.css in Resources */,
+				B7C2EB70257F2380001D7752 /* myfiziq-turnkey-example.strings in Resources */,
 				D9A6AC8423E819660053806B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +374,7 @@
 			files = (
 				D9C2141E23E81C6A00AA2A72 /* UserLoginViewController.m in Sources */,
 				289CDD512451879A00A85391 /* SettingsTableViewCell.m in Sources */,
+				B7C2EB6D257F22DB001D7752 /* MYQTKExampleCommon.m in Sources */,
 				D9A6AC8523E819660053806B /* AppDelegate.m in Sources */,
 				D9C2141923E81C6A00AA2A72 /* UserRegisterViewController.m in Sources */,
 				D9C2141823E81C6A00AA2A72 /* UserPasswordSendResetViewController.m in Sources */,
