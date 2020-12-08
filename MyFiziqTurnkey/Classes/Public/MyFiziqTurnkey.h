@@ -59,7 +59,7 @@
     @param success The callback code block that will be invoked asynchronously if and when the `MyFiziq` service is setup
     successfully.
     @param failure The callback code block that will be invoked asynchronously if and when the `MyFiziq` service setup has
-    failed.
+    @param authenticated The callback that returns whether the user session was successfully authenticated or whether it failed with an error. An error does not always mean failure to reauthenticate so be aware of this.
  */
 - (void)setupWithConfig:(NSDictionary * _Nonnull)conf
                 success:(void (^ _Nullable)())success
