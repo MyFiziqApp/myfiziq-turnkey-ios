@@ -32,4 +32,13 @@
     }
 }
 
+#pragma mark - Public Methods
+
+- (void)setInteractionEnabled:(BOOL)isEnabled {
+    NSArray <UITabBarItem *> *tabItems = [self.tabBar items];
+    for (UITabBarItem *tabItem in tabItems) {
+        [tabItem setEnabled:isEnabled];
+    }
+}
+
 @end

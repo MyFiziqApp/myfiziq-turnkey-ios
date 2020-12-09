@@ -23,6 +23,7 @@
 #import "MYQTKSubViewHome.h"
 #import "MYQTKNavigationBarConstants.h"
 #import "MYQTKNew.h"
+#import "MYQTKTabBarController.h"
 #import "MyFiziqTurnkey.h"
 
 // NOTE: Create the layout using PureLayout, not storyboards
@@ -95,6 +96,7 @@
         self.trackingView.hidden = YES;
         self.optionsButton.hidden = YES;
     }
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -141,6 +143,7 @@
     MYQTKSubViewHome *homeVC = [[MYQTKSubViewHome alloc] init];
     homeVC.delegate = self;
     [self.navigationController showViewController:homeVC sender:self];
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:NO];
     [homeVC setSelectedAvatar:selectedAvatar];
     [self.trackingView toggleAvatarOptions];
 }
