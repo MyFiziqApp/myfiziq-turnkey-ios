@@ -153,7 +153,10 @@
             fromTrackingViewController:(MyFiziqTrackSDKTrackingView *_Nonnull)trackViewController {
     MYQTKMyScans *scansView = [[MYQTKMyScans alloc] init];
     scansView.delegate = self;
-    [self.navigationController showViewController:scansView sender:self];
+    [scansView setModalInPresentation:YES];
+    [self.navigationController presentViewController:scansView animated:YES completion:^{
+        [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:NO];
+    }];
     [self.trackingView toggleAvatarOptions];
 }
 
@@ -170,7 +173,8 @@
 #pragma mark - MYQTKMyScansDelegate
 
 - (void)didSelectAvatar:(MyFiziqAvatar *)avatar fromMyScansViewController:(MYQTKMyScans *)scansVC {
-    [scansVC.navigationController popViewControllerAnimated:YES];
+    [scansVC dismissViewControllerAnimated:YES completion:nil];
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:YES];
     [self.trackingView setAvatarWithSelectedAvatar:avatar forMeasurementType:self.myfiziq.user.measurementPreference];
 }
 
