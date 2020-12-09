@@ -66,7 +66,7 @@
     [[MyFiziqTurnkeyCommon shared] setResourceBundle:bundle];
 }
 
-- (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nonnull error))authenticated {
+- (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nullable error))authenticated {
     // Call MyFiziq setup (via Login SDK helper).
     self.setupSuccess = success;
     self.setupFailed = failure;

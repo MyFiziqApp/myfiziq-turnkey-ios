@@ -40,6 +40,8 @@
     // Setup the app with credentials
     [[MyFiziqTurnkey shared] setupWithConfig:credentials success:^{
         NSLog(@"MyFiziq SDK setup completed successfully.");
+        // Load Style overrides
+        [MYQTKExampleCommon shared];
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"MyFiziq SDK setup failed with error: %@.", error);
     } reauthenticated:^(BOOL reauthenticated, NSError * _Nonnull error) {
@@ -53,8 +55,6 @@
             [[IdentityProviderHelper shared] myfiziqTurnkeyAuth];
         }
     }];
-//    // Initialise the common class
-//    [MYQTKExampleCommon shared];
     return YES;
 }
 
