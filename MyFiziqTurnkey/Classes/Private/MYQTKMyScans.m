@@ -123,14 +123,14 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self checkAvatarsCount];
                 if (completion) {
-                    completion(@[], nil);
+                    completion([[[MyFiziqSDKCoreLite shared] avatars] all], nil);
                 }
             }];
         } failure:^(NSError * _Nullable error) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self checkAvatarsCount];
                 if (completion) {
-                    completion(@[], error);
+                    completion([[[MyFiziqSDKCoreLite shared] avatars] all], nil);
                 }
             }];
         }];
