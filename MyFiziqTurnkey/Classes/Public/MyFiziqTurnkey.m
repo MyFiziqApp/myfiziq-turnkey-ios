@@ -183,6 +183,8 @@
         return;
     }
     [MyFiziqSDKCoreLite shared].user.gender = gender;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
 }
 
 - (void)setUserWeight:(float)weight forType:(MFZMeasurement)unit {
@@ -193,10 +195,13 @@
     if (unit == MFZMeasurementMetric) {
         [MyFiziqSDKCoreLite shared].user.weightInKg = weight;
         return;
+    } else {
+        // Need to convert lbs to kgs
+        NSMeasurement<NSUnitMass *> *pounds = [[NSMeasurement alloc] initWithDoubleValue:weight unit:NSUnitMass.poundsMass];
+        [MyFiziqSDKCoreLite shared].user.weightInKg = [pounds measurementByConvertingToUnit:NSUnitMass.kilograms].doubleValue;
     }
-    // Need to convert lbs to kgs
-    NSMeasurement<NSUnitMass *> *pounds = [[NSMeasurement alloc] initWithDoubleValue:weight unit:NSUnitMass.poundsMass];
-    [MyFiziqSDKCoreLite shared].user.weightInKg = [pounds measurementByConvertingToUnit:NSUnitMass.kilograms].doubleValue;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
 }
 
 - (void)setUserHeight:(float)height forType:(MFZMeasurement)unit {
@@ -207,10 +212,13 @@
     if (unit == MFZMeasurementMetric) {
         [MyFiziqSDKCoreLite shared].user.heightInCm = height;
         return;
+    } else {
+        // Need to convert inches to cms
+        NSMeasurement<NSUnitLength *> *inches = [[NSMeasurement alloc] initWithDoubleValue:height unit:NSUnitLength.inches];
+        [MyFiziqSDKCoreLite shared].user.heightInCm = [inches measurementByConvertingToUnit:NSUnitLength.centimeters].doubleValue;
     }
-    // Need to convert inches to cms
-    NSMeasurement<NSUnitLength *> *inches = [[NSMeasurement alloc] initWithDoubleValue:height unit:NSUnitLength.inches];
-    [MyFiziqSDKCoreLite shared].user.heightInCm = [inches measurementByConvertingToUnit:NSUnitLength.centimeters].doubleValue;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
 }
 
 - (void)setUserUseMetric:(BOOL)metric {
@@ -219,6 +227,15 @@
         return;
     }
     [MyFiziqSDKCoreLite shared].user.measurementPreference = metric ? MFZMeasurementMetric : MFZMeasurementImperial;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
+}
+
+- (void)updateUserDetails {
+    [[MyFiziqSDKCoreLite shared].user updateDetailsWithCompletion:^(NSError * _Nullable err) {
+        MFZMeasurement pref = [MyFiziqSDKCoreLite shared].user.measurementPreference;
+        MFZLog(MFZLogLevelInfo, @"Updated user details.");
+    }];
 }
 
 #pragma mark - Platform Card View Requirements

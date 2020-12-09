@@ -88,7 +88,7 @@
     if ([self.myfiziq.avatars.all count] > 1) {
         self.myqNoAvatarsTrackView.hidden = YES;
         self.trackingView.hidden = NO;
-        [self.trackingView setTrackViewMeasurementType:[MyFiziqSDKCoreLite shared].user.measurementPreference];
+        [self.trackingView setTrackViewMeasurementType:self.myfiziq.user.measurementPreference];
         [self.trackingView setTrackAvatars:self.myfiziq.avatars.all];
         self.optionsButton.hidden = NO;
     } else {
