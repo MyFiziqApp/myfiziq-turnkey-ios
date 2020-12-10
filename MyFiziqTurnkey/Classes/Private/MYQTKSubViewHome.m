@@ -67,7 +67,14 @@
 #pragma mark - Life Cycle
 
 - (void)viewDidAppear:(BOOL)animated {
-    _trashButton.hidden = NO;
+    if (self.navigationController) {
+        // Make sure trash icon is sub-view, as may have been removed
+        if (![self.navigationController.navigationBar.subviews containsObject:self.trashButton]) {
+            [self.navigationController.navigationBar addSubview:self.trashButton];
+            [self setTrashButtonConstraints];
+        }
+        self.trashButton.hidden = NO;
+    }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.myqHomeView setWithAvatar:self.myqSelectedAvatar andUnitPreference:[[MyFiziqSDKCoreLite shared] user].measurementPreference];
     });
@@ -98,11 +105,15 @@
     [self.myqHomeView autoPinEdgeToSuperviewSafeArea:ALEdgeTop];
     [self.myqSpinnerView autoPinEdgesToSuperviewEdges];
     if (self.navigationController) {
-        [self.trashButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:self.navBarIconHelper.imageRightMargin];
-        [self.trashButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:self.navBarIconHelper.imageBottomMarginForLargeState];
-        [self.trashButton autoSetDimension:ALDimensionHeight toSize:self.navBarIconHelper.imageSizeForLargeState];
-        [self.trashButton autoSetDimension:ALDimensionWidth toSize:self.navBarIconHelper.imageSizeForLargeState];
+        [self setTrashButtonConstraints];
     }
+}
+
+- (void)setTrashButtonConstraints {
+    [self.trashButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:self.navBarIconHelper.imageRightMargin];
+    [self.trashButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:self.navBarIconHelper.imageBottomMarginForLargeState];
+    [self.trashButton autoSetDimension:ALDimensionHeight toSize:self.navBarIconHelper.imageSizeForLargeState];
+    [self.trashButton autoSetDimension:ALDimensionWidth toSize:self.navBarIconHelper.imageSizeForLargeState];
 }
 
 - (void)viewDidLayoutSubviews {
