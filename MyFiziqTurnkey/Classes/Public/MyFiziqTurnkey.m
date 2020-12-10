@@ -157,7 +157,9 @@
     if (!isLoggedIn) {
         return;
     }
-    [self setTabControllers];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+    }];
 }
 
 - (void)myfiziqSetupFailedWithError:(NSError *)error {
@@ -241,41 +243,51 @@
 #pragma mark - Platform Card View Requirements
 
 - (void)setTabControllers {
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        int availableInterfaceStyle = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkSupportedUserInterfaceStyle") intValue];
-        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:@"MyFiziqDarkModeActive"];
-        if ((availableInterfaceStyle == 0 && [[UIScreen mainScreen] traitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) || availableInterfaceStyle == 2) {
-            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"MyFiziqDarkModeActive"];
-        }
-        NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
-        NSMutableArray *viewControllerNavigationArray = [[NSMutableArray alloc] init];
-        NSArray *vcTabBarImageArray = @[
-            MFZImage(MyFiziqTurnkeyCommon, @"icon-home"),
-            MFZImage(MyFiziqTurnkeyCommon, @"icon-new"),
-            MFZImage(MyFiziqTurnkeyCommon, @"icon-track")
-        ];
-        NSArray *titleArray = @[MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_HOME", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_NEW", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_TRACK", @"")];
-        for (int i = 0; i < [vcTabBarImageArray count]; i++) {
-            UIViewController *viewController = [viewControllersArray objectAtIndex:i];
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewControllersArray[i]];
-            [viewControllerNavigationArray addObject:navigationController];
-            viewController.tabBarItem.image = vcTabBarImageArray[i];
-            viewController.tabBarItem.title = titleArray[i];
-        }
-        self.tabBarController.viewControllers = viewControllerNavigationArray;
-    }];
+    if (self.tabBarController && [self.tabBarController.tabBar.items count] > 0) {
+        return;
+    }
+    int availableInterfaceStyle = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkSupportedUserInterfaceStyle") intValue];
+    [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:@"MyFiziqDarkModeActive"];
+    if ((availableInterfaceStyle == 0 && [[UIScreen mainScreen] traitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) || availableInterfaceStyle == 2) {
+        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"MyFiziqDarkModeActive"];
+    }
+    NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
+    NSMutableArray *viewControllerNavigationArray = [[NSMutableArray alloc] init];
+    NSArray *vcTabBarImageArray = @[
+        MFZImage(MyFiziqTurnkeyCommon, @"icon-home"),
+        MFZImage(MyFiziqTurnkeyCommon, @"icon-new"),
+        MFZImage(MyFiziqTurnkeyCommon, @"icon-track")
+    ];
+    NSArray *titleArray = @[MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_HOME", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_NEW", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_TRACK", @"")];
+    for (int i = 0; i < [vcTabBarImageArray count]; i++) {
+        UIViewController *viewController = [viewControllersArray objectAtIndex:i];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewControllersArray[i]];
+        [viewControllerNavigationArray addObject:navigationController];
+        viewController.tabBarItem.image = vcTabBarImageArray[i];
+        viewController.tabBarItem.title = titleArray[i];
+    }
+    self.tabBarController.viewControllers = viewControllerNavigationArray;
 }
 
 - (void)showMyScans:(BOOL)showTabBar {
-    [MYQTKBaseView actionShowAll:showTabBar];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+        [MYQTKBaseView actionShowAll:showTabBar];
+    }];
 }
 
 - (void)showTrack:(BOOL)showTabBar {
-    [MYQTKBaseView actionShowTrack:showTabBar];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+        [MYQTKBaseView actionShowTrack:showTabBar];
+    }];
 }
 
 - (void)showNew:(BOOL)showTabBar {
-    [MYQTKBaseView actionShowNew:showTabBar];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+        [MYQTKBaseView actionShowNew:showTabBar];
+    }];
 }
 
 - (NSDictionary<NSString *, NSNumber *> *)getLatestResultForType:(MFZMeasurement)type {
