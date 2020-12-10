@@ -55,14 +55,31 @@
         self.navigationController.navigationBar.barTintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"myqtkNavigationBarBackgroundColor");
         self.navigationController.navigationBar.translucent = NO;
         self.navigationController.navigationBar.prefersLargeTitles = YES;
-        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_CLOSE", @"Close")
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(backButtonAction:)];
-        [buttonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonFont"),
-                                            NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorFeature"),
-                                            NSForegroundColorAttributeName, nil]
-                                  forState:UIControlStateNormal];
+        UIBarButtonItem *buttonItem;
+        BOOL useCustomImage = [MFZStyleVarBool(MyFiziqTurnkeyCommon, @"myqtkUseCustomeBackImage") boolValue];
+        BOOL useDefaultChevron = [MFZStyleVarBool(MyFiziqTurnkeyCommon, @"myqtkUseDefaultNavigationBackChevron") boolValue];
+        if (useCustomImage) {
+            UIImage *customImage = MFZImage(MyFiziqTurnkeyCommon, @"mfztk-back-button-image");
+            buttonItem = [[UIBarButtonItem alloc] initWithImage:customImage
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(backButtonAction:)];
+        } else if (useDefaultChevron) {
+            buttonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage systemImageNamed:@"chevron.left"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(backButtonAction:)];
+            buttonItem.tintColor = MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorFeature");
+        } else {
+            buttonItem = [[UIBarButtonItem alloc] initWithTitle:MFZString(MyFiziqTurnkeyCommon, @"MYQTK_CLOSE", @"Close")
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(backButtonAction:)];
+            [buttonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:MFZStyleVarFont(MyFiziqTurnkeyCommon, @"myqtkNavigationBarButtonFont"),
+                                                NSFontAttributeName, MFZStyleVarColor(MyFiziqTurnkeyCommon, @"mfzCommonSDKColorFeature"),
+                                                NSForegroundColorAttributeName, nil]
+                                      forState:UIControlStateNormal];
+        }
         self.navigationItem.leftBarButtonItem = buttonItem;
         // TAB BAR STYLING
         UITabBarAppearance *tabAppearance = [[UITabBarAppearance alloc] init];
