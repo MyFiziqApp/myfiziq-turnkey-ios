@@ -125,11 +125,18 @@
 }
 
 - (void)didCompleteAvatarProcessSuccessfully:(BOOL)success {
-    if (success) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self dismissViewControllerAnimated:NO completion:nil];
-        }];
+    if (!success) {
+        return;
     }
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        // If Tab bar not showing - return to App screen.
+        if ([MyFiziqTurnkey shared].tabBarController.tabBar.hidden) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+            return;
+        }
+        // Tab Bar is showing, so go to Turnkey My Scans screen.
+        [[MyFiziqTurnkey shared].tabBarController setSelectedIndex:0];
+    }];
 }
 
 @end
