@@ -66,7 +66,7 @@
     [[MyFiziqTurnkeyCommon shared] setResourceBundle:bundle];
 }
 
-- (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nonnull error))authenticated {
+- (void)setupWithConfig:(NSDictionary<NSString *, NSString *> *)conf success:(void (^)())success failure:(void (^)(NSError * _Nonnull err))failure reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nullable error))authenticated {
     // Call MyFiziq setup (via Login SDK helper).
     self.setupSuccess = success;
     self.setupFailed = failure;
@@ -157,7 +157,9 @@
     if (!isLoggedIn) {
         return;
     }
-    [self setTabControllers];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+    }];
 }
 
 - (void)myfiziqSetupFailedWithError:(NSError *)error {
@@ -183,6 +185,8 @@
         return;
     }
     [MyFiziqSDKCoreLite shared].user.gender = gender;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
 }
 
 - (void)setUserWeight:(float)weight forType:(MFZMeasurement)unit {
@@ -193,10 +197,13 @@
     if (unit == MFZMeasurementMetric) {
         [MyFiziqSDKCoreLite shared].user.weightInKg = weight;
         return;
+    } else {
+        // Need to convert lbs to kgs
+        NSMeasurement<NSUnitMass *> *pounds = [[NSMeasurement alloc] initWithDoubleValue:weight unit:NSUnitMass.poundsMass];
+        [MyFiziqSDKCoreLite shared].user.weightInKg = [pounds measurementByConvertingToUnit:NSUnitMass.kilograms].doubleValue;
     }
-    // Need to convert lbs to kgs
-    NSMeasurement<NSUnitMass *> *pounds = [[NSMeasurement alloc] initWithDoubleValue:weight unit:NSUnitMass.poundsMass];
-    [MyFiziqSDKCoreLite shared].user.weightInKg = [pounds measurementByConvertingToUnit:NSUnitMass.kilograms].doubleValue;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
 }
 
 - (void)setUserHeight:(float)height forType:(MFZMeasurement)unit {
@@ -207,10 +214,13 @@
     if (unit == MFZMeasurementMetric) {
         [MyFiziqSDKCoreLite shared].user.heightInCm = height;
         return;
+    } else {
+        // Need to convert inches to cms
+        NSMeasurement<NSUnitLength *> *inches = [[NSMeasurement alloc] initWithDoubleValue:height unit:NSUnitLength.inches];
+        [MyFiziqSDKCoreLite shared].user.heightInCm = [inches measurementByConvertingToUnit:NSUnitLength.centimeters].doubleValue;
     }
-    // Need to convert inches to cms
-    NSMeasurement<NSUnitLength *> *inches = [[NSMeasurement alloc] initWithDoubleValue:height unit:NSUnitLength.inches];
-    [MyFiziqSDKCoreLite shared].user.heightInCm = [inches measurementByConvertingToUnit:NSUnitLength.centimeters].doubleValue;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
 }
 
 - (void)setUserUseMetric:(BOOL)metric {
@@ -219,46 +229,65 @@
         return;
     }
     [MyFiziqSDKCoreLite shared].user.measurementPreference = metric ? MFZMeasurementMetric : MFZMeasurementImperial;
+    // Need to ensure user info is updated while in active session.
+    [self updateUserDetails];
+}
+
+- (void)updateUserDetails {
+    [[MyFiziqSDKCoreLite shared].user updateDetailsWithCompletion:^(NSError * _Nullable err) {
+        MFZMeasurement pref = [MyFiziqSDKCoreLite shared].user.measurementPreference;
+        MFZLog(MFZLogLevelInfo, @"Updated user details.");
+    }];
 }
 
 #pragma mark - Platform Card View Requirements
 
 - (void)setTabControllers {
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        int availableInterfaceStyle = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkSupportedUserInterfaceStyle") intValue];
-        [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:@"MyFiziqDarkModeActive"];
-        if ((availableInterfaceStyle == 0 && [[UIScreen mainScreen] traitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) || availableInterfaceStyle == 2) {
-            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"MyFiziqDarkModeActive"];
-        }
-        NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
-        NSMutableArray *viewControllerNavigationArray = [[NSMutableArray alloc] init];
-        NSArray *vcTabBarImageArray = @[
-            MFZImage(MyFiziqTurnkeyCommon, @"icon-home"),
-            MFZImage(MyFiziqTurnkeyCommon, @"icon-new"),
-            MFZImage(MyFiziqTurnkeyCommon, @"icon-track")
-        ];
-        NSArray *titleArray = @[MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_HOME", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_NEW", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_TRACK", @"")];
-        for (int i = 0; i < [vcTabBarImageArray count]; i++) {
-            UIViewController *viewController = [viewControllersArray objectAtIndex:i];
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewControllersArray[i]];
-            [viewControllerNavigationArray addObject:navigationController];
-            viewController.tabBarItem.image = vcTabBarImageArray[i];
-            viewController.tabBarItem.title = titleArray[i];
-        }
-        self.tabBarController.viewControllers = viewControllerNavigationArray;
-    }];
+    if (self.tabBarController && [self.tabBarController.tabBar.items count] > 0) {
+        return;
+    }
+    int availableInterfaceStyle = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkSupportedUserInterfaceStyle") intValue];
+    [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:@"MyFiziqDarkModeActive"];
+    if ((availableInterfaceStyle == 0 && [[UIScreen mainScreen] traitCollection].userInterfaceStyle == UIUserInterfaceStyleDark) || availableInterfaceStyle == 2) {
+        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"MyFiziqDarkModeActive"];
+    }
+    NSArray *viewControllersArray = @[[[MYQTKMyScans alloc] init], [[MYQTKNew alloc] init], [[MYQTKTrack alloc] init]];
+    NSMutableArray *viewControllerNavigationArray = [[NSMutableArray alloc] init];
+    NSArray *vcTabBarImageArray = @[
+        MFZImage(MyFiziqTurnkeyCommon, @"icon-home"),
+        MFZImage(MyFiziqTurnkeyCommon, @"icon-new"),
+        MFZImage(MyFiziqTurnkeyCommon, @"icon-track")
+    ];
+    NSArray *titleArray = @[MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_HOME", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_NEW", @""), MFZString(MyFiziqTurnkeyCommon, @"MFZ_SDK_TAB_TRACK", @"")];
+    for (int i = 0; i < [vcTabBarImageArray count]; i++) {
+        UIViewController *viewController = [viewControllersArray objectAtIndex:i];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewControllersArray[i]];
+        [viewControllerNavigationArray addObject:navigationController];
+        viewController.tabBarItem.image = vcTabBarImageArray[i];
+        viewController.tabBarItem.title = titleArray[i];
+    }
+    self.tabBarController.viewControllers = viewControllerNavigationArray;
 }
 
 - (void)showMyScans:(BOOL)showTabBar {
-    [MYQTKBaseView actionShowAll:showTabBar];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+        [MYQTKBaseView actionShowAll:showTabBar];
+    }];
 }
 
 - (void)showTrack:(BOOL)showTabBar {
-    [MYQTKBaseView actionShowTrack:showTabBar];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+        [MYQTKBaseView actionShowTrack:showTabBar];
+    }];
 }
 
 - (void)showNew:(BOOL)showTabBar {
-    [MYQTKBaseView actionShowNew:showTabBar];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setTabControllers];
+        [MYQTKBaseView actionShowNew:showTabBar];
+    }];
 }
 
 - (NSDictionary<NSString *, NSNumber *> *)getLatestResultForType:(MFZMeasurement)type {

@@ -23,6 +23,7 @@
 #import "MYQTKSubViewHome.h"
 #import "MYQTKNavigationBarConstants.h"
 #import "MYQTKNew.h"
+#import "MYQTKTabBarController.h"
 #import "MyFiziqTurnkey.h"
 
 // NOTE: Create the layout using PureLayout, not storyboards
@@ -87,7 +88,7 @@
     if ([self.myfiziq.avatars.all count] > 1) {
         self.myqNoAvatarsTrackView.hidden = YES;
         self.trackingView.hidden = NO;
-        [self.trackingView setTrackViewMeasurementType:[MyFiziqSDKCoreLite shared].user.measurementPreference];
+        [self.trackingView setTrackViewMeasurementType:self.myfiziq.user.measurementPreference];
         [self.trackingView setTrackAvatars:self.myfiziq.avatars.all];
         self.optionsButton.hidden = NO;
     } else {
@@ -95,6 +96,7 @@
         self.trackingView.hidden = YES;
         self.optionsButton.hidden = YES;
     }
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -141,6 +143,7 @@
     MYQTKSubViewHome *homeVC = [[MYQTKSubViewHome alloc] init];
     homeVC.delegate = self;
     [self.navigationController showViewController:homeVC sender:self];
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:NO];
     [homeVC setSelectedAvatar:selectedAvatar];
     [self.trackingView toggleAvatarOptions];
 }
@@ -150,7 +153,10 @@
             fromTrackingViewController:(MyFiziqTrackSDKTrackingView *_Nonnull)trackViewController {
     MYQTKMyScans *scansView = [[MYQTKMyScans alloc] init];
     scansView.delegate = self;
-    [self.navigationController showViewController:scansView sender:self];
+    [scansView setModalInPresentation:YES];
+    [self.navigationController presentViewController:scansView animated:YES completion:^{
+        [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:NO];
+    }];
     [self.trackingView toggleAvatarOptions];
 }
 
@@ -167,7 +173,8 @@
 #pragma mark - MYQTKMyScansDelegate
 
 - (void)didSelectAvatar:(MyFiziqAvatar *)avatar fromMyScansViewController:(MYQTKMyScans *)scansVC {
-    [scansVC.navigationController popViewControllerAnimated:YES];
+    [scansVC dismissViewControllerAnimated:YES completion:nil];
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:YES];
     [self.trackingView setAvatarWithSelectedAvatar:avatar forMeasurementType:self.myfiziq.user.measurementPreference];
 }
 

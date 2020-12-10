@@ -27,6 +27,12 @@
  2 = dark only
  */
 @myqtkSupportedUserInterfaceStyle: 0;
+/*  If @myqtkUseDefaultNavigationBackChevron and @myqtkUseCustomeBackImage are both set to "NO" then text will be used.
+    If @myqtkUseCustomeBackImage is YES it overrides the text and @myqtkUseDefaultNavigationBackChevron.
+    Ensure you name your custom image "mfztk-back-button-image". For best size, ensure you provide an image of 21px high.
+ */
+@myqtkUseDefaultNavigationBackChevron: YES;
+@myqtkUseCustomeBackImage: NO;
 /*******************************************************/
 /* SDK STYLE OVERRIDES                                 */
 /*******************************************************/

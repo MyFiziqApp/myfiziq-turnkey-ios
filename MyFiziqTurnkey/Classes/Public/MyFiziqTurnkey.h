@@ -64,7 +64,7 @@
 - (void)setupWithConfig:(NSDictionary * _Nonnull)conf
                 success:(void (^ _Nullable)())success
                 failure:(void (^ _Nullable)(NSError * _Nonnull error))failure
-        reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nonnull error))authenticated;
+        reauthenticated:(void (^ _Nullable)(BOOL reauthenticated, NSError * _Nullable error))authenticated;
 /** Custom user authentication is for integration to environments that don't provide an AWS Cognito compatible idP such
     as Open ID Connect, SAML, or OAuth. This basically authorises a user using a set of user claims, by either logging
     in the user (if already exists), or registering the user first and then logging the user in. A user logout call will be

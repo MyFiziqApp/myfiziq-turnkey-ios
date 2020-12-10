@@ -21,6 +21,7 @@
 #import "MYQTKNoAvatarsView.h"
 #import "MYQTKSubViewHome.h"
 #import "MYQTKNew.h"
+#import "MYQTKTabBarController.h"
 #import "MyFiziqTurnkey.h"
 
 // NOTE: Create the layout using PureLayout, not storyboards
@@ -85,6 +86,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self checkAvatarsCount];
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:YES];
 }
 
 #pragma mark - Private Methods
@@ -121,7 +123,7 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self checkAvatarsCount];
                 if (completion) {
-                    completion(@[], nil);
+                    completion([[[MyFiziqSDKCoreLite shared] avatars] all], nil);
                 }
             }];
         } failure:^(NSError * _Nullable error) {
@@ -151,6 +153,7 @@
     }
     MYQTKSubViewHome *homeVC = [[MYQTKSubViewHome alloc] init];
     [self.navigationController showViewController:homeVC sender:self];
+    [(MYQTKTabBarController *)self.tabBarController setInteractionEnabled:NO];
     [homeVC setSelectedAvatar:selectedAvatar];
 }
  

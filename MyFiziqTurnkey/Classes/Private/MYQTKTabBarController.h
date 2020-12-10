@@ -18,5 +18,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MYQTKTabBarController : UITabBarController
-
+- (void)setInteractionEnabled:(BOOL)isEnabled;
 @end
