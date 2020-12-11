@@ -23,6 +23,8 @@
 
 @myqtkShowTabBarNames: false;
 
+@myqtkMyScansRefreshPollWaitTimeSeconds: 10.0;
+
 /*******************************************************/
 /* SDK STYLE OVERRIDES                                 */
 /*******************************************************/

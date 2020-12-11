@@ -33,6 +33,7 @@
 @property (assign, nonatomic) NSUInteger currentAvatarsCount;
 @property (strong, nonatomic) MyFiziqCommonGalleryCardView *myqCardGalleryView;
 @property (strong, nonatomic) MYQTKNoAvatarsView *myqNoAvatarsTrackView;
+@property (nonatomic, strong) NSTimer *pollingTimer;
 @end
 
 @implementation MYQTKMyScans
@@ -86,6 +87,30 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self checkAvatarsCount];
+    // Poll for new results
+    if (!self.pollingTimer) {
+        NSTimeInterval pollDelay = [MFZStyleVarNumber(MyFiziqTurnkeyCommon, @"myqtkMyScansRefreshPollWaitTimeSeconds") doubleValue];
+        self.pollingTimer = [NSTimer scheduledTimerWithTimeInterval:pollDelay repeats:YES block:^(NSTimer * _Nonnull timer) {
+            // NOTE: Poll the server for state changes.
+            [self didPullCardViewGalleryRefreshwithCompletion:nil];
+        }];
+    }
+    // Subscribe to result update events
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshRequested:)
+                                                 name:MFZCommonGalleryCardRequestRefresh
+                                               object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    // Stop polling
+    if (self.pollingTimer) {
+        [self.pollingTimer invalidate];
+        self.pollingTimer = nil;
+    }
+    // Un-subscribe
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Private Methods
@@ -99,6 +124,15 @@
         [self didPullCardViewGalleryRefreshwithCompletion:nil];
     }
     [self.myqCardGalleryView updateAvatarModels:[[MyFiziqSDKCoreLite shared].avatars all] measurementPreference:[MyFiziqSDKCoreLite shared].user.measurementPreference];
+}
+
+- (void)refreshRequested:(NSNotification *)notification {
+    MFZLog(MFZLogLevelInfo, @"Scan results updated externally, refreshing view...");
+    // NOTE: Cannot garuntee success will occur on main thread. So issue to main thread queue.
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // NOTE: Poll the server for state changes.
+        [self didPullCardViewGalleryRefreshwithCompletion:nil];
+    });
 }
 
 #pragma mark - Actions
