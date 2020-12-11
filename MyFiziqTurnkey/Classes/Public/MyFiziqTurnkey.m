@@ -225,6 +225,8 @@
             viewController.tabBarItem.title = titleArray[i];
         }
         self.tabBarController.viewControllers = viewControllerNavigationArray;
+        // Hard coded value as LTS 19.1.* does not support dark mode.
+        [self.tabBarController setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
     }];
 }
 
