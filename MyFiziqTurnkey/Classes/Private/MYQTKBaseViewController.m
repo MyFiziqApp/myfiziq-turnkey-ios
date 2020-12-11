@@ -32,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Hard coded value as LTS 19.1.* does not support dark mode. 
+    [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
     if (self.view.subviews.count == 0 && [self respondsToSelector:@selector(commonInit)]) {
         [self performSelector:@selector(commonInit)];
     }
