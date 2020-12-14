@@ -1,6 +1,6 @@
 
 /* Navigation Bar Styling */
-@myqtkNavBarImageSizeForLargeState: 40.0;
+@myqtkNavBarImageSizeForLargeState: 34.0;
 @myqtkNavBarImageSizeForLargeState-iPhone-SE: 30.0;
 @myqtkNavBarImageSizeForLargeState-iPhone-5s: 30.0;
 @myqtkNavBarImageRightMargin: 16.0;
@@ -10,7 +10,7 @@
 @myqtkNavBarImageBottomMarginForLargeState-iPhone-SE: 10.0;
 @myqtkNavBarImageBottomMarginForLargeState-iPhone-5s: 10.0;
 @myqtkNavBarImageBottomMarginForSmallState: 6.0;
-@myqtkNavBarImageSizeForSmallState: 32.0;
+@myqtkNavBarImageSizeForSmallState: 26.0;
 @myqtkNavBarHeightSmallState: 44.0;
 @myqtknavBarHeightLargeState: 96.5;
 @myqtkNoAccessViewTitleViewTop: 120;

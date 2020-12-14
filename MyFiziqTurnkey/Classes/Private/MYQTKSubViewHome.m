@@ -18,6 +18,7 @@
 #import "MYQTKSubViewHome.h"
 #import <MyFiziqSDKProfileView/MyFiziqProfileHomeView.h>
 #import <PureLayout/PureLayout.h>
+#import <MyFiziqSDKSupport/MyFiziqSupportSDK.h>
 #import "MYQTKNavigationBarConstants.h"
 #import "MyFiziqTurnkey.h"
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) MyFiziqAvatar *myqSelectedAvatar;
 @property (strong, nonatomic) MYQTKNavigationBarConstants *navBarIconHelper;
 @property (strong, nonatomic) UIButton *trashButton;
+@property (strong, nonatomic) UIButton *supportButton;
 @end
 
 @implementation MYQTKSubViewHome
@@ -57,11 +59,26 @@
         UIImageView *imageView = [[UIImageView alloc] initWithImage:MFZImage(MyFiziqTurnkeyCommon, @"mfz-icon-trash")];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_trashButton addSubview:imageView];
+        [imageView autoPinEdgesToSuperviewEdges];
         [_trashButton addTarget:self action:@selector(didTapTrashButton:) forControlEvents:UIControlEventTouchUpInside];
         _trashButton.clipsToBounds = YES;
         _trashButton.hidden = YES;
     }
     return _trashButton;
+}
+
+- (UIButton *)supportButton {
+    if (!_supportButton) {
+        _supportButton = [[UIButton alloc] init];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:MFZImage(MyFiziqTurnkeyCommon, @"mfz-app-feedback-icon")];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_supportButton addSubview:imageView];
+        [imageView autoPinEdgesToSuperviewEdges];
+        [_supportButton addTarget:self action:@selector(didTapSupportButton:) forControlEvents:UIControlEventTouchUpInside];
+        _supportButton.clipsToBounds = YES;
+        _supportButton.hidden = YES;
+    }
+    return _supportButton;
 }
 
 #pragma mark - Life Cycle
@@ -73,7 +90,14 @@
             [self.navigationController.navigationBar addSubview:self.trashButton];
             [self setTrashButtonConstraints];
         }
+        if ([MyFiziqSDKCoreLite shared].supportDelegate) {
+            if (![self.navigationController.navigationBar.subviews containsObject:self.supportButton]) {
+                [self.navigationController.navigationBar addSubview:self.supportButton];
+                [self setSupportButtonConstraints];
+            }
+        }
         self.trashButton.hidden = NO;
+        self.supportButton.hidden = ![MyFiziqSDKCoreLite shared].supportDelegate;
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.myqHomeView setWithAvatar:self.myqSelectedAvatar andUnitPreference:[[MyFiziqSDKCoreLite shared] user].measurementPreference];
@@ -86,14 +110,12 @@
     [self.myqHomeView setWithDefaults];
     [self.view addSubview:self.myqSpinnerView];
     self.navBarIconHelper = [MYQTKNavigationBarConstants new];
-    if (self.navigationController) {
-        [self.navigationController.navigationBar addSubview:self.trashButton];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.trashButton removeFromSuperview];
+    [self.supportButton removeFromSuperview];
 }
 
 #pragma mark - View Layouts
@@ -104,9 +126,6 @@
     [self.myqHomeView autoPinEdgeToSuperviewEdge:ALEdgeRight];
     [self.myqHomeView autoPinEdgeToSuperviewSafeArea:ALEdgeTop];
     [self.myqSpinnerView autoPinEdgesToSuperviewEdges];
-    if (self.navigationController) {
-        [self setTrashButtonConstraints];
-    }
 }
 
 - (void)setTrashButtonConstraints {
@@ -114,6 +133,17 @@
     [self.trashButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:self.navBarIconHelper.imageBottomMarginForLargeState];
     [self.trashButton autoSetDimension:ALDimensionHeight toSize:self.navBarIconHelper.imageSizeForLargeState];
     [self.trashButton autoSetDimension:ALDimensionWidth toSize:self.navBarIconHelper.imageSizeForLargeState];
+}
+
+- (void)setSupportButtonConstraints {
+    if (!self.trashButton.superview) {
+        MFZLog(MFZLogLevelWarn, @"Trash Button has not been added to the view. Cannot install constraints to support button.");
+        return;
+    }
+    [self.supportButton autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:self.trashButton withOffset:-6.0];
+    [self.supportButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:self.navBarIconHelper.imageBottomMarginForLargeState];
+    [self.supportButton autoSetDimension:ALDimensionHeight toSize:self.navBarIconHelper.imageSizeForLargeState];
+    [self.supportButton autoSetDimension:ALDimensionWidth toSize:self.navBarIconHelper.imageSizeForLargeState];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -135,6 +165,29 @@
     [alertView addAction:deleteAction];
     [alertView addAction:cancelAction];
     [alertView showWithOverlay:YES];
+}
+
+- (IBAction)didTapSupportButton:(id)sender {
+    MyFiziqSupportSDK *supportSDK;
+    MyFiziqSupportSDKViewController *supportVC;
+    if ([MyFiziqSDKCoreLite shared].supportDelegate) {
+        MyFiziqSupportSDK *supDel = [MyFiziqSDKCoreLite shared].supportDelegate;
+        supportVC = [[MyFiziqSupportSDKViewController alloc] initWithViewType:MyFiziqSupportSDKViewTypeQuery];
+        supportVC.delegate = supDel.supportVC.delegate;
+        supportSDK = supDel;
+        supportSDK.supportVC = supportVC;
+    }
+    if (!supportSDK || !supportVC || !supportVC.delegate || ![supportVC.delegate respondsToSelector:@selector(didSelectOptionSubmitSupportRequest:)]) {
+        id<MyFiziqCommonAlertDelegate> alertView = MFZAlert(MyFiziqTurnkeyCommon,
+                                                            @"Support not Available",
+                                                            @"Support has not been implemented. Contact the developer via their website for more information.");
+        MyFiziqCommonAlertAction *cancelAction = [[MyFiziqCommonAlertAction alloc] initWithTitle:@"OK" style:MFZAlertActionStyleNormal];
+        [alertView addAction:cancelAction];
+        [alertView showWithOverlay:YES];
+        return;
+    }
+    supportSDK.supportVC.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_SUPPORT_TITLE_RESULTS_QUERY", @"Results Query");
+    [supportSDK showSupportForResults:@[self.myqSelectedAvatar.attemptId] fromViewController:self];
 }
 
 #pragma mark - Private Methods
@@ -203,6 +256,7 @@
         return;
     }
     [self.navBarIconHelper resizeNavBarItem:self.trashButton forNavBarHeight:self.navigationController.navigationBar.frame.size.height];
+    [self.navBarIconHelper resizeNavBarItem:self.supportButton forNavBarHeight:self.navigationController.navigationBar.frame.size.height];
 }
 
 @end
