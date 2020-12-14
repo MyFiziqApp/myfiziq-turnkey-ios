@@ -47,6 +47,7 @@
 // My Scans
 "MYQTK_TITLE_MY_SCANS"                      = "My Scans";
 "MYQTK_TITLE_NEW_MEASUREMENT"               = "New Measurement";
+"MYQTK_SUPPORT_TITLE_RESULTS_QUERY"         = "Results Query";
 
 // Track
 "MYQTK_TITLE_TRACK"                         = "Track";

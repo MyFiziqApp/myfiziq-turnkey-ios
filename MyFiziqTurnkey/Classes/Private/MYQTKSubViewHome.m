@@ -186,7 +186,7 @@
         [alertView showWithOverlay:YES];
         return;
     }
-    supportSDK.supportVC.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"", @"Results Query");
+    supportSDK.supportVC.navigationItem.title = MFZString(MyFiziqTurnkeyCommon, @"MYQTK_SUPPORT_TITLE_RESULTS_QUERY", @"Results Query");
     [supportSDK showSupportForResults:@[self.myqSelectedAvatar.attemptId] fromViewController:self];
 }
 
